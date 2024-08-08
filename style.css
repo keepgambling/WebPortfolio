@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f9;
+}
+
+h1 {
+    margin-top: 20px;
+    color: #333;
+}
+
+#game {
+    display: inline-block;
+    margin-top: 20px;
+}
+
+#webcam {
+    width: 640px;
+    height: 480px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#canvas {
+    display: none;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #218838;
+}
