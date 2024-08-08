@@ -3,8 +3,13 @@ const canvasElement = document.getElementById('canvas');
 const computerChoiceElement = document.getElementById('computerChoice');
 const userChoiceElement = document.getElementById('userChoice');
 const winnerElement = document.getElementById('winner');
+const userScoreElement = document.getElementById('userScore');
+const computerScoreElement = document.getElementById('computerScore');
 const startGameButton = document.getElementById('startGame');
-const stopGameButton = document.getElementById('stopGame'); // Stop Game button
+const stopGameButton = document.getElementById('stopGame');
+
+let userScore = 0;
+let computerScore = 0;
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -97,6 +102,16 @@ function determineWinner(userChoice, computerChoice) {
   return 'Computer';
 }
 
+function updateScore(winner) {
+  if (winner === 'User') {
+    userScore++;
+    userScoreElement.textContent = userScore;
+  } else if (winner === 'Computer') {
+    computerScore++;
+    computerScoreElement.textContent = computerScore;
+  }
+}
+
 startGameButton.addEventListener('click', () => {
   startCamera();
   const computerChoice = getComputerChoice();
@@ -105,6 +120,7 @@ startGameButton.addEventListener('click', () => {
 
   computerChoiceElement.textContent = computerChoice;
   winnerElement.textContent = winner;
+  updateScore(winner);
 });
 
 stopGameButton.addEventListener('click', () => {
