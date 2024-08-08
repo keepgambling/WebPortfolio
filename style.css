@@ -1,12 +1,12 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #f4f4f9;
+    background-color: #ffffff;
 }
 
 h1 {
     margin-top: 20px;
-    color: #333;
+    color: #0a0a0a;
 }
 
 #game {
@@ -17,7 +17,7 @@ h1 {
 #webcam {
     width: 640px;
     height: 480px;
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
     border-radius: 5px;
 }
 
@@ -34,12 +34,12 @@ button {
     font-size: 16px;
     margin-top: 20px;
     cursor: pointer;
-    background-color: #28a745;
+    background-color: #0096db;
     color: white;
     border: none;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #00aeff;
 }
