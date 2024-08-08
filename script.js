@@ -1,10 +1,10 @@
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
-const resultElement = document.getElementById('result');
 const computerChoiceElement = document.getElementById('computerChoice');
 const userChoiceElement = document.getElementById('userChoice');
 const winnerElement = document.getElementById('winner');
 const startGameButton = document.getElementById('startGame');
+const stopGameButton = document.getElementById('stopGame'); // Stop Game button
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -21,15 +21,27 @@ hands.setOptions({
 
 hands.onResults(onResults);
 
-const camera = new Camera(webcamElement, {
-  onFrame: async () => {
-    await hands.send({image: webcamElement});
-  },
-  width: 640,
-  height: 480
-});
+let camera = null;
 
-camera.start();
+function startCamera() {
+  camera = new Camera(webcamElement, {
+    onFrame: async () => {
+      await hands.send({ image: webcamElement });
+    },
+    width: 640,
+    height: 480
+  });
+
+  camera.start();
+}
+
+function stopCamera() {
+  if (camera) {
+    camera.stop();
+    camera = null;
+    webcamElement.srcObject = null;
+  }
+}
 
 function onResults(results) {
   const canvasCtx = canvasElement.getContext('2d');
@@ -86,10 +98,15 @@ function determineWinner(userChoice, computerChoice) {
 }
 
 startGameButton.addEventListener('click', () => {
+  startCamera();
   const computerChoice = getComputerChoice();
   const userChoice = userChoiceElement.textContent;
   const winner = determineWinner(userChoice, computerChoice);
 
   computerChoiceElement.textContent = computerChoice;
   winnerElement.textContent = winner;
+});
+
+stopGameButton.addEventListener('click', () => {
+  stopCamera();
 });
