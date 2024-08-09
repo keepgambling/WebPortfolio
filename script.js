@@ -75,16 +75,16 @@ function getUserChoice(landmarks) {
   const indexMiddleDistance = Math.hypot(indexTip.x - middleTip.x, indexTip.y - middleTip.y);
 
   if (thumbIndexDistance < 0.1) {
-    return 'Rock';
+    return 'Stein';
   } else if (indexMiddleDistance < 0.1) {
-    return 'Scissors';
+    return 'Schere';
   } else {
-    return 'Paper';
+    return 'Papier';
   }
 }
 
 function getComputerChoice() {
-  const choices = ['Rock', 'Paper', 'Scissors'];
+  const choices = ['Stein', 'Papier', 'Schere'];
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
@@ -93,9 +93,9 @@ function determineWinner(userChoice, computerChoice) {
     return 'Draw';
   }
   if (
-    (userChoice === 'Rock' && computerChoice === 'Scissors') ||
-    (userChoice === 'Scissors' && computerChoice === 'Paper') ||
-    (userChoice === 'Paper' && computerChoice === 'Rock')
+    (userChoice === 'Stein' && computerChoice === 'Schere') ||
+    (userChoice === 'Schere' && computerChoice === 'Papier') ||
+    (userChoice === 'Papier' && computerChoice === 'Stein')
   ) {
     return 'User';
   }
