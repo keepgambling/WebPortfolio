@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Schere&#x2702; Stein&#129704; Papier&#128195;</h1>
+    <h1>Schere✌️ Stein✊ Papier✋
+</h1>
     <div id="game">
         <video id="webcam" autoplay></video>
         <canvas id="canvas"></canvas>
@@ -15,6 +16,8 @@
             <h2>Wahl des Computers: <span id="computerChoice"></span></h2>
             <h2>Deine Wahl: <span id="userChoice"></span></h2>
             <h2>Sieger: <span id="winner"></span></h2>
+            <h3>Letzte Züge</h3>
+            <div id="recentMoves" class="recent-moves"></div>
             <h3>Scoreboard</h3>
             <table id="scoreboard">
                 <thead>
@@ -33,7 +36,7 @@
         </div>
         <button id="startGame">Spiel Starten</button>
         <button id="stopGame">Spiel Beenden</button>
-        <button id="toggleMode">Wechseln zu Dunkelmodus</button> <!-- Dark Mode Toggle Button -->
+        <button id="toggleMode">Wechseln zu Dunkelmodus</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>

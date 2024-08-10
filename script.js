@@ -8,10 +8,12 @@ const computerScoreElement = document.getElementById('computerScore');
 const startGameButton = document.getElementById('startGame');
 const stopGameButton = document.getElementById('stopGame');
 const toggleModeButton = document.getElementById('toggleMode');
+const recentMovesElement = document.getElementById('recentMoves');
 
 let userScore = 0;
 let computerScore = 0;
 let isDarkMode = false;
+const recentMoves = [];
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -114,6 +116,21 @@ function updateScore(winner) {
   }
 }
 
+function updateRecentMoves(userChoice, computerChoice) {
+  const emojis = {
+    'Stein': '✊',
+    'Papier': '✋',
+    'Schere': '✌️'
+  };
+
+  recentMoves.push(`${emojis[userChoice]} vs ${emojis[computerChoice]}`);
+  if (recentMoves.length > 5) {
+    recentMoves.shift(); // Keep only the last 5 moves
+  }
+
+  recentMovesElement.innerHTML = recentMoves.map(move => `<span>${move}</span>`).join('');
+}
+
 startGameButton.addEventListener('click', () => {
   startCamera();
   const computerChoice = getComputerChoice();
@@ -123,6 +140,7 @@ startGameButton.addEventListener('click', () => {
   computerChoiceElement.textContent = computerChoice;
   winnerElement.textContent = winner;
   updateScore(winner);
+  updateRecentMoves(userChoice, computerChoice);
 });
 
 stopGameButton.addEventListener('click', () => {
@@ -135,9 +153,9 @@ toggleModeButton.addEventListener('click', () => {
   if (isDarkMode) {
     document.documentElement.style.setProperty('--background-color', '#2e2e2e');
     document.documentElement.style.setProperty('--text-color', '#ffffff');
-    document.documentElement.style.setProperty('--button-background-color', '#555555');
-    document.documentElement.style.setProperty('--button-hover-color', '#777777');
-    document.documentElement.style.setProperty('--table-header-color', '#444444');
+    document.documentElement.style.setProperty('--button-background-color', '#444444');
+    document.documentElement.style.setProperty('--button-hover-color', '#555555');
+    document.documentElement.style.setProperty('--table-header-color', '#555555');
     toggleModeButton.textContent = 'Wechseln zu Lichtmodus';
   } else {
     document.documentElement.style.setProperty('--background-color', '#ffffff');
