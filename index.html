@@ -16,10 +16,20 @@
             <h2>Deine Wahl: <span id="userChoice"></span></h2>
             <h2>Sieger: <span id="winner"></span></h2>
             <h3>Scoreboard</h3>
-            <div id="scoreboard">
-                <p>Deine Punkte: <span id="userScore">0</span></p>
-                <p>Punkte Computer: <span id="computerScore">0</span></p>
-            </div>
+            <table id="scoreboard">
+                <thead>
+                    <tr>
+                        <th>Deine Punkte</th>
+                        <th>Punkte Computer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="userScore">0</td>
+                        <td id="computerScore">0</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <button id="startGame">Spiel Starten</button>
         <button id="stopGame">Spiel Beenden</button>
