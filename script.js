@@ -9,10 +9,12 @@ const startGameButton = document.getElementById('startGame');
 const stopGameButton = document.getElementById('stopGame');
 const toggleModeButton = document.getElementById('toggleMode');
 const recentMovesElement = document.getElementById('recentMoves');
+const countdownOverlay = document.getElementById('countdown-overlay');
 
 let userScore = 0;
 let computerScore = 0;
 let isDarkMode = false;
+const winningScore = 3; // Score needed to win the game
 const recentMoves = [];
 
 const hands = new Hands({
@@ -33,15 +35,16 @@ hands.onResults(onResults);
 let camera = null;
 
 function startCamera() {
-  camera = new Camera(webcamElement, {
-    onFrame: async () => {
-      await hands.send({ image: webcamElement });
-    },
-    width: 640,
-    height: 480
-  });
-
-  camera.start();
+  if (!camera) {  // Ensure the camera is only started once
+    camera = new Camera(webcamElement, {
+      onFrame: async () => {
+        await hands.send({ image: webcamElement });
+      },
+      width: 640,
+      height: 480
+    });
+    camera.start();
+  }
 }
 
 function stopCamera() {
@@ -70,7 +73,6 @@ function onResults(results) {
 }
 
 function getUserChoice(landmarks) {
-  // Simple logic to detect hand gesture (for demonstration purposes)
   const thumbTip = landmarks[4];
   const indexTip = landmarks[8];
   const middleTip = landmarks[12];
@@ -94,20 +96,20 @@ function getComputerChoice() {
 
 function determineWinner(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
-    return 'Draw';
+    return 'Unentschieden';
   }
   if (
     (userChoice === 'Stein' && computerChoice === 'Schere') ||
     (userChoice === 'Schere' && computerChoice === 'Papier') ||
     (userChoice === 'Papier' && computerChoice === 'Stein')
   ) {
-    return 'User';
+    return 'Benutzer';
   }
   return 'Computer';
 }
 
 function updateScore(winner) {
-  if (winner === 'User') {
+  if (winner === 'Benutzer') {
     userScore++;
     userScoreElement.textContent = userScore;
   } else if (winner === 'Computer') {
@@ -131,20 +133,53 @@ function updateRecentMoves(userChoice, computerChoice) {
   recentMovesElement.innerHTML = recentMoves.map(move => `<span>${move}</span>`).join('');
 }
 
-startGameButton.addEventListener('click', () => {
-  startCamera();
-  const computerChoice = getComputerChoice();
-  const userChoice = userChoiceElement.textContent;
-  const winner = determineWinner(userChoice, computerChoice);
+function startRound() {
+  let countdown = 5;
+  countdownOverlay.style.opacity = 1; // Show overlay initially
+  const countdownInterval = setInterval(() => {
+    countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`;
+    countdown--;
 
-  computerChoiceElement.textContent = computerChoice;
-  winnerElement.textContent = winner;
-  updateScore(winner);
-  updateRecentMoves(userChoice, computerChoice);
+    if (countdown < 0) {
+      clearInterval(countdownInterval);
+      countdownOverlay.style.opacity = 0; // Hide overlay after countdown
+
+      const computerChoice = getComputerChoice();
+      const userChoice = userChoiceElement.textContent || 'Keine Wahl';
+
+      computerChoiceElement.textContent = computerChoice;
+      const winner = determineWinner(userChoice, computerChoice);
+      winnerElement.textContent = winner;
+
+      updateScore(winner);
+      updateRecentMoves(userChoice, computerChoice);
+
+      if (userScore >= winningScore || computerScore >= winningScore) {
+        const finalWinner = userScore > computerScore ? 'Benutzer' : 'Computer';
+        alert(`Spiel vorbei! Gewinner: ${finalWinner}`);
+        stopCamera(); // Stop camera when the game is over
+      } else {
+        setTimeout(startRound, 3000); // Pause for 3 seconds before starting the next round
+      }
+    }
+  }, 1000);
+}
+
+startGameButton.addEventListener('click', () => {
+  userScore = 0;
+  computerScore = 0;
+  userScoreElement.textContent = userScore;
+  computerScoreElement.textContent = computerScore;
+  recentMoves.length = 0;
+  recentMovesElement.innerHTML = '';
+  
+  startCamera();
+  startRound();
 });
 
 stopGameButton.addEventListener('click', () => {
   stopCamera();
+  winnerElement.textContent = 'Spiel beendet';
 });
 
 toggleModeButton.addEventListener('click', () => {

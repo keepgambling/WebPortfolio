@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Schere✌️ Stein✊ Papier✋
-</h1>
+    <h1>Schere✌️ Stein✊ Papier✋</h1>
     <div id="game">
-        <video id="webcam" autoplay></video>
+        <div id="webcam-container">
+            <video id="webcam" autoplay></video>
+            <div id="countdown-overlay"></div>
+        </div>
         <canvas id="canvas"></canvas>
         <div id="result">
             <h2>Wahl des Computers: <span id="computerChoice"></span></h2>
