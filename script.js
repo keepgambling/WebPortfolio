@@ -7,9 +7,11 @@ const userScoreElement = document.getElementById('userScore');
 const computerScoreElement = document.getElementById('computerScore');
 const startGameButton = document.getElementById('startGame');
 const stopGameButton = document.getElementById('stopGame');
+const toggleModeButton = document.getElementById('toggleMode');
 
 let userScore = 0;
 let computerScore = 0;
+let isDarkMode = false;
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -125,4 +127,24 @@ startGameButton.addEventListener('click', () => {
 
 stopGameButton.addEventListener('click', () => {
   stopCamera();
+});
+
+// Toggle between light and dark modes
+toggleModeButton.addEventListener('click', () => {
+  isDarkMode = !isDarkMode;
+  if (isDarkMode) {
+    document.documentElement.style.setProperty('--background-color', '#2e2e2e');
+    document.documentElement.style.setProperty('--text-color', '#ffffff');
+    document.documentElement.style.setProperty('--button-background-color', '#555555');
+    document.documentElement.style.setProperty('--button-hover-color', '#777777');
+    document.documentElement.style.setProperty('--table-header-color', '#444444');
+    toggleModeButton.textContent = 'Wechseln zu Lichtmodus';
+  } else {
+    document.documentElement.style.setProperty('--background-color', '#ffffff');
+    document.documentElement.style.setProperty('--text-color', '#0a0a0a');
+    document.documentElement.style.setProperty('--button-background-color', '#0096db');
+    document.documentElement.style.setProperty('--button-hover-color', '#00aeff');
+    document.documentElement.style.setProperty('--table-header-color', '#0096db');
+    toggleModeButton.textContent = 'Wechseln zu Dunkelmodus';
+  }
 });

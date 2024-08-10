@@ -1,12 +1,21 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #0a0a0a;
+    --button-background-color: #0096db;
+    --button-hover-color: #00aeff;
+    --table-header-color: #0096db;
+}
+
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 h1 {
     margin-top: 20px;
-    color: #0a0a0a;
+    color: var(--text-color);
 }
 
 #game {
@@ -33,18 +42,18 @@ table {
     margin: 0 auto;
     border-collapse: collapse;
     width: 50%;
-    table-layout: fixed; /* Ensure fixed layout */
+    table-layout: fixed;
 }
 
 th, td {
     border: 1px solid #000000;
     padding: 10px;
     text-align: center;
-    width: 50%; /* Set equal width for both columns */
+    width: 50%;
 }
 
 th {
-    background-color: #0096db;
+    background-color: var(--table-header-color);
     color: white;
 }
 
@@ -53,12 +62,12 @@ button {
     font-size: 16px;
     margin-top: 20px;
     cursor: pointer;
-    background-color: #0096db;
+    background-color: var(--button-background-color);
     color: white;
     border: none;
     border-radius: 5px;
 }
 
 button:hover {
-    background-color: #00aeff;
+    background-color: var(--button-hover-color);
 }
