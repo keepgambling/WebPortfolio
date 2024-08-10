@@ -125,7 +125,7 @@ function updateRecentMoves(userChoice, computerChoice) {
 
   recentMoves.push(`${emojis[userChoice]} vs ${emojis[computerChoice]}`);
   if (recentMoves.length > 5) {
-    recentMoves.shift(); // Keep only the last 5 moves
+    recentMoves.shift();
   }
 
   recentMovesElement.innerHTML = recentMoves.map(move => `<span>${move}</span>`).join('');
@@ -147,7 +147,6 @@ stopGameButton.addEventListener('click', () => {
   stopCamera();
 });
 
-// Toggle between light and dark modes
 toggleModeButton.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
   if (isDarkMode) {

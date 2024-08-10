@@ -43,7 +43,7 @@ h1 {
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
-    gap: 10px; /* Space between moves */
+    gap: 10px;
 }
 
 table {
@@ -68,7 +68,7 @@ th {
 button {
     padding: 10px 20px;
     font-size: 16px;
-    margin-top: 10px; /* Reduced margin between buttons for tighter spacing */
+    margin-top: 10px;
     cursor: pointer;
     background-color: var(--button-background-color);
     color: white;
