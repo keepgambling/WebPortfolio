@@ -10,6 +10,7 @@ const stopGameButton = document.getElementById('stopGame');
 const toggleModeButton = document.getElementById('toggleMode');
 const recentMovesElement = document.getElementById('recentMoves');
 const countdownOverlay = document.getElementById('countdown-overlay');
+const manualControls = document.getElementById('manual-controls');
 const chooseRockButton = document.getElementById('chooseRock');
 const choosePaperButton = document.getElementById('choosePaper');
 const chooseScissorsButton = document.getElementById('chooseScissors');
@@ -19,7 +20,8 @@ let computerScore = 0;
 let isDarkMode = false;
 const winningScore = 3; // Score needed to win the game
 const recentMoves = [];
-let isFirstRound = true; // Flag to track if it's the first round
+let isFirstRound = true;
+let countdownInterval; // Store the countdown interval
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -38,8 +40,10 @@ hands.onResults(onResults);
 
 let camera = null;
 
-function startCamera() {
-  if (!camera) {  // Ensure the camera is only started once
+async function startCamera() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    webcamElement.srcObject = stream;
     camera = new Camera(webcamElement, {
       onFrame: async () => {
         await hands.send({ image: webcamElement });
@@ -48,6 +52,10 @@ function startCamera() {
       height: 480
     });
     camera.start();
+    manualControls.style.display = 'none'; // Hide manual controls if camera is accessible
+  } catch (error) {
+    alert('Kamerazugriff verweigert oder nicht verfügbar. Du kannst trotzdem mit den Buttons spielen.');
+    manualControls.style.display = 'block'; // Show manual controls if camera is not accessible
   }
 }
 
@@ -140,7 +148,7 @@ function updateRecentMoves(userChoice, computerChoice) {
 function startRound() {
   let countdown = isFirstRound ? 7 : 3; // 7 seconds for the first round, 3 seconds for subsequent rounds
   countdownOverlay.style.opacity = 1; // Show overlay initially
-  const countdownInterval = setInterval(() => {
+  countdownInterval = setInterval(() => {
     countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`;
     countdown--;
 
@@ -180,11 +188,7 @@ function startGame() {
 
   isFirstRound = true; // Reset the first round flag when starting a new game
 
-  try {
-    startCamera();
-  } catch (error) {
-    alert('Kamerazugriff verweigert oder nicht verfügbar. Du kannst trotzdem mit den Buttons spielen.');
-  }
+  startCamera(); // Attempt to start the camera
   startRound();
 }
 
@@ -197,6 +201,12 @@ startGameButton.addEventListener('click', startGame);
 stopGameButton.addEventListener('click', () => {
   stopCamera();
   winnerElement.textContent = 'Spiel beendet';
+  manualControls.style.display = 'none'; // Hide manual controls when game is stopped
+
+  // Clear any active countdown interval and hide the overlay
+  clearInterval(countdownInterval);
+  countdownOverlay.style.opacity = 0;
+  countdownOverlay.textContent = ''; // Clear the countdown text
 });
 
 toggleModeButton.addEventListener('click', () => {
