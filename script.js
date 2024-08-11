@@ -1,3 +1,5 @@
+// JavaScript code for the rock-paper-scissors game
+
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
 const computerChoiceElement = document.getElementById('computerChoice');
@@ -267,6 +269,9 @@ function hideInstructions() {
 
 showInstructionsButton.addEventListener('click', showInstructions);
 closeInstructionsButton.addEventListener('click', hideInstructions);
+
+// Show instructions when the page loads
+document.addEventListener('DOMContentLoaded', showInstructions);
 
 // Manual control buttons
 chooseRockButton.addEventListener('click', () => {
