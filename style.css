@@ -1,20 +1,15 @@
 :root {
-    --background-color: #ffffff;
-    --text-color: #0a0a0a;
-    --button-background-color: #0096db;
-    --button-hover-color: #00aeff;
-    --table-header-color: #0096db;
+    --background-color: #f0f0f0;
+    --text-color: #333333;
+    --button-background-color: #007bff;
+    --button-hover-color: #0056b3;
+    --table-header-color: #007bff;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     background-color: var(--background-color);
-    color: var(--text-color);
-}
-
-h1 {
-    margin-top: 20px;
     color: var(--text-color);
 }
 
@@ -31,8 +26,8 @@ h1 {
 #webcam {
     width: 640px;
     height: 480px;
-    border: 1px solid #000000;
-    border-radius: 5px;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
 }
 
 #canvas {
@@ -78,15 +73,14 @@ h1 {
 table {
     margin: 0 auto;
     border-collapse: collapse;
-    width: 50%;
+    width: 60%;
     table-layout: fixed;
 }
 
 th, td {
-    border: 1px solid #000000;
+    border: 1px solid #dddddd;
     padding: 10px;
     text-align: center;
-    width: 50%;
 }
 
 th {
@@ -115,7 +109,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
     display: none;
     justify-content: center;
     align-items: center;
@@ -125,15 +119,16 @@ button:hover {
 .overlay-content {
     background-color: white;
     color: black;
-    padding: 20px;
+    padding: 30px;
     border-radius: 10px;
     text-align: left;
-    max-width: 500px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .overlay-content h2 {
     margin-top: 0;
+    font-size: 1.5em;
 }
 
 .overlay-content ul {
