@@ -10,12 +10,16 @@ const stopGameButton = document.getElementById('stopGame');
 const toggleModeButton = document.getElementById('toggleMode');
 const recentMovesElement = document.getElementById('recentMoves');
 const countdownOverlay = document.getElementById('countdown-overlay');
+const chooseRockButton = document.getElementById('chooseRock');
+const choosePaperButton = document.getElementById('choosePaper');
+const chooseScissorsButton = document.getElementById('chooseScissors');
 
 let userScore = 0;
 let computerScore = 0;
 let isDarkMode = false;
 const winningScore = 3; // Score needed to win the game
 const recentMoves = [];
+let isFirstRound = true; // Flag to track if it's the first round
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -134,7 +138,7 @@ function updateRecentMoves(userChoice, computerChoice) {
 }
 
 function startRound() {
-  let countdown = 5;
+  let countdown = isFirstRound ? 10 : 5; // 10 seconds for the first round, 5 seconds for subsequent rounds
   countdownOverlay.style.opacity = 1; // Show overlay initially
   const countdownInterval = setInterval(() => {
     countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`;
@@ -159,23 +163,36 @@ function startRound() {
         alert(`Spiel vorbei! Gewinner: ${finalWinner}`);
         stopCamera(); // Stop camera when the game is over
       } else {
+        isFirstRound = false; // After the first round, set this to false
         setTimeout(startRound, 3000); // Pause for 3 seconds before starting the next round
       }
     }
   }, 1000);
 }
 
-startGameButton.addEventListener('click', () => {
+function startGame() {
   userScore = 0;
   computerScore = 0;
   userScoreElement.textContent = userScore;
   computerScoreElement.textContent = computerScore;
   recentMoves.length = 0;
   recentMovesElement.innerHTML = '';
-  
-  startCamera();
+
+  isFirstRound = true; // Reset the first round flag when starting a new game
+
+  try {
+    startCamera();
+  } catch (error) {
+    alert('Kamerazugriff verweigert oder nicht verfügbar. Du kannst trotzdem mit den Buttons spielen.');
+  }
   startRound();
-});
+}
+
+function makeManualChoice(choice) {
+  userChoiceElement.textContent = choice;
+}
+
+startGameButton.addEventListener('click', startGame);
 
 stopGameButton.addEventListener('click', () => {
   stopCamera();
@@ -200,3 +217,7 @@ toggleModeButton.addEventListener('click', () => {
     toggleModeButton.textContent = 'Wechseln zu Dunkelmodus';
   }
 });
+
+chooseRockButton.addEventListener('click', () => makeManualChoice('Stein'));
+choosePaperButton.addEventListener('click', () => makeManualChoice('Papier'));
+chooseScissorsButton.addEventListener('click', () => makeManualChoice('Schere'));
