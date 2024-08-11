@@ -37,14 +37,33 @@
             </table>
         </div>
         <div id="manual-controls" style="display: none;">
-            <button id="chooseRock">Stein ✊</button>
-            <button id="choosePaper">Papier ✋</button>
-            <button id="chooseScissors">Schere ✌️</button>
+            <button id="chooseRock">Stein</button>
+            <button id="choosePaper">Papier</button>
+            <button id="chooseScissors">Schere</button>
         </div>
         <button id="startGame">Spiel Starten</button>
         <button id="stopGame">Spiel Beenden</button>
         <button id="toggleMode">Wechseln zu Dunkelmodus</button>
+        <button id="showInstructions">Anleitung anzeigen</button>
     </div>
+    <div id="instructions-overlay" class="overlay">
+        <div class="overlay-content">
+            <h2>Spielanleitung</h2>
+            <p>Willkommen zum Schere Stein Papier Spiel!</p>
+            <ul>
+                <li>Du kannst mit der Kamera spielen oder manuell deine Wahl treffen, falls keine Kamera verfügbar ist.</li>
+                <li>Um zu beginnen, klicke auf <strong>Spiel Starten</strong>. Der Countdown zeigt die Zeit bis zur Wahl an.</li>
+                <li>Verwende die Handgesten vor der Kamera oder die Buttons, um deine Wahl zu treffen.</li>
+                <li><strong>Stein✊</strong> schlägt Schere✌️, <strong>Papier✋</strong> schlägt Stein✊, <strong>Schere✌️</strong> schlägt Papier✋.</li>
+                <li>Das Spiel endet, wenn ein Spieler drei Punkte erreicht hat.</li>
+                <li>Du kannst jederzeit das Spiel mit <strong>Spiel Beenden</strong> stoppen.</li>
+                <li>Benutze den Button <strong>Wechseln zu Dunkelmodus</strong>, um zwischen Licht- und Dunkelmodus zu wechseln.</li>
+                <li>Um diese Anleitung erneut zu sehen, klicke auf <strong>Anleitung anzeigen</strong>.</li>
+            </ul>
+            <button id="closeInstructions">Schließen</button>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
     <script src="script.js"></script>

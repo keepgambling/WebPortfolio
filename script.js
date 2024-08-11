@@ -14,14 +14,18 @@ const manualControls = document.getElementById('manual-controls');
 const chooseRockButton = document.getElementById('chooseRock');
 const choosePaperButton = document.getElementById('choosePaper');
 const chooseScissorsButton = document.getElementById('chooseScissors');
+const showInstructionsButton = document.getElementById('showInstructions');
+const closeInstructionsButton = document.getElementById('closeInstructions');
+const instructionsOverlay = document.getElementById('instructions-overlay');
 
 let userScore = 0;
 let computerScore = 0;
 let isDarkMode = false;
 const winningScore = 3; // Score needed to win the game
 const recentMoves = [];
-let isFirstRound = true;
 let countdownInterval; // Store the countdown interval
+let cameraStream = null;
+let isFirstRound = true;
 
 const hands = new Hands({
   locateFile: (file) => {
@@ -38,31 +42,37 @@ hands.setOptions({
 
 hands.onResults(onResults);
 
-let camera = null;
-
-async function startCamera() {
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    webcamElement.srcObject = stream;
-    camera = new Camera(webcamElement, {
-      onFrame: async () => {
-        await hands.send({ image: webcamElement });
-      },
-      width: 640,
-      height: 480
-    });
-    camera.start();
-    manualControls.style.display = 'none'; // Hide manual controls if camera is accessible
-  } catch (error) {
-    alert('Kamerazugriff verweigert oder nicht verfügbar. Du kannst trotzdem mit den Buttons spielen.');
-    manualControls.style.display = 'block'; // Show manual controls if camera is not accessible
+function startCamera() {
+  if (cameraStream === null) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then((stream) => {
+        cameraStream = stream;
+        webcamElement.srcObject = stream;
+        manualControls.style.display = 'none';
+        startCameraStream();
+      })
+      .catch(() => {
+        manualControls.style.display = 'block';
+      });
   }
 }
 
+function startCameraStream() {
+  const camera = new Camera(webcamElement, {
+    onFrame: async () => {
+      await hands.send({ image: webcamElement });
+    },
+    width: 640,
+    height: 480
+  });
+  camera.start();
+}
+
 function stopCamera() {
-  if (camera) {
-    camera.stop();
-    camera = null;
+  if (cameraStream !== null) {
+    const tracks = cameraStream.getTracks();
+    tracks.forEach(track => track.stop());
+    cameraStream = null;
     webcamElement.srcObject = null;
   }
 }
@@ -146,7 +156,8 @@ function updateRecentMoves(userChoice, computerChoice) {
 }
 
 function startRound() {
-  let countdown = isFirstRound ? 7 : 3; // 7 seconds for the first round, 3 seconds for subsequent rounds
+  let countdown = isFirstRound ? 7 : 3; // Use 7 seconds for the first round, then 3 seconds
+  isFirstRound = false; // Set first round flag to false after the first round
   countdownOverlay.style.opacity = 1; // Show overlay initially
   countdownInterval = setInterval(() => {
     countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`;
@@ -171,14 +182,13 @@ function startRound() {
         alert(`Spiel vorbei! Gewinner: ${finalWinner}`);
         stopCamera(); // Stop camera when the game is over
       } else {
-        isFirstRound = false; // After the first round, set this to false
         setTimeout(startRound, 3000); // Pause for 3 seconds before starting the next round
       }
     }
   }, 1000);
 }
 
-function startGame() {
+startGameButton.addEventListener('click', () => {
   userScore = 0;
   computerScore = 0;
   userScoreElement.textContent = userScore;
@@ -186,27 +196,20 @@ function startGame() {
   recentMoves.length = 0;
   recentMovesElement.innerHTML = '';
 
-  isFirstRound = true; // Reset the first round flag when starting a new game
+  // Reset the first round flag
+  isFirstRound = true;
 
-  startCamera(); // Attempt to start the camera
+  // Start camera and show manual controls if needed
+  startCamera();
   startRound();
-}
-
-function makeManualChoice(choice) {
-  userChoiceElement.textContent = choice;
-}
-
-startGameButton.addEventListener('click', startGame);
+});
 
 stopGameButton.addEventListener('click', () => {
   stopCamera();
+  clearInterval(countdownInterval); // Stop the countdown
+  countdownOverlay.style.opacity = 0; // Hide countdown overlay
+  countdownOverlay.textContent = ''; // Clear countdown text
   winnerElement.textContent = 'Spiel beendet';
-  manualControls.style.display = 'none'; // Hide manual controls when game is stopped
-
-  // Clear any active countdown interval and hide the overlay
-  clearInterval(countdownInterval);
-  countdownOverlay.style.opacity = 0;
-  countdownOverlay.textContent = ''; // Clear the countdown text
 });
 
 toggleModeButton.addEventListener('click', () => {
@@ -228,6 +231,27 @@ toggleModeButton.addEventListener('click', () => {
   }
 });
 
-chooseRockButton.addEventListener('click', () => makeManualChoice('Stein'));
-choosePaperButton.addEventListener('click', () => makeManualChoice('Papier'));
-chooseScissorsButton.addEventListener('click', () => makeManualChoice('Schere'));
+// Instructions overlay logic
+function showInstructions() {
+  instructionsOverlay.style.display = 'flex';
+}
+
+function hideInstructions() {
+  instructionsOverlay.style.display = 'none';
+}
+
+showInstructionsButton.addEventListener('click', showInstructions);
+closeInstructionsButton.addEventListener('click', hideInstructions);
+
+// Manual control buttons
+chooseRockButton.addEventListener('click', () => {
+  userChoiceElement.textContent = 'Stein';
+});
+
+choosePaperButton.addEventListener('click', () => {
+  userChoiceElement.textContent = 'Papier';
+});
+
+chooseScissorsButton.addEventListener('click', () => {
+  userChoiceElement.textContent = 'Schere';
+});
