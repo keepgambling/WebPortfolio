@@ -215,11 +215,11 @@ stopGameButton.addEventListener('click', () => {
 toggleModeButton.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
   if (isDarkMode) {
-    document.documentElement.style.setProperty('--background-color', '#1e1e1e');
-    document.documentElement.style.setProperty('--text-color', '#e0e0e0');
-    document.documentElement.style.setProperty('--button-background-color', '#ff5722');
-    document.documentElement.style.setProperty('--button-hover-color', '#e64a19');
-    document.documentElement.style.setProperty('--table-header-color', '#ff5722');
+    document.documentElement.style.setProperty('--background-color', '#212121');
+    document.documentElement.style.setProperty('--text-color', '#eaeaea');
+    document.documentElement.style.setProperty('--button-background-color', '#9c27b0');
+    document.documentElement.style.setProperty('--button-hover-color', '#7b1fa2');
+    document.documentElement.style.setProperty('--table-header-color', '#9c27b0');
     toggleModeButton.textContent = 'Wechseln zu Lichtmodus';
   } else {
     document.documentElement.style.setProperty('--background-color', '#f0f0f0');
