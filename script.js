@@ -138,7 +138,7 @@ function updateRecentMoves(userChoice, computerChoice) {
 }
 
 function startRound() {
-  let countdown = isFirstRound ? 10 : 5; // 10 seconds for the first round, 5 seconds for subsequent rounds
+  let countdown = isFirstRound ? 7 : 3; // 7 seconds for the first round, 3 seconds for subsequent rounds
   countdownOverlay.style.opacity = 1; // Show overlay initially
   const countdownInterval = setInterval(() => {
     countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`;
