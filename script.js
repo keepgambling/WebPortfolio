@@ -95,19 +95,44 @@ function onResults(results) {
 }
 
 function getUserChoice(landmarks) {
+  // Extract landmarks for fingers
   const thumbTip = landmarks[4];
   const indexTip = landmarks[8];
   const middleTip = landmarks[12];
+  const ringTip = landmarks[16];
+  const pinkyTip = landmarks[20];
 
-  const thumbIndexDistance = Math.hypot(thumbTip.x - indexTip.x, thumbTip.y - indexTip.y);
-  const indexMiddleDistance = Math.hypot(indexTip.x - middleTip.x, indexTip.y - middleTip.y);
+  // Extract the base points to compare the extensions
+  const thumbBase = landmarks[2];
+  const indexBase = landmarks[5];
+  const middleBase = landmarks[9];
+  const ringBase = landmarks[13];
+  const pinkyBase = landmarks[17];
 
-  if (thumbIndexDistance < 0.1) {
+  // Calculate distances to check if fingers are extended
+  const isIndexExtended = indexTip.y < indexBase.y;
+  const isMiddleExtended = middleTip.y < middleBase.y;
+  const isRingExtended = ringTip.y < ringBase.y;
+  const isPinkyExtended = pinkyTip.y < pinkyBase.y;
+  const isThumbExtended = thumbTip.x > indexBase.x; // Checks if thumb is pointing sideways
+
+  // Check for Rock gesture (all fingers except thumb should be curled)
+  const isRock = !isIndexExtended && !isMiddleExtended && !isRingExtended && !isPinkyExtended;
+
+  // Check for Paper gesture (all fingers should be extended)
+  const isPaper = isIndexExtended && isMiddleExtended && isRingExtended && isPinkyExtended && isThumbExtended;
+
+  // Check for Scissors gesture (only index and middle fingers should be extended)
+  const isScissors = isIndexExtended && isMiddleExtended && !isRingExtended && !isPinkyExtended;
+
+  if (isRock) {
     return 'Stein';
-  } else if (indexMiddleDistance < 0.1) {
+  } else if (isPaper) {
+    return 'Papier';
+  } else if (isScissors) {
     return 'Schere';
   } else {
-    return 'Papier';
+    return 'Keine Wahl'; // Fallback in case no gesture is recognized
   }
 }
 
