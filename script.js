@@ -1,5 +1,3 @@
-// JavaScript code for the rock-paper-scissors game
-
 const webcamElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('canvas');
 const computerChoiceElement = document.getElementById('computerChoice');
