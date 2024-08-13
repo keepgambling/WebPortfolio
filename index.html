@@ -2,9 +2,9 @@
 <html lang="de">
 <head>
     <!-- 
-    Meta information for the document. 
-    Specifies character encoding, viewport settings, and the title of the webpage.
-    Links to external CSS file for styling.
+    Meta-Informationen für das Dokument.
+    Gibt die Zeichenkodierung, Viewport-Einstellungen und den Titel der Webseite an.
+    Verknüpfung zur externen CSS-Datei für das Styling.
     -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,77 +12,77 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header section containing the main title of the game -->
+    <!-- Kopfbereich mit dem Haupttitel des Spiels -->
     <header>
         <h1>Schere ✌️ Stein ✊ Papier ✋</h1>
     </header>
     
     <main>
-        <!-- Main game container -->
+        <!-- Hauptcontainer für das Spiel -->
         <div id="game" class="container">
             
-            <!-- Container for the webcam feed and countdown overlay -->
+            <!-- Container für den Webcam-Feed und das Countdown-Overlay -->
             <div id="webcam-container" class="webcam-wrapper">
-                <!-- Video element for displaying the webcam feed -->
+                <!-- Video-Element zur Anzeige des Webcam-Feeds -->
                 <video id="webcam" autoplay></video>
-                <!-- Overlay for displaying the countdown before the player's choice -->
+                <!-- Overlay zur Anzeige des Countdowns vor der Auswahl des Spielers -->
                 <div id="countdown-overlay" class="countdown-overlay"></div>
             </div>
             
-            <!-- Canvas for drawing or additional graphical elements, if needed -->
+            <!-- Canvas zur Darstellung oder für zusätzliche grafische Elemente, falls erforderlich -->
             <canvas id="canvas"></canvas>
             
-            <!-- Section to display game results and scoreboard -->
+            <!-- Bereich zur Anzeige der Spielergebnisse und des Punktestands -->
             <div id="result" class="result-section">
-                <h3>Wahl des Computers: <span id="computerChoice"></span></h3> <!-- Displays the computer's choice -->
-                <h3>Deine Wahl: <span id="userChoice"></span></h3> <!-- Displays the user's choice -->
-                <h2>Sieger: <span id="winner"></span></h2> <!-- Displays the winner of the current round -->
+                <h3>Wahl des Computers: <span id="computerChoice"></span></h3> <!-- Zeigt die Wahl des Computers an -->
+                <h3>Deine Wahl: <span id="userChoice"></span></h3> <!-- Zeigt die Wahl des Benutzers an -->
+                <h2>Sieger: <span id="winner"></span></h2> <!-- Zeigt den Gewinner der aktuellen Runde an -->
                 
                 <h3>Letzte Züge</h3>
-                <!-- Section to display recent moves by both the computer and the user -->
+                <!-- Bereich zur Anzeige der letzten Züge von Computer und Benutzer -->
                 <div id="recentMoves" class="recent-moves"></div>
                 
-                <h3>Scoreboard</h3>
-                <!-- Table to display the score of both the user and the computer -->
+                <h3>Punktestand</h3>
+                <!-- Tabelle zur Anzeige des Punktestands von Benutzer und Computer -->
                 <table id="scoreboard">
                     <thead>
                         <tr>
-                            <th>Deine Punkte</th> <!-- User's score header -->
-                            <th>Punkte Computer</th> <!-- Computer's score header -->
+                            <th>Deine Punkte</th> <!-- Spaltenüberschrift für die Punkte des Benutzers -->
+                            <th>Punkte Computer</th> <!-- Spaltenüberschrift für die Punkte des Computers -->
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td id="userScore">0</td> <!-- User's current score -->
-                            <td id="computerScore">0</td> <!-- Computer's current score -->
+                            <td id="userScore">0</td> <!-- Aktueller Punktestand des Benutzers -->
+                            <td id="computerScore">0</td> <!-- Aktueller Punktestand des Computers -->
                         </tr>
                     </tbody>
                 </table>
             </div>
             
-            <!-- Section for manual controls to allow the user to make a choice manually -->
+            <!-- Bereich für manuelle Steuerung, um dem Benutzer eine manuelle Auswahl zu ermöglichen -->
             <div id="manual-controls" class="manual-controls">
-                <button id="chooseRock" class="manual-button">Stein</button> <!-- Button to choose Rock -->
-                <button id="choosePaper" class="manual-button">Papier</button> <!-- Button to choose Paper -->
-                <button id="chooseScissors" class="manual-button">Schere</button> <!-- Button to choose Scissors -->
+                <button id="chooseRock" class="manual-button">Stein</button> <!-- Button zur Auswahl von Stein -->
+                <button id="choosePaper" class="manual-button">Papier</button> <!-- Button zur Auswahl von Papier -->
+                <button id="chooseScissors" class="manual-button">Schere</button> <!-- Button zur Auswahl von Schere -->
             </div>
             
-            <!-- Button group for starting, stopping the game, toggling dark mode, and showing instructions -->
+            <!-- Schaltflächengruppe zum Starten, Beenden des Spiels, Umschalten des Dunkelmodus und Anzeigen der Anleitung -->
             <div class="button-group">
-                <button id="startGame" class="action-button">Spiel Starten</button> <!-- Starts the game -->
-                <button id="stopGame" class="action-button">Spiel Beenden</button> <!-- Stops the game -->
-                <button id="toggleMode" class="action-button">Wechseln zu Dunkelmodus</button> <!-- Toggles between light and dark mode -->
-                <button id="showInstructions" class="action-button">Anleitung anzeigen</button> <!-- Shows the instructions overlay -->
+                <button id="startGame" class="action-button">Spiel Starten</button> <!-- Startet das Spiel -->
+                <button id="stopGame" class="action-button">Spiel Beenden</button> <!-- Beendet das Spiel -->
+                <button id="toggleMode" class="action-button">Wechseln zu Dunkelmodus</button> <!-- Umschalten zwischen Licht- und Dunkelmodus -->
+                <button id="showInstructions" class="action-button">Anleitung anzeigen</button> <!-- Zeigt das Anleitungs-Overlay an -->
             </div>
         </div>
         
-        <!-- Overlay for displaying game instructions -->
+        <!-- Overlay zur Anzeige der Spielanleitung -->
         <div id="instructions-overlay" class="overlay">
             <div class="overlay-content">
-                <h2>Spielanleitung</h2> <!-- Title for the instructions section -->
-                <p>Willkommen zum Schere Stein Papier Spiel!</p> <!-- Welcome message -->
+                <h2>Spielanleitung</h2> <!-- Titel für den Anleitungsbereich -->
+                <p>Willkommen zum Schere Stein Papier Spiel!</p> <!-- Begrüßungsnachricht -->
                 <ul>
-                    <!-- List of instructions explaining how to play the game -->
+                    <!-- Liste der Anweisungen, die erklären, wie das Spiel gespielt wird -->
                     <li>Du kannst mit der Kamera spielen oder manuell deine Wahl treffen, falls keine Kamera verfügbar ist.</li>
                     <li>Um zu beginnen, klicke auf <strong>Spiel Starten</strong>. Der Countdown zeigt die Zeit bis zur Wahl an.</li>
                     <li>Verwende die Handgesten vor der Kamera oder die Buttons, um deine Wahl zu treffen.</li>
@@ -92,15 +92,15 @@
                     <li>Benutze den Button <strong>Wechseln zu Dunkelmodus</strong>, um zwischen Licht- und Dunkelmodus zu wechseln.</li>
                     <li>Um diese Anleitung erneut zu sehen, klicke auf <strong>Anleitung anzeigen</strong>.</li>
                 </ul>
-                <!-- Button to close the instructions overlay -->
+                <!-- Button zum Schließen des Anleitungs-Overlays -->
                 <button id="closeInstructions" class="close-button">Schließen</button>
             </div>
         </div>
     </main>
     
-    <!-- Scripts for enabling functionality using MediaPipe for hand detection and other game logic -->
+    <!-- Skripte zur Aktivierung der Funktionalität unter Verwendung von MediaPipe für Handerkennung und anderer Spiel-Logik -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="script.js"></script> <!-- Custom script file containing game logic -->
+    <script src="script.js"></script> <!-- Benutzerdefinierte Skriptdatei, die die Spiel-Logik enthält -->
 </body>
 </html>
