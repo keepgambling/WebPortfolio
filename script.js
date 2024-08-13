@@ -11,9 +11,6 @@ const toggleModeButton = document.getElementById('toggleMode');
 const recentMovesElement = document.getElementById('recentMoves');
 const countdownOverlay = document.getElementById('countdown-overlay');
 const manualControls = document.getElementById('manual-controls');
-const chooseRockButton = document.getElementById('chooseRock');
-const choosePaperButton = document.getElementById('choosePaper');
-const chooseScissorsButton = document.getElementById('chooseScissors');
 const showInstructionsButton = document.getElementById('showInstructions');
 const closeInstructionsButton = document.getElementById('closeInstructions');
 const instructionsOverlay = document.getElementById('instructions-overlay');
@@ -21,11 +18,8 @@ const instructionsOverlay = document.getElementById('instructions-overlay');
 let userScore = 0;
 let computerScore = 0;
 let isDarkMode = false;
-const winningScore = 3;
 const recentMoves = [];
-let countdownInterval;
 let cameraStream = null;
-let isFirstRound = true;
 
 const hands = new Hands({
   locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
@@ -41,7 +35,7 @@ hands.setOptions({
 hands.onResults(onResults);
 
 function startCamera() {
-  if (cameraStream === null) {
+  if (!cameraStream) {
     navigator.mediaDevices.getUserMedia({ video: true })
       .then((stream) => {
         cameraStream = stream;
@@ -67,9 +61,8 @@ function startCameraStream() {
 }
 
 function stopCamera() {
-  if (cameraStream !== null) {
-    const tracks = cameraStream.getTracks();
-    tracks.forEach(track => track.stop());
+  if (cameraStream) {
+    cameraStream.getTracks().forEach(track => track.stop());
     cameraStream = null;
     webcamElement.srcObject = null;
   }
@@ -80,56 +73,33 @@ function onResults(results) {
   canvasElement.width = webcamElement.videoWidth;
   canvasElement.height = webcamElement.videoHeight;
 
-  canvasCtx.save();
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
 
-  if (results.multiHandLandmarks && results.multiHandLandmarks.length > 0) {
-    const landmarks = results.multiHandLandmarks[0];
-    const choice = getUserChoice(landmarks);
+  if (results.multiHandLandmarks?.length) {
+    const choice = getUserChoice(results.multiHandLandmarks[0]);
     userChoiceElement.textContent = choice;
   }
-
-  canvasCtx.restore();
 }
 
 function getUserChoice(landmarks) {
-  // Simplified logic to determine user's choice based on hand landmarks
-  const thumbTip = landmarks[4];
-  const indexTip = landmarks[8];
-  const middleTip = landmarks[12];
-  const ringTip = landmarks[16];
-  const pinkyTip = landmarks[20];
+  const [thumbTip, indexTip, middleTip, ringTip, pinkyTip] = [
+    landmarks[4], landmarks[8], landmarks[12], landmarks[16], landmarks[20]
+  ];
 
-  const isIndexExtended = indexTip.y < indexBase.y;
-  const isMiddleExtended = middleTip.y < middleBase.y;
-  const isRingExtended = ringTip.y < ringBase.y;
-  const isPinkyExtended = pinkyTip.y < pinkyBase.y;
-  const isThumbExtended = thumbTip.x > indexBase.x;
-
-  if (!isIndexExtended && !isMiddleExtended && !isRingExtended && !isPinkyExtended) {
-    return 'Rock';
-  } else if (isIndexExtended && isMiddleExtended && isRingExtended && isPinkyExtended && isThumbExtended) {
-    return 'Paper';
-  } else if (isIndexExtended && isMiddleExtended && !isRingExtended && !isPinkyExtended) {
+  if (indexTip.y < landmarks[5].y && middleTip.y < landmarks[9].y && ringTip.y < landmarks[13].y && pinkyTip.y < landmarks[17].y) {
+    if (thumbTip.x > indexTip.x) return 'Paper';
     return 'Scissors';
-  } else {
-    return 'Unclear';
   }
+  return 'Rock';
 }
 
 function toggleTheme() {
   isDarkMode = !isDarkMode;
-  const backgroundColor = isDarkMode ? '#181818' : '#ffffff';
-  const textColor = isDarkMode ? '#f5f5f5' : '#333333';
-  const buttonBackgroundColor = isDarkMode ? '#2e2e2e' : '#007bff';
-  const buttonHoverColor = isDarkMode ? '#373737' : '#0056b3';
-  const tableHeaderColor = isDarkMode ? '#2e2e2e' : '#007bff';
-
-  document.documentElement.style.setProperty('--background-color', backgroundColor);
-  document.documentElement.style.setProperty('--text-color', textColor);
-  document.documentElement.style.setProperty('--button-background-color', buttonBackgroundColor);
-  document.documentElement.style.setProperty('--button-hover-color', buttonHoverColor);
-  document.documentElement.style.setProperty('--table-header-color', tableHeaderColor);
+  document.documentElement.style.setProperty('--background-color', isDarkMode ? '#181818' : '#ffffff');
+  document.documentElement.style.setProperty('--text-color', isDarkMode ? '#f5f5f5' : '#333333');
+  document.documentElement.style.setProperty('--button-background-color', isDarkMode ? '#2e2e2e' : '#007bff');
+  document.documentElement.style.setProperty('--button-hover-color', isDarkMode ? '#373737' : '#0056b3');
+  document.documentElement.style.setProperty('--table-header-color', isDarkMode ? '#2e2e2e' : '#f1f1f1');
 
   toggleModeButton.textContent = isDarkMode ? 'Wechseln zum Hellenmodus' : 'Wechseln zu Dunkelmodus';
 }
@@ -145,6 +115,5 @@ closeInstructionsButton.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  toggleTheme(); // Set default theme to light mode
-  showInstructions();
+  toggleTheme();
 });

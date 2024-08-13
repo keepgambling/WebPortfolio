@@ -1,15 +1,15 @@
 :root {
-    --background-color: #ffffff; /* Heller Hintergrund */
-    --text-color: #333333; /* Dunkler Text */
-    --button-background-color: #007bff; /* Blau für Buttons */
-    --button-hover-color: #0056b3; /* Dunkleres Blau für Hover-Effekte */
-    --button-text-color: #ffffff; /* Weiße Schriftfarbe für Buttons */
-    --table-header-color: #f1f1f1; /* Hellgrau für Tabellenüberschriften */
+    --background-color: #ffffff;
+    --text-color: #333333;
+    --button-background-color: #007bff;
+    --button-hover-color: #0056b3;
+    --button-text-color: #ffffff;
+    --table-header-color: #f1f1f1;
     --overlay-background-color: rgba(0, 0, 0, 0.6);
-    --border-radius: 12px; /* Leicht reduzierter Radius für ein moderneres Aussehen */
+    --border-radius: 12px;
     --transition-duration: 0.3s;
-    --shadow-light: rgba(0, 0, 0, 0.1); /* Leichte Schatten für helle Designs */
-    --shadow-dark: rgba(0, 0, 0, 0.25); /* Stärkerer Schatten für visuelle Tiefe */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
 }
 
 body {
@@ -100,14 +100,6 @@ header {
     flex-wrap: wrap;
 }
 
-.recent-moves span::after {
-    content: " | ";
-}
-
-.recent-moves span:last-child::after {
-    content: "";
-}
-
 table {
     margin: 0 auto;
     border-collapse: collapse;
@@ -190,25 +182,13 @@ button:hover {
     background-color: #c82333;
 }
 
-#instructions-overlay.show {
-    display: flex;
-    opacity: 1;
-}
-
-.hidden {
-    display: none;
-}
-
 @media (prefers-color-scheme: dark) {
     :root {
         --background-color: #181818;
         --text-color: #f5f5f5;
         --button-background-color: #2e2e2e;
         --button-hover-color: #373737;
-        --button-text-color: #ffffff;
         --table-header-color: #2e2e2e;
         --overlay-background-color: rgba(255, 255, 255, 0.85);
-        --shadow-light: rgba(0, 0, 0, 0.2);
-        --shadow-dark: rgba(255, 255, 255, 0.1);
     }
 }
