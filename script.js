@@ -15,6 +15,8 @@ const showInstructionsButton = document.getElementById('showInstructions');
 const closeInstructionsButton = document.getElementById('closeInstructions');
 const instructionsOverlay = document.getElementById('instructions-overlay');
 
+const choiceButtons = document.querySelectorAll('.choice-button'); // Buttons für Schere, Stein, Papier
+
 let userScore = 0;
 let computerScore = 0;
 let isDarkMode = false;
@@ -41,10 +43,11 @@ function startCamera() {
         cameraStream = stream;
         webcamElement.srcObject = stream;
         manualControls.style.display = 'none';
+        choiceButtons.forEach(button => button.style.display = 'none'); // Verstecke die Buttons
         startCameraStream();
       })
       .catch(() => {
-        manualControls.style.display = 'block';
+        handleCameraError();
       });
   }
 }
@@ -65,7 +68,13 @@ function stopCamera() {
     cameraStream.getTracks().forEach(track => track.stop());
     cameraStream = null;
     webcamElement.srcObject = null;
+    choiceButtons.forEach(button => button.style.display = 'inline-block'); // Zeige die Buttons, wenn Kamera gestoppt ist
   }
+}
+
+function handleCameraError() {
+  manualControls.style.display = 'block';
+  choiceButtons.forEach(button => button.style.display = 'inline-block'); // Zeige die Buttons, wenn Kamera nicht verfügbar
 }
 
 function onResults(results) {
@@ -97,23 +106,35 @@ function toggleTheme() {
   isDarkMode = !isDarkMode;
   document.documentElement.style.setProperty('--background-color', isDarkMode ? '#181818' : '#ffffff');
   document.documentElement.style.setProperty('--text-color', isDarkMode ? '#f5f5f5' : '#333333');
-  document.documentElement.style.setProperty('--button-background-color', isDarkMode ? '#2e2e2e' : '#007bff');
-  document.documentElement.style.setProperty('--button-hover-color', isDarkMode ? '#373737' : '#0056b3');
-  document.documentElement.style.setProperty('--table-header-color', isDarkMode ? '#2e2e2e' : '#f1f1f1');
+  document.documentElement.style.setProperty('--button-background-color', isDarkMode ? '#007bff' : '#007bff'); // Gleiche Farbe wie Button
+  document.documentElement.style.setProperty('--button-hover-color', isDarkMode ? '#0056b3' : '#0056b3');
+  document.documentElement.style.setProperty('--table-header-color', isDarkMode ? '#007bff' : '#007bff'); // Gleiche Farbe wie Button
 
   toggleModeButton.textContent = isDarkMode ? 'Wechseln zum Hellenmodus' : 'Wechseln zu Dunkelmodus';
 }
 
-toggleModeButton.addEventListener('click', toggleTheme);
-
-showInstructionsButton.addEventListener('click', () => {
+function showInstructions() {
   instructionsOverlay.style.display = 'flex';
-});
+}
 
-closeInstructionsButton.addEventListener('click', () => {
+function hideInstructions() {
   instructionsOverlay.style.display = 'none';
-});
+}
+
+toggleModeButton.addEventListener('click', toggleTheme);
+showInstructionsButton.addEventListener('click', showInstructions);
+closeInstructionsButton.addEventListener('click', hideInstructions);
 
 document.addEventListener('DOMContentLoaded', () => {
-  toggleTheme();
+  toggleTheme(); // Setze das Theme beim Laden der Seite
+  startCamera(); // Starte die Kamera beim Laden der Seite
+});
+
+startGameButton.addEventListener('click', () => {
+  // Implementiere den Start des Spiels
+  console.log('Game started');
+});
+
+stopGameButton.addEventListener('click', () => {
+  stopCamera();
 });

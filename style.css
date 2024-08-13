@@ -4,7 +4,7 @@
     --button-background-color: #007bff;
     --button-hover-color: #0056b3;
     --button-text-color: #ffffff;
-    --table-header-color: #f1f1f1;
+    --table-header-color: #007bff; /* Gleiche Farbe wie Button */
     --overlay-background-color: rgba(0, 0, 0, 0.6);
     --border-radius: 12px;
     --transition-duration: 0.3s;
@@ -186,9 +186,13 @@ button:hover {
     :root {
         --background-color: #181818;
         --text-color: #f5f5f5;
-        --button-background-color: #2e2e2e;
-        --button-hover-color: #373737;
-        --table-header-color: #2e2e2e;
+        --button-background-color: #007bff; /* Gleiche Farbe wie Button */
+        --button-hover-color: #0056b3;
+        --table-header-color: #007bff; /* Gleiche Farbe wie Button */
         --overlay-background-color: rgba(255, 255, 255, 0.85);
     }
+}
+
+.choice-button {
+    display: none; /* Verstecke die Buttons standardmäßig */
 }
