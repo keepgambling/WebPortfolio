@@ -1,38 +1,32 @@
 :root {
-    --background-color-light: #f9f9f9;
-    --background-color-dark: #181818;
-    --text-color-light: #333333;
-    --text-color-dark: #f5f5f5;
-    --button-background-color-light: #ffffff;
-    --button-background-color-dark: #2e2e2e;
-    --button-hover-color-light: #e0e0e3;
-    --button-hover-color-dark: #373737;
-    --table-header-color-light: #f8f8fa;
-    --table-header-color-dark: #2e2e2e;
-    --overlay-background-color-light: rgba(0, 0, 0, 0.75);
-    --overlay-background-color-dark: rgba(255, 255, 255, 0.85);
-    --border-radius: 12px;
+    --background-color: #ffffff; /* Heller Hintergrund */
+    --text-color: #333333; /* Dunkler Text */
+    --button-background-color: #007bff; /* Blau für Buttons */
+    --button-hover-color: #0056b3; /* Dunkleres Blau für Hover-Effekte */
+    --button-text-color: #ffffff; /* Weiße Schriftfarbe für Buttons */
+    --table-header-color: #f1f1f1; /* Hellgrau für Tabellenüberschriften */
+    --overlay-background-color: rgba(0, 0, 0, 0.6);
+    --border-radius: 12px; /* Leicht reduzierter Radius für ein moderneres Aussehen */
     --transition-duration: 0.3s;
-    --shadow-light: rgba(0, 0, 0, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.2);
+    --shadow-light: rgba(0, 0, 0, 0.1); /* Leichte Schatten für helle Designs */
+    --shadow-dark: rgba(0, 0, 0, 0.25); /* Stärkerer Schatten für visuelle Tiefe */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: var(--background-color-light);
-    color: var(--text-color-light);
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
 header {
-    background-color: var(--background-color-light);
-    color: var(--text-color-light);
+    background-color: var(--background-color);
+    color: var(--text-color);
     padding: 20px;
     box-shadow: 0 4px 8px var(--shadow-dark);
     border-bottom-left-radius: var(--border-radius);
@@ -45,18 +39,16 @@ header {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
     width: 100%;
 }
 
 .webcam-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 600px;
     margin-top: 20px;
-    border-radius: var(--border-radius);
-    overflow: hidden;
+    width: 100%;
+    max-width: 720px;
 }
 
 #webcam {
@@ -76,12 +68,12 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 2.5em;
     opacity: 0;
     pointer-events: none;
     transition: opacity var(--transition-duration) ease;
@@ -91,20 +83,20 @@ header {
 .result-section {
     margin-top: 20px;
     width: 100%;
-    max-width: 750px;
+    max-width: 900px;
     text-align: left;
     box-shadow: 0 4px 8px var(--shadow-dark);
-    background-color: var(--background-color-light);
+    background-color: var(--background-color);
     padding: 20px;
     border-radius: var(--border-radius);
 }
 
 .recent-moves {
-    font-size: 1.25rem;
+    font-size: 20px;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
 }
 
@@ -117,10 +109,11 @@ header {
 }
 
 table {
-    margin: 20px auto;
+    margin: 0 auto;
     border-collapse: collapse;
     width: 100%;
-    max-width: 350px;
+    max-width: 500px;
+    margin-top: 20px;
     box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
@@ -131,18 +124,18 @@ th, td {
 }
 
 th {
-    background-color: var(--table-header-color-light);
-    color: var(--text-color-light);
-    box-shadow: 0 2px 4px var(--shadow-dark);
+    background-color: var(--table-header-color);
+    color: var(--text-color);
+    box-shadow: inset 0 2px 4px var(--shadow-dark);
 }
 
 button {
     padding: 12px 24px;
     font-size: 16px;
-    margin: 10px 5px;
+    margin: 8px;
     cursor: pointer;
-    background-color: var(--button-background-color-light);
-    color: var(--text-color-light);
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
     border: none;
     border-radius: var(--border-radius);
     transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
@@ -150,7 +143,7 @@ button {
 }
 
 button:hover {
-    background-color: var(--button-hover-color-light);
+    background-color: var(--button-hover-color);
     transform: translateY(-2px);
 }
 
@@ -164,30 +157,13 @@ button:hover {
     margin-top: 20px;
 }
 
-.manual-button {
-    padding: 12px 24px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: var(--button-background-color-light);
-    color: var(--text-color-light);
-    border: none;
-    border-radius: var(--border-radius);
-    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
-    box-shadow: 0 4px 8px var(--shadow-dark);
-}
-
-.manual-button:hover {
-    background-color: var(--button-hover-color-light);
-    transform: translateY(-2px);
-}
-
 .overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--overlay-background-color-light);
+    background-color: var(--overlay-background-color);
     display: none;
     justify-content: center;
     align-items: center;
@@ -196,28 +172,22 @@ button:hover {
 }
 
 .overlay-content {
-    background-color: var(--background-color-light);
-    padding: 20px;
-    max-width: 400px;
+    background-color: var(--background-color);
+    padding: 30px;
+    max-width: 500px;
     text-align: left;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px var(--shadow-dark);
-    color: var(--text-color-light);
+    color: var(--text-color);
 }
 
 .close-button {
-    background-color: #f44336;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
+    background-color: #dc3545;
     transition: background-color var(--transition-duration) ease;
 }
 
 .close-button:hover {
-    background-color: #d32f2f;
+    background-color: #c82333;
 }
 
 #instructions-overlay.show {
@@ -231,36 +201,14 @@ button:hover {
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-color-light: #181818;
-        --background-color-dark: #f9f9f9;
-        --text-color-light: #f5f5f5;
-        --text-color-dark: #333333;
-        --button-background-color-light: #2e2e2e;
-        --button-background-color-dark: #ffffff;
-        --button-hover-color-light: #373737;
-        --button-hover-color-dark: #e0e0e3;
-        --table-header-color-light: #2e2e2e;
-        --table-header-color-dark: #f8f8fa;
-        --overlay-background-color-light: rgba(255, 255, 255, 0.85);
-        --overlay-background-color-dark: rgba(0, 0, 0, 0.75);
-    }
-
-    body {
-        background-color: var(--background-color-dark);
-        color: var(--text-color-dark);
-    }
-
-    .result-section, .overlay-content {
-        background-color: var(--background-color-dark);
-        color: var(--text-color-dark);
-    }
-
-    button, .manual-button {
-        background-color: var(--button-background-color-light);
-        color: var(--text-color-light);
-    }
-
-    button:hover, .manual-button:hover {
-        background-color: var(--button-hover-color-light);
+        --background-color: #181818;
+        --text-color: #f5f5f5;
+        --button-background-color: #2e2e2e;
+        --button-hover-color: #373737;
+        --button-text-color: #ffffff;
+        --table-header-color: #2e2e2e;
+        --overlay-background-color: rgba(255, 255, 255, 0.85);
+        --shadow-light: rgba(0, 0, 0, 0.2);
+        --shadow-dark: rgba(255, 255, 255, 0.1);
     }
 }
