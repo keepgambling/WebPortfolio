@@ -48,18 +48,18 @@ hands.onResults(onResults);
 
 // Startet den Kamerastream
 function startCamera() {
-  if (cameraStream === null) {
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then((stream) => {
-        cameraStream = stream;
-        webcamElement.srcObject = stream;
-        manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen
-        startCameraStream(); // Startet die Verarbeitung des Kamerastreams
-      })
-      .catch(() => {
-        manualControls.style.display = 'block'; // Zeigt manuelle Steuerungen bei Fehlern an
-      });
-  }
+    if (cameraStream === null) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                cameraStream = stream;
+                webcamElement.srcObject = stream;
+                manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen
+                startCameraStream(); // Startet die Verarbeitung des Kamerastreams
+            })
+            .catch(() => {
+                manualControls.style.display = 'block'; // Zeigt manuelle Steuerungen bei Fehlern an
+            });
+    }
 }
 
 // Startet den Kamerastream und verarbeitet die Frames
@@ -81,6 +81,7 @@ function stopCamera() {
     tracks.forEach(track => track.stop()); // Stoppt alle Tracks im Stream
     cameraStream = null;
     webcamElement.srcObject = null; // Entfernt die Videoquelle
+    manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen, wenn das Spiel beendet wird
   }
 }
 
@@ -281,7 +282,10 @@ showInstructionsButton.addEventListener('click', showInstructions);
 closeInstructionsButton.addEventListener('click', hideInstructions);
 
 // Zeigt die Anweisungen beim Laden der Seite an
-document.addEventListener('DOMContentLoaded', showInstructions);
+document.addEventListener('DOMContentLoaded', () => {
+  showInstructions();
+  manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen beim Laden der Seite
+});
 
 // Ereignislistener für manuelle Steuerungsknöpfe
 chooseRockButton.addEventListener('click', () => {
