@@ -1,33 +1,69 @@
 :root {
-    --background-color: #f0f0f0;
-    --text-color: #333333;
-    --button-background-color: #007bff;
-    --button-hover-color: #0056b3;
-    --table-header-color: #007bff;
+    --background-color-light: #f9f9f9;
+    --background-color-dark: #181818;
+    --text-color-light: #333333;
+    --text-color-dark: #f5f5f5;
+    --button-background-color-light: #ffffff;
+    --button-background-color-dark: #2e2e2e;
+    --button-hover-color-light: #e0e0e3;
+    --button-hover-color-dark: #373737;
+    --table-header-color-light: #f8f8fa;
+    --table-header-color-dark: #2e2e2e;
+    --overlay-background-color-light: rgba(0, 0, 0, 0.75);
+    --overlay-background-color-dark: rgba(255, 255, 255, 0.85);
+    --border-radius: 12px;
+    --transition-duration: 0.3s;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
-    background-color: var(--background-color);
-    color: var(--text-color);
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color var(--transition-duration) ease, color var(--transition-duration) ease;
 }
 
-#game {
-    display: inline-block;
-    margin-top: 20px;
+header {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+    padding: 20px;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 
-#webcam-container {
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+    width: 100%;
+}
+
+.webcam-wrapper {
     position: relative;
-    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
 }
 
 #webcam {
-    width: 640px;
-    height: 480px;
-    border: 2px solid #cccccc;
-    border-radius: 10px;
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 #canvas {
@@ -40,30 +76,40 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 2rem;
     opacity: 0;
     pointer-events: none;
+    transition: opacity var(--transition-duration) ease;
+    border-radius: var(--border-radius);
 }
 
-#result {
+.result-section {
     margin-top: 20px;
+    width: 100%;
+    max-width: 750px;
+    text-align: left;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    background-color: var(--background-color-light);
+    padding: 20px;
+    border-radius: var(--border-radius);
 }
 
 .recent-moves {
-    font-size: 24px;
+    font-size: 1.25rem;
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .recent-moves span::after {
-    content: " I ";
+    content: " | ";
 }
 
 .recent-moves span:last-child::after {
@@ -71,36 +117,68 @@ body {
 }
 
 table {
-    margin: 0 auto;
+    margin: 20px auto;
     border-collapse: collapse;
-    width: 60%;
-    table-layout: fixed;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 th, td {
-    border: 1px solid #dddddd;
-    padding: 10px;
+    border: none;
+    padding: 12px;
     text-align: center;
 }
 
 th {
-    background-color: var(--table-header-color);
-    color: white;
+    background-color: var(--table-header-color-light);
+    color: var(--text-color-light);
+    box-shadow: 0 2px 4px var(--shadow-dark);
 }
 
 button {
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 16px;
-    margin-top: 10px;
+    margin: 10px 5px;
     cursor: pointer;
-    background-color: var(--button-background-color);
-    color: white;
+    background-color: var(--button-background-color-light);
+    color: var(--text-color-light);
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 button:hover {
-    background-color: var(--button-hover-color);
+    background-color: var(--button-hover-color-light);
+    transform: translateY(-2px);
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.manual-controls {
+    margin-top: 20px;
+}
+
+.manual-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--button-background-color-light);
+    color: var(--text-color-light);
+    border: none;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+}
+
+.manual-button:hover {
+    background-color: var(--button-hover-color-light);
+    transform: translateY(-2px);
 }
 
 .overlay {
@@ -109,32 +187,80 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: var(--overlay-background-color-light);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    transition: opacity var(--transition-duration) ease;
 }
 
 .overlay-content {
-    background-color: white;
-    color: black;
-    padding: 30px;
-    border-radius: 10px;
+    background-color: var(--background-color-light);
+    padding: 20px;
+    max-width: 400px;
     text-align: left;
-    max-width: 600px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    color: var(--text-color-light);
 }
 
-.overlay-content h2 {
-    margin-top: 0;
-    font-size: 1.5em;
+.close-button {
+    background-color: #f44336;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-duration) ease;
 }
 
-.overlay-content ul {
-    padding-left: 20px;
+.close-button:hover {
+    background-color: #d32f2f;
 }
 
-.overlay-content ul li {
-    margin-bottom: 10px;
+#instructions-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color-light: #181818;
+        --background-color-dark: #f9f9f9;
+        --text-color-light: #f5f5f5;
+        --text-color-dark: #333333;
+        --button-background-color-light: #2e2e2e;
+        --button-background-color-dark: #ffffff;
+        --button-hover-color-light: #373737;
+        --button-hover-color-dark: #e0e0e3;
+        --table-header-color-light: #2e2e2e;
+        --table-header-color-dark: #f8f8fa;
+        --overlay-background-color-light: rgba(255, 255, 255, 0.85);
+        --overlay-background-color-dark: rgba(0, 0, 0, 0.75);
+    }
+
+    body {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+    }
+
+    .result-section, .overlay-content {
+        background-color: var(--background-color-dark);
+        color: var(--text-color-dark);
+    }
+
+    button, .manual-button {
+        background-color: var(--button-background-color-light);
+        color: var(--text-color-light);
+    }
+
+    button:hover, .manual-button:hover {
+        background-color: var(--button-hover-color-light);
+    }
 }
