@@ -62,19 +62,3 @@ Dieser JavaScript-Code implementiert ein Rock-Paper-Scissors-Spiel, bei dem der 
 - **Dunkel- und Lichtmodus**: Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, um die Benutzeroberfläche nach Vorliebe anzupassen.
 
 - **Anweisungen und Manuelle Steuerung**: Anweisungen zum Spielablauf werden angezeigt, wenn die Seite geladen wird. Falls die Handerkennung nicht funktioniert oder nicht genutzt werden soll, kann der Benutzer auch manuell eine Wahl treffen, indem er auf die entsprechenden Knöpfe für Stein, Papier oder Schere klickt.
-
-## Anwendungsfall
-
-Dieses Skript eignet sich für interaktive Webanwendungen, die auf einfache und unterhaltsame Weise die Fähigkeiten zur Handerkennung demonstrieren möchten. Es kann in Bildungsprojekten eingesetzt werden, um Konzepte der Computervision zu verdeutlichen, oder einfach als unterhaltsames Spiel auf einer Webseite eingebunden werden.
-
-## Erweiterungsmöglichkeiten
-
-1. **Erkennung mehrerer Hände**: Der Code könnte erweitert werden, um mehrere Hände zu erkennen, sodass zwei Spieler gleichzeitig spielen können.
-   
-2. **Erweiterte Gestenerkennung**: Es könnten weitere Gesten hinzugefügt werden, um das Spiel zu erweitern oder für andere Anwendungen nutzbar zu machen.
-
-3. **Responsive Design**: Der Code könnte so angepasst werden, dass die Benutzeroberfläche auf verschiedenen Bildschirmgrößen gut funktioniert.
-
-4. **Mehrsprachige Unterstützung**: Der Text im Spiel könnte in verschiedene Sprachen übersetzt werden, um eine breitere Zielgruppe anzusprechen.
-
-Diese Dokumentation sollte Entwicklern und Benutzern helfen, den Code zu verstehen, zu erweitern und anzupassen.
