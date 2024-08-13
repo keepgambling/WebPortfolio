@@ -240,14 +240,14 @@ stopGameButton.addEventListener('click', () => {
 toggleModeButton.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
   if (isDarkMode) {
-    document.documentElement.style.setProperty('--background-color', '#212121');
-    document.documentElement.style.setProperty('--text-color', '#eaeaea');
-    document.documentElement.style.setProperty('--button-background-color', '#9c27b0');
-    document.documentElement.style.setProperty('--button-hover-color', '#7b1fa2');
-    document.documentElement.style.setProperty('--table-header-color', '#9c27b0');
+    document.documentElement.style.setProperty('--background-color', '#181818');
+    document.documentElement.style.setProperty('--text-color', '#f5f5f5');
+    document.documentElement.style.setProperty('--button-background-color', '#2e2e2e');
+    document.documentElement.style.setProperty('--button-hover-color', '#373737');
+    document.documentElement.style.setProperty('--table-header-color', '#2e2e2e');
     toggleModeButton.textContent = 'Wechseln zu Lichtmodus';
   } else {
-    document.documentElement.style.setProperty('--background-color', '#f0f0f0');
+    document.documentElement.style.setProperty('--background-color', '#ffffff');
     document.documentElement.style.setProperty('--text-color', '#333333');
     document.documentElement.style.setProperty('--button-background-color', '#007bff');
     document.documentElement.style.setProperty('--button-hover-color', '#0056b3');
