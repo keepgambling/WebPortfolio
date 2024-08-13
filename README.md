@@ -31,10 +31,6 @@ Diese HTML-Datei erstellt eine Webseite für ein "Schere, Stein, Papier"-Spiel, 
 
 ## Script.js
 
-# Dokumentation für den Rock-Paper-Scissors Code
-
-## Übersicht
-
 Dieser JavaScript-Code implementiert ein Rock-Paper-Scissors-Spiel, bei dem der Benutzer gegen den Computer spielt. Die Besonderheit dieses Spiels besteht darin, dass die Wahl des Benutzers durch Handgestenerkennung über die Webcam erfolgt. Das Spiel läuft, bis entweder der Benutzer oder der Computer eine bestimmte Anzahl an Punkten erreicht hat. Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, und es bietet sowohl automatisierte als auch manuelle Steuerungen.
 
 ## Hauptkomponenten
