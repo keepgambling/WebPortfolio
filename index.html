@@ -17,18 +17,49 @@
             text-align: center; /* Zentriert den Schriftzug "Letzte Züge" */
             margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
         }
+
+        /* Stile für den Header */
+        header {
+            display: flex; /* Flexbox-Layout */
+            align-items: center; /* Zentriert vertikal */
+            justify-content: space-between; /* Abstand zwischen den Elementen */
+            background-color: var(--background-color); /* Hintergrundfarbe des Headers */
+            color: var(--text-color); /* Textfarbe im Header */
+            padding: 20px; /* Innenabstand des Headers */
+            box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Headers */
+            border-bottom-left-radius: var(--border-radius); /* Abgerundete Ecken unten links */
+            border-bottom-right-radius: var(--border-radius); /* Abgerundete Ecken unten rechts */
+        }
+
+        /* Stile für die Header-Schaltflächen */
+        .header-buttons {
+            display: flex; /* Flexbox-Layout */
+            align-items: center; /* Zentriert vertikal */
+        }
+
+        .header-buttons button {
+            margin: 0 8px; /* Abstand zwischen den Schaltflächen */
+            font-size: 24px; /* Größere Schriftgröße für Emojis */
+            background: none; /* Kein Hintergrund für die Schaltflächen */
+            border: none; /* Kein Rahmen für die Schaltflächen */
+            cursor: pointer; /* Zeiger-Cursor */
+        }
     </style>
 </head>
 <body>
     <!-- Kopfbereich mit dem Haupttitel des Spiels -->
     <header>
-        <h1>Schere ✌️ Stein ✊ Papier ✋</h1>
+        <!-- Container für Header-Titel und Buttons -->
+        <div class="header-buttons">
+            <button id="showInstructions" class="action-button">📚</button>
+            <h1>Schere ✌️ Stein ✊ Papier ✋</h1>
+            <button id="toggleMode" class="action-button">🌙</button>
+        </div>
     </header>
     
     <main>
         <!-- Hauptcontainer für das Spiel -->
         <div id="game" class="container">
-            
             <!-- Container für den Webcam-Feed und das Countdown-Overlay -->
             <div id="webcam-container" class="webcam-wrapper">
                 <video id="webcam" autoplay></video>
@@ -89,8 +120,6 @@
             <div class="button-group">
                 <button id="startGame" class="action-button">Spiel Starten</button>
                 <button id="stopGame" class="action-button">Spiel Beenden</button>
-                <button id="toggleMode" class="action-button">Wechseln zu Dunkelmodus</button>
-                <button id="showInstructions" class="action-button">Anleitung anzeigen</button>
             </div>
         </div>
         
