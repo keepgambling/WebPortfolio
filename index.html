@@ -6,57 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schere Stein Papier</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        /* Stile für den Bereich der Spielergebnisse und des Punktestands */
-        #result {
-            text-align: center;
-        }
-
-        /* Zusätzliche Stile für den Abschnitt "Letzte Züge" */
-        #result h3 {
-            text-align: center; /* Zentriert den Schriftzug "Letzte Züge" */
-            margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
-        }
-
-        /* Stile für den Header */
-        header {
-            display: flex; /* Flexbox-Layout */
-            align-items: center; /* Zentriert vertikal */
-            justify-content: space-between; /* Abstand zwischen den Elementen */
-            background-color: var(--background-color); /* Hintergrundfarbe des Headers */
-            color: var(--text-color); /* Textfarbe im Header */
-            padding: 20px; /* Innenabstand des Headers */
-            box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Headers */
-            border-bottom-left-radius: var(--border-radius); /* Abgerundete Ecken unten links */
-            border-bottom-right-radius: var(--border-radius); /* Abgerundete Ecken unten rechts */
-        }
-
-        /* Stile für die Header-Schaltflächen */
-        .header-buttons {
-            display: flex; /* Flexbox-Layout */
-            align-items: center; /* Zentriert vertikal */
-        }
-
-        .header-buttons button {
-            margin: 0 8px; /* Abstand zwischen den Schaltflächen */
-            font-size: 24px; /* Größere Schriftgröße für Emojis */
-            background: none; /* Kein Hintergrund für die Schaltflächen */
-            border: none; /* Kein Rahmen für die Schaltflächen */
-            cursor: pointer; /* Zeiger-Cursor */
-        }
-    </style>
 </head>
 <body>
     <!-- Kopfbereich mit dem Haupttitel des Spiels -->
     <header>
         <!-- Container für Header-Titel und Buttons -->
         <div class="header-buttons">
-            <button id="showInstructions" class="action-button">📚</button>
+            <button id="showInstructions" class="action-button" title="Anleitung anzeigen">📚</button>
             <h1>Schere ✌️ Stein ✊ Papier ✋</h1>
             <button id="toggleMode" class="action-button">🌙</button>
         </div>
     </header>
-    
     <main>
         <!-- Hauptcontainer für das Spiel -->
         <div id="game" class="container">
@@ -69,7 +29,7 @@
             <!-- Canvas zur Darstellung oder für zusätzliche grafische Elemente -->
             <canvas id="canvas"></canvas>
             
-            <!-- Neue Tabelle zur Darstellung der letzten Auswahl -->
+            <!-- Tabelle zur Darstellung der letzten Auswahl -->
             <table id="choicesTable">
                 <thead>
                     <tr>

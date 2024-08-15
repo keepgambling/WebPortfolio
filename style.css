@@ -28,12 +28,68 @@ body {
 
 /* Stile für den Header der Seite */
 header {
+    display: flex; /* Flexbox-Layout */
+    flex-direction: column; /* Vertikale Anordnung der Kinder */
+    align-items: center; /* Zentriert die Kinder horizontal */
+    justify-content: center; /* Zentriert die Kinder vertikal */
     background-color: var(--background-color); /* Hintergrundfarbe des Headers */
     color: var(--text-color); /* Textfarbe im Header */
     padding: 20px; /* Innenabstand des Headers */
     box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Headers */
     border-bottom-left-radius: var(--border-radius); /* Abgerundete Ecken unten links */
     border-bottom-right-radius: var(--border-radius); /* Abgerundete Ecken unten rechts */
+    text-align: center; /* Zentriert den Text im Header */
+}
+
+/* Stile für den Titel im Header */
+#title {
+    margin: 0; /* Entfernt Standard-Margen des H1-Elements */
+    font-size: 2em; /* Größe des Titels */
+}
+
+/* Stile für die Header-Schaltflächen */
+.header-buttons {
+    display: flex; /* Flexbox-Layout */
+    align-items: center; /* Zentriert vertikal */
+    justify-content: center; /* Zentriert horizontal */
+    margin-top: 10px; /* Abstand nach oben vom Titel */
+}
+
+.header-buttons button {
+    margin: 0 8px; /* Abstand zwischen den Schaltflächen */
+    font-size: 24px; /* Größere Schriftgröße für Emojis */
+    background: none; /* Kein Hintergrund für die Schaltflächen */
+    border: none; /* Kein Rahmen für die Schaltflächen */
+    cursor: pointer; /* Zeiger-Cursor */
+}
+
+/* Stile für den Button, der die Anleitung anzeigt */
+#showInstructions {
+    position: relative; /* Notwendig für die Platzierung des Tooltips */
+}
+
+/* Tooltip-Stile */
+#showInstructions::after {
+    content: "Anleitung anzeigen"; /* Text des Tooltips */
+    position: absolute; /* Positioniert den Tooltip relativ zum Button */
+    bottom: 100%; /* Positioniert den Tooltip über dem Button */
+    left: 50%; /* Zentriert den Tooltip horizontal */
+    transform: translateX(-50%); /* Korrigiert die horizontale Zentrierung */
+    background-color: #333; /* Hintergrundfarbe des Tooltips */
+    color: #fff; /* Textfarbe des Tooltips */
+    padding: 8px; /* Innenabstand des Tooltips */
+    border-radius: 4px; /* Abgerundete Ecken für den Tooltip */
+    white-space: nowrap; /* Verhindert Zeilenumbrüche im Tooltip */
+    opacity: 0; /* Tooltip standardmäßig unsichtbar */
+    visibility: hidden; /* Tooltip standardmäßig unsichtbar */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Sanfter Übergang für das Einblenden */
+    font-size: 14px; /* Schriftgröße des Tooltips */
+}
+
+/* Tooltip sichtbar bei Hover */
+#showInstructions:hover::after {
+    opacity: 1; /* Tooltip sichtbar machen */
+    visibility: visible; /* Tooltip sichtbar machen */
 }
 
 /* Container für den Hauptinhalt der Seite */
@@ -90,7 +146,7 @@ header {
 
 /* Stile für den Bereich der Spielergebnisse und des Punktestands */
 #result {
-    text-align: center;
+    text-align: center; /* Zentriert den Inhalt */
 }
 
 /* Zusätzliche Stile für den Abschnitt "Letzte Züge" */
@@ -98,7 +154,6 @@ header {
     text-align: center; /* Zentriert den Schriftzug "Letzte Züge" */
     margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
 }
-
 
 /* Stile für den Abschnitt der Ergebnisse */
 .result-section {
