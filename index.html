@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <!-- 
-    Meta-Informationen für das Dokument.
-    Gibt die Zeichenkodierung, Viewport-Einstellungen und den Titel der Webseite an.
-    Verknüpfung zur externen CSS-Datei für das Styling.
-    -->
+    <!-- Meta-Informationen für das Dokument -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Schere Stein Papier</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Stile für den Bereich der Spielergebnisse und des Punktestands */
+        #result {
+            text-align: center;
+        }
+
+        /* Zusätzliche Stile für den Abschnitt "Letzte Züge" */
+        #result h3 {
+            text-align: center; /* Zentriert den Schriftzug "Letzte Züge" */
+            margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
+        }
+    </style>
 </head>
 <body>
     <!-- Kopfbereich mit dem Haupttitel des Spiels -->
@@ -23,66 +31,75 @@
             
             <!-- Container für den Webcam-Feed und das Countdown-Overlay -->
             <div id="webcam-container" class="webcam-wrapper">
-                <!-- Video-Element zur Anzeige des Webcam-Feeds -->
                 <video id="webcam" autoplay></video>
-                <!-- Overlay zur Anzeige des Countdowns vor der Auswahl des Spielers -->
                 <div id="countdown-overlay" class="countdown-overlay"></div>
             </div>
             
-            <!-- Canvas zur Darstellung oder für zusätzliche grafische Elemente, falls erforderlich -->
+            <!-- Canvas zur Darstellung oder für zusätzliche grafische Elemente -->
             <canvas id="canvas"></canvas>
             
+            <!-- Neue Tabelle zur Darstellung der letzten Auswahl -->
+            <table id="choicesTable">
+                <thead>
+                    <tr>
+                        <th>Deine Wahl</th>
+                        <th>Computer Wahl</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="userChoice"></td> <!-- Zeigt die Wahl des Benutzers an -->
+                        <td id="computerChoice"></td> <!-- Zeigt die Wahl des Computers an -->
+                    </tr>
+                </tbody>
+            </table>      
+                      
             <!-- Bereich zur Anzeige der Spielergebnisse und des Punktestands -->
             <div id="result" class="result-section">
-                <h3>Wahl des Computers: <span id="computerChoice"></span></h3> <!-- Zeigt die Wahl des Computers an -->
-                <h3>Deine Wahl: <span id="userChoice"></span></h3> <!-- Zeigt die Wahl des Benutzers an -->
                 <h2>Sieger: <span id="winner"></span></h2> <!-- Zeigt den Gewinner der aktuellen Runde an -->
                 
                 <h3>Letzte Züge</h3>
-                <!-- Bereich zur Anzeige der letzten Züge von Computer und Benutzer -->
                 <div id="recentMoves" class="recent-moves"></div>
                 
-                <h3>Punktestand</h3>
-                <!-- Tabelle zur Anzeige des Punktestands von Benutzer und Computer -->
+                <!-- Tabelle zur Anzeige des Punktestands -->
                 <table id="scoreboard">
                     <thead>
                         <tr>
-                            <th>Deine Punkte</th> <!-- Spaltenüberschrift für die Punkte des Benutzers -->
-                            <th>Punkte Computer</th> <!-- Spaltenüberschrift für die Punkte des Computers -->
+                            <th>Deine Punkte</th>
+                            <th>Punkte Computer</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td id="userScore">0</td> <!-- Aktueller Punktestand des Benutzers -->
-                            <td id="computerScore">0</td> <!-- Aktueller Punktestand des Computers -->
+                            <td id="userScore">0</td>
+                            <td id="computerScore">0</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
             
-            <!-- Bereich für manuelle Steuerung, um dem Benutzer eine manuelle Auswahl zu ermöglichen -->
+            <!-- Bereich für manuelle Steuerung -->
             <div id="manual-controls" class="manual-controls">
-                <button id="chooseRock" class="manual-button">Stein</button> <!-- Button zur Auswahl von Stein -->
-                <button id="choosePaper" class="manual-button">Papier</button> <!-- Button zur Auswahl von Papier -->
-                <button id="chooseScissors" class="manual-button">Schere</button> <!-- Button zur Auswahl von Schere -->
+                <button id="chooseRock" class="manual-button">Stein</button>
+                <button id="choosePaper" class="manual-button">Papier</button>
+                <button id="chooseScissors" class="manual-button">Schere</button>
             </div>
             
             <!-- Schaltflächengruppe zum Starten, Beenden des Spiels, Umschalten des Dunkelmodus und Anzeigen der Anleitung -->
             <div class="button-group">
-                <button id="startGame" class="action-button">Spiel Starten</button> <!-- Startet das Spiel -->
-                <button id="stopGame" class="action-button">Spiel Beenden</button> <!-- Beendet das Spiel -->
-                <button id="toggleMode" class="action-button">Wechseln zu Dunkelmodus</button> <!-- Umschalten zwischen Licht- und Dunkelmodus -->
-                <button id="showInstructions" class="action-button">Anleitung anzeigen</button> <!-- Zeigt das Anleitungs-Overlay an -->
+                <button id="startGame" class="action-button">Spiel Starten</button>
+                <button id="stopGame" class="action-button">Spiel Beenden</button>
+                <button id="toggleMode" class="action-button">Wechseln zu Dunkelmodus</button>
+                <button id="showInstructions" class="action-button">Anleitung anzeigen</button>
             </div>
         </div>
         
         <!-- Overlay zur Anzeige der Spielanleitung -->
         <div id="instructions-overlay" class="overlay">
             <div class="overlay-content">
-                <h2>Spielanleitung</h2> <!-- Titel für den Anleitungsbereich -->
-                <p>Willkommen zum Schere Stein Papier Spiel!</p> <!-- Begrüßungsnachricht -->
+                <h2>Spielanleitung</h2>
+                <p>Willkommen zum Schere Stein Papier Spiel!</p>
                 <ul>
-                    <!-- Liste der Anweisungen, die erklären, wie das Spiel gespielt wird -->
                     <li>Du kannst mit der Kamera spielen oder manuell deine Wahl treffen, falls keine Kamera verfügbar ist.</li>
                     <li>Um zu beginnen, klicke auf <strong>Spiel Starten</strong>. Der Countdown zeigt die Zeit bis zur Wahl an.</li>
                     <li>Verwende die Handgesten vor der Kamera oder die Buttons, um deine Wahl zu treffen.</li>
@@ -92,15 +109,14 @@
                     <li>Benutze den Button <strong>Wechseln zu Dunkelmodus</strong>, um zwischen Licht- und Dunkelmodus zu wechseln.</li>
                     <li>Um diese Anleitung erneut zu sehen, klicke auf <strong>Anleitung anzeigen</strong>.</li>
                 </ul>
-                <!-- Button zum Schließen des Anleitungs-Overlays -->
                 <button id="closeInstructions" class="close-button">Schließen</button>
             </div>
         </div>
     </main>
     
-    <!-- Skripte zur Aktivierung der Funktionalität unter Verwendung von MediaPipe für Handerkennung und anderer Spiel-Logik -->
+    <!-- Skripte zur Aktivierung der Funktionalität -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="script.js"></script> <!-- Benutzerdefinierte Skriptdatei, die die Spiel-Logik enthält -->
+    <script src="script.js"></script>
 </body>
 </html>

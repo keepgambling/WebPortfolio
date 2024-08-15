@@ -260,7 +260,7 @@ toggleModeButton.addEventListener('click', () => {
     document.documentElement.style.setProperty('--table-header-color', '#2e2e2e');
     toggleModeButton.textContent = 'Wechseln zu Lichtmodus';
   } else {
-    document.documentElement.style.setProperty('--background-color', '#ffffff');
+    document.documentElement.style.setProperty('--background-color', '#faf9f6');
     document.documentElement.style.setProperty('--text-color', '#333333');
     document.documentElement.style.setProperty('--button-background-color', '#007bff');
     document.documentElement.style.setProperty('--button-hover-color', '#0056b3');

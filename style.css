@@ -88,6 +88,18 @@ header {
     border-radius: var(--border-radius); /* Abgerundete Ecken des Overlays */
 }
 
+/* Stile für den Bereich der Spielergebnisse und des Punktestands */
+#result {
+    text-align: center;
+}
+
+/* Zusätzliche Stile für den Abschnitt "Letzte Züge" */
+#result h3 {
+    text-align: center; /* Zentriert den Schriftzug "Letzte Züge" */
+    margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
+}
+
+
 /* Stile für den Abschnitt der Ergebnisse */
 .result-section {
     margin-top: 20px; /* Abstand nach oben */
@@ -206,11 +218,11 @@ button:hover {
 /* Medienabfrage für das bevorzugte Farbschema des Benutzers (hell) */
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #ffffff; /* Hintergrundfarbe für helles Schema */
+        --background-color: #faf9f6; /* Hintergrundfarbe für helles Schema */
         --text-color: #333333; /* Textfarbe für helles Schema */
         --button-background-color: #007bff; /* Schaltflächenfarbe für helles Schema */
         --button-hover-color: #0056b3; /* Hover-Schaltflächenfarbe für helles Schema */
-        --button-text-color: #ffffff; /* Schaltflächentextfarbe für helles Schema */
+        --button-text-color: #faf9f6; /* Schaltflächentextfarbe für helles Schema */
         --table-header-color: #007bff; /* Tabellenkopf-Farbe für helles Schema */
         --overlay-background-color: rgba(0, 0, 0, 0.6); /* Overlay-Hintergrundfarbe für helles Schema */
         --border-radius: 12px; /* Eckenradius */
