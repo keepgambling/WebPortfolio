@@ -1,11 +1,11 @@
 /* Globale CSS-Variablen für das Design und die UI-Komponenten */
 :root {
-    --background-color: #ffffff; /* Hintergrundfarbe der Seite */
+    --background-color: #faf9f6; /* Hintergrundfarbe der Seite */
     --text-color: #333333; /* Standardfarbe für den Text */
-    --button-background-color: #007bff; /* Hintergrundfarbe der Schaltflächen */
-    --button-hover-color: #0056b3; /* Hintergrundfarbe der Schaltflächen im Hover-Zustand */
-    --button-text-color: #ffffff; /* Textfarbe der Schaltflächen */
-    --table-header-color: #007bff; /* Hintergrundfarbe der Tabellenköpfe, gleiche Farbe wie die Schaltflächen */
+    --button-background-color: #a2b7ca; /* Hintergrundfarbe der Schaltflächen */
+    --button-hover-color: #a2b7caa1; /* Hintergrundfarbe der Schaltflächen im Hover-Zustand */
+    --button-text-color: #000000; /* Textfarbe der Schaltflächen */
+    --table-header-color: #a2b7ca; /* Hintergrundfarbe der Tabellenköpfe, gleiche Farbe wie die Schaltflächen */
     --overlay-background-color: rgba(0, 0, 0, 0.6); /* Hintergrundfarbe für Overlays mit Transparenz */
     --border-radius: 12px; /* Standard-Rundung für Ecken */
     --transition-duration: 0.3s; /* Standard-Dauer für Transition-Effekte */
@@ -133,7 +133,7 @@ header {
     width: 100%; /* Volle Breite */
     height: 100%; /* Volle Höhe */
     background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
-    color: #ffffff; /* Weiße Schriftfarbe */
+    color: #faf9f6; /* Weiße Schriftfarbe */
     display: flex; /* Flexbox-Layout */
     justify-content: center; /* Zentriert horizontal */
     align-items: center; /* Zentriert vertikal */
@@ -261,13 +261,13 @@ button:hover {
 
 /* Stile für die Schaltfläche zum Schließen des Overlays */
 .close-button {
-    background-color: #007bff; /* Hintergrundfarbe */
+    background-color: #a2b7ca; /* Hintergrundfarbe */
     transition: background-color var(--transition-duration) ease; /* Übergangseffekt für die Hintergrundfarbe */
 }
 
 /* Hover-Effekte für die Schaltfläche zum Schließen des Overlays */
 .close-button:hover {
-    background-color: #0056b3; /* Ändert die Hintergrundfarbe bei Hover */
+    background-color: #a2b7caa1; /* Ändert die Hintergrundfarbe bei Hover */
 }
 
 /* Medienabfrage für das bevorzugte Farbschema des Benutzers (hell) */
