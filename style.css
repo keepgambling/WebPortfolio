@@ -39,24 +39,25 @@ header {
     border-bottom-left-radius: var(--border-radius); /* Abgerundete Ecken unten links */
     border-bottom-right-radius: var(--border-radius); /* Abgerundete Ecken unten rechts */
     text-align: center; /* Zentriert den Text im Header */
+    width: 100%; /* Nimmt die gesamte Breite des Bildschirms ein */
 }
 
-/* Stile für den Titel im Header */
-#title {
-    margin: 0; /* Entfernt Standard-Margen des H1-Elements */
-    font-size: 2em; /* Größe des Titels */
-}
-
-/* Stile für die Header-Schaltflächen */
+/* Stile für den Header-Titel und die Buttons */
 .header-buttons {
     display: flex; /* Flexbox-Layout */
     align-items: center; /* Zentriert vertikal */
-    justify-content: center; /* Zentriert horizontal */
-    margin-top: 10px; /* Abstand nach oben vom Titel */
+    justify-content: space-between; /* Buttons an die Ränder, Titel in die Mitte */
+    width: 100%; /* Nimmt die gesamte Breite des Headers ein */
 }
 
+.header-buttons h1 {
+    flex-grow: 1; /* Nimmt den verbleibenden Platz zwischen den Buttons ein */
+    text-align: center; /* Titel zentrieren */
+    margin: 0; /* Entfernt den Standard-Außenabstand des Titels */
+}
+
+/* Stile für die Header-Schaltflächen */
 .header-buttons button {
-    margin: 0 8px; /* Abstand zwischen den Schaltflächen */
     font-size: 24px; /* Größere Schriftgröße für Emojis */
     background: none; /* Kein Hintergrund für die Schaltflächen */
     border: none; /* Kein Rahmen für die Schaltflächen */
@@ -65,7 +66,12 @@ header {
 
 /* Stile für den Button, der die Anleitung anzeigt */
 #showInstructions {
-    position: relative; /* Notwendig für die Platzierung des Tooltips */
+    margin-right: auto; /* Drückt den Button an den linken Rand */
+}
+
+/* Stile für den Dunkelmodus-Schalter */
+#toggleMode {
+    margin-left: auto; /* Drückt den Button an den rechten Rand */
 }
 
 /* Tooltip-Stile */
@@ -190,7 +196,6 @@ th {
     color: var(--button-text-color); /* Textfarbe aus den Variablen */
     box-shadow: inset 0 2px 4px var(--shadow-dark); /* Schatten nach innen */
 }
-
 
 /* Basisstile für Schaltflächen */
 button {
