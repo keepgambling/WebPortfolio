@@ -250,6 +250,17 @@ button:hover {
     color: var(--text-color); /* Textfarbe aus den Variablen */
 }
 
+/* Stile für das Sieger-Overlay */
+#winner-overlay .overlay-content {
+    background-color: var(--background-color); /* Hintergrundfarbe aus den Variablen */
+    padding: 30px; /* Innenabstand */
+    max-width: 500px; /* Maximale Breite */
+    text-align: center; /* Text zentriert */
+    border-radius: var(--border-radius); /* Abgerundete Ecken */
+    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Inhalts */
+    color: var(--text-color); /* Textfarbe aus den Variablen */
+}
+
 /* Stile für die Schaltfläche zum Schließen des Overlays */
 .close-button {
     background-color: #a2b7ca; /* Hintergrundfarbe */

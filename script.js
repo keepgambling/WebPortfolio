@@ -18,6 +18,9 @@ const chooseScissorsButton = document.getElementById('chooseScissors');
 const showInstructionsButton = document.getElementById('showInstructions');
 const closeInstructionsButton = document.getElementById('closeInstructions');
 const instructionsOverlay = document.getElementById('instructions-overlay');
+const winnerOverlay = document.getElementById('winner-overlay');
+const finalWinnerElement = document.getElementById('finalWinner');
+const closeWinnerOverlayButton = document.getElementById('closeWinnerOverlay');
 
 // Variablen zur Spielsteuerung
 let userScore = 0; // Punktestand des Benutzers
@@ -213,9 +216,8 @@ function startRound() {
       updateRecentMoves(userChoice, computerChoice);
 
       if (userScore >= winningScore || computerScore >= winningScore) {
-        const finalWinner = userScore > computerScore ? 'Benutzer' : 'Computer';
-        alert(`Spiel vorbei! Gewinner: ${finalWinner}`);
-        stopCamera(); // Stoppt die Kamera, wenn das Spiel vorbei ist
+        const finalWinner = userScore > computerScore ? ' der Benutzer' : 'der Computer';
+        endGame(finalWinner); // Spiel endet, zeige Sieger-Overlay
       } else {
         setTimeout(startRound, 3000); // Wartet 3 Sekunden vor der nächsten Runde
       }
@@ -300,3 +302,23 @@ choosePaperButton.addEventListener('click', () => {
 chooseScissorsButton.addEventListener('click', () => {
   userChoiceElement.textContent = 'Schere';
 });
+
+// Funktion, um das Sieger-Overlay anzuzeigen
+function showWinnerOverlay(finalWinner) {
+    finalWinnerElement.textContent = finalWinner;
+    winnerOverlay.style.display = 'flex';
+}
+
+// Funktion, um das Sieger-Overlay zu schließen
+function closeWinnerOverlay() {
+    winnerOverlay.style.display = 'none';
+    stopCamera(); // Stoppt die Kamera, wenn das Overlay geschlossen wird
+}
+
+// Ereignislistener für den Schließen-Button des Sieger-Overlays
+closeWinnerOverlayButton.addEventListener('click', closeWinnerOverlay);
+
+// Den Spielabschluss ändern, um das Sieger-Overlay anzuzeigen
+function endGame(finalWinner) {
+    showWinnerOverlay(finalWinner);
+}
