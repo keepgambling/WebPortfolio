@@ -289,7 +289,12 @@ button:hover {
     }
 }
 
-/* Stile für spezielle Auswahlknöpfe, die standardmäßig versteckt sind */
-.choice-button {
-    display: none; /* Versteckt die Buttons standardmäßig */
+/* Dunkelmodus-Stile */
+body.dark-mode {
+    --background-color: #181818; /* Hintergrundfarbe für Dunkelmodus */
+    --text-color: #ffffff; /* Textfarbe für Dunkelmodus */
+    --button-background-color: #2e2e2e; /* Schaltflächenfarbe für Dunkelmodus */
+    --button-hover-color: #373737; /* Hover-Schaltflächenfarbe für Dunkelmodus */
+    --button-text-color: #ffffff; /* Schaltflächentextfarbe für Dunkelmodus */
+    --table-header-color: #2e2e2e; /* Tabellenkopf-Farbe für Dunkelmodus */
 }

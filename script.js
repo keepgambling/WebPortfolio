@@ -255,19 +255,11 @@ stopGameButton.addEventListener('click', () => {
 toggleModeButton.addEventListener('click', () => {
   isDarkMode = !isDarkMode;
   if (isDarkMode) {
-    document.documentElement.style.setProperty('--background-color', '#181818');
-    document.documentElement.style.setProperty('--text-color', '#ffffff');
-    document.documentElement.style.setProperty('--button-background-color', '#2e2e2e');
-    document.documentElement.style.setProperty('--button-hover-color', '#373737');
-    document.documentElement.style.setProperty('--table-header-color', '#2e2e2e');
-    toggleModeButton.textContent = '☀️'; // Sonne-Symbol für Lichtmodus
+      document.body.classList.add('dark-mode');
+      toggleModeButton.textContent = '☀️'; // Sonne-Symbol für Lichtmodus
   } else {
-    document.documentElement.style.setProperty('--background-color', '#faf9f6');
-    document.documentElement.style.setProperty('--text-color', '#000000');
-    document.documentElement.style.setProperty('--button-background-color', '#a2b7ca');
-    document.documentElement.style.setProperty('--button-hover-color', '#a2b7caa1');
-    document.documentElement.style.setProperty('--table-header-color', '#a2b7ca');
-    toggleModeButton.textContent = '🌙'; // Mond-Symbol für Dunkelmodus
+      document.body.classList.remove('dark-mode');
+      toggleModeButton.textContent = '🌙'; // Mond-Symbol für Dunkelmodus
   }
 });
 
