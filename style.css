@@ -155,18 +155,6 @@ header {
     margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
 }
 
-/* Stile für den Abschnitt der Ergebnisse */
-.result-section {
-    margin-top: 20px; /* Abstand nach oben */
-    width: 100%; /* Volle Breite */
-    max-width: 900px; /* Maximale Breite des Abschnitts */
-    text-align: left; /* Text linksbündig */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Abschnitts */
-    background-color: var(--background-color); /* Hintergrundfarbe des Abschnitts */
-    padding: 20px; /* Innenabstand */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-}
-
 /* Stile für die Anzeige der letzten Züge */
 .recent-moves {
     font-size: 20px; /* Schriftgröße */
