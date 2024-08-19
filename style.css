@@ -173,6 +173,7 @@ table {
     max-width: 500px; /* Maximale Breite */
     margin-top: 20px; /* Abstand nach oben */
     box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten der Tabelle */
+    table-layout: fixed; /* Stellt sicher, dass die Tabellenzellen gleichmäßig verteilt sind */
 }
 
 /* Stile für die Tabellenzellen */
@@ -180,6 +181,7 @@ th, td {
     border: none; /* Entfernt Rahmen */
     padding: 12px; /* Innenabstand */
     text-align: center; /* Text zentriert */
+    width: 25%; /* Stellt sicher, dass jede Zelle 25% der Tabellenbreite einnimmt */
 }
 
 /* Stile für die Tabellenköpfe */
@@ -188,6 +190,7 @@ th {
     color: var(--button-text-color); /* Textfarbe aus den Variablen */
     box-shadow: inset 0 2px 4px var(--shadow-dark); /* Schatten nach innen */
 }
+
 
 /* Basisstile für Schaltflächen */
 button {
