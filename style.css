@@ -1,129 +1,121 @@
 /* Globale CSS-Variablen für das Design und die UI-Komponenten */
 :root {
-    --background-color: #faf9f6; /* Hintergrundfarbe der Seite */
-    --text-color: #333333; /* Standardfarbe für den Text */
-    --button-background-color: #a2b7ca; /* Hintergrundfarbe der Schaltflächen */
-    --button-hover-color: #a2b7caa1; /* Hintergrundfarbe der Schaltflächen im Hover-Zustand */
-    --button-text-color: #000000; /* Textfarbe der Schaltflächen */
-    --table-header-color: #a2b7ca; /* Hintergrundfarbe der Tabellenköpfe, gleiche Farbe wie die Schaltflächen */
-    --overlay-background-color: rgba(0, 0, 0, 0.6); /* Hintergrundfarbe für Overlays mit Transparenz */
-    --border-radius: 12px; /* Standard-Rundung für Ecken */
-    --transition-duration: 0.3s; /* Standard-Dauer für Transition-Effekte */
-    --shadow-light: rgba(0, 0, 0, 0.1); /* Leichter Schatten für UI-Komponenten */
-    --shadow-dark: rgba(0, 0, 0, 0.25); /* Dunkler Schatten für UI-Komponenten */
+    --background-color: #faf9f6;
+    --text-color: #333333;
+    --button-background-color: #a2b7ca;
+    --button-hover-color: #a2b7caa1;
+    --button-text-color: #000000;
+    --table-header-color: #a2b7ca;
+    --overlay-background-color: rgba(0, 0, 0, 0.6);
+    --border-radius: 12px;
+    --transition-duration: 0.3s;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
 }
 
 /* Basisstile für den gesamten Body der Seite */
 body {
-    font-family: 'Poppins', sans-serif; /* Schriftart für den gesamten Text */
-    text-align: center; /* Text zentrieren */
-    background-color: var(--background-color); /* Hintergrundfarbe aus den Variablen */
-    color: var(--text-color); /* Textfarbe aus den Variablen */
-    margin: 0; /* Entfernt den Standard-Außenabstand */
-    padding: 0; /* Entfernt den Standard-Innenabstand */
-    display: flex; /* Flexbox-Layout */
-    flex-direction: column; /* Vertikale Anordnung der Kinder */
-    min-height: 100vh; /* Minimale Höhe des Body ist die Höhe des Viewports */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Stile für den Header der Seite */
 header {
-    display: flex; /* Flexbox-Layout */
-    flex-direction: column; /* Vertikale Anordnung der Kinder */
-    align-items: center; /* Zentriert die Kinder horizontal */
-    justify-content: center; /* Zentriert die Kinder vertikal */
-    background-color: var(--background-color); /* Hintergrundfarbe des Headers */
-    color: var(--text-color); /* Textfarbe im Header */
-    padding: 20px; /* Innenabstand des Headers */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Headers */
-    border-bottom-left-radius: var(--border-radius); /* Abgerundete Ecken unten links */
-    border-bottom-right-radius: var(--border-radius); /* Abgerundete Ecken unten rechts */
-    text-align: center; /* Zentriert den Text im Header */
-    width: 100%; /* Nimmt die gesamte Breite des Bildschirms ein */
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Drei Spalten: links, Mitte, rechts */
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px; /* Padding für den Header */
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    text-align: center;
+    width: 100%;
 }
 
-/* Stile für den Header-Titel und die Buttons */
-.header-buttons {
-    display: flex; /* Flexbox-Layout */
-    align-items: center; /* Zentriert vertikal */
-    justify-content: space-between; /* Buttons an die Ränder, Titel in die Mitte */
-    width: 100%; /* Nimmt die gesamte Breite des Headers ein */
-}
-
+/* Stile für den Titel in der Mitte */
 .header-buttons h1 {
-    flex-grow: 1; /* Nimmt den verbleibenden Platz zwischen den Buttons ein */
-    text-align: center; /* Titel zentrieren */
-    margin: 0; /* Entfernt den Standard-Außenabstand des Titels */
+    margin: 0;
+    text-align: center;
 }
 
 /* Stile für die Header-Schaltflächen */
+.header-buttons {
+    display: contents; /* Buttons werden direkt im Grid-Container angezeigt */
+}
+
 .header-buttons button {
-    font-size: 24px; /* Größere Schriftgröße für Emojis */
-    background: none; /* Kein Hintergrund für die Schaltflächen */
-    border: none; /* Kein Rahmen für die Schaltflächen */
-    cursor: pointer; /* Zeiger-Cursor */
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-/* Stile für den Button, der die Anleitung anzeigt */
-#showInstructions {
-    margin-right: auto; /* Drückt den Button an den linken Rand */
-}
-
-/* Stile für den Dunkelmodus-Schalter */
-#toggleMode {
-    margin-left: auto; /* Drückt den Button an den rechten Rand */
+/* Entfernen von Margin für die Buttons */
+#showInstructions, #toggleMode {
+    margin: 0;
 }
 
 /* Tooltip-Stile */
 #showInstructions::after {
-    content: "Anleitung anzeigen"; /* Text des Tooltips */
-    position: absolute; /* Positioniert den Tooltip relativ zum Button */
-    bottom: 100%; /* Positioniert den Tooltip über dem Button */
-    left: 50%; /* Zentriert den Tooltip horizontal */
-    transform: translateX(-50%); /* Korrigiert die horizontale Zentrierung */
-    background-color: #333; /* Hintergrundfarbe des Tooltips */
-    color: #fff; /* Textfarbe des Tooltips */
-    padding: 8px; /* Innenabstand des Tooltips */
-    border-radius: 4px; /* Abgerundete Ecken für den Tooltip */
-    white-space: nowrap; /* Verhindert Zeilenumbrüche im Tooltip */
-    opacity: 0; /* Tooltip standardmäßig unsichtbar */
-    visibility: hidden; /* Tooltip standardmäßig unsichtbar */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Sanfter Übergang für das Einblenden */
-    font-size: 14px; /* Schriftgröße des Tooltips */
+    content: "Anleitung anzeigen";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 14px;
 }
 
 /* Tooltip sichtbar bei Hover */
 #showInstructions:hover::after {
-    opacity: 1; /* Tooltip sichtbar machen */
-    visibility: visible; /* Tooltip sichtbar machen */
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Container für den Hauptinhalt der Seite */
 .container {
-    flex: 1; /* Füllt den verbleibenden Platz im Container */
-    display: flex; /* Flexbox-Layout */
-    flex-direction: column; /* Vertikale Anordnung der Kinder */
-    align-items: center; /* Zentriert die Kinder horizontal */
-    padding: 20px; /* Innenabstand des Containers */
-    max-width: 1200px; /* Maximale Breite des Containers */
-    margin: auto; /* Zentriert den Container */
-    width: 100%; /* Container füllt die gesamte Breite */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
 /* Wrapper für die Webcam-Anzeige */
 .webcam-wrapper {
-    position: relative; /* Ermöglicht das Positionieren von Overlay-Elementen */
-    margin-top: 20px; /* Abstand nach oben */
-    width: 100%; /* Volle Breite des Containers */
-    max-width: 720px; /* Maximale Breite der Webcam */
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 720px;
 }
 
 /* Stile für das Webcam-Video */
 #webcam {
-    width: 100%; /* Webcam-Video füllt die volle Breite */
-    height: auto; /* Höhe wird automatisch basierend auf dem Verhältnis festgelegt */
-    border-radius: var(--border-radius); /* Abgerundete Ecken des Webcam-Videos */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Webcam-Videos */
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 /* Canvas-Element wird standardmäßig nicht angezeigt */
@@ -133,173 +125,263 @@ header {
 
 /* Overlay für Countdown, das über dem Webcam-Video liegt */
 #countdown-overlay {
-    position: absolute; /* Absolut positioniert über dem Webcam-Video */
-    top: 0; /* Oben beginnen */
-    left: 0; /* Links beginnen */
-    width: 100%; /* Volle Breite */
-    height: 100%; /* Volle Höhe */
-    background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
-    color: #faf9f6; /* Weiße Schriftfarbe */
-    display: flex; /* Flexbox-Layout */
-    justify-content: center; /* Zentriert horizontal */
-    align-items: center; /* Zentriert vertikal */
-    font-size: 2.5em; /* Schriftgröße des Countdowns */
-    opacity: 0; /* Unsichtbar standardmäßig */
-    pointer-events: none; /* Blockiert keine Klicks */
-    transition: opacity var(--transition-duration) ease; /* Übergangseffekt für das Einblenden */
-    border-radius: var(--border-radius); /* Abgerundete Ecken des Overlays */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #faf9f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-duration) ease;
+    border-radius: var(--border-radius);
 }
 
 /* Stile für den Bereich der Spielergebnisse und des Punktestands */
 #result {
-    text-align: center; /* Zentriert den Inhalt */
+    text-align: center;
+}
+
+#result h3 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5em; /* Standard-Schriftgröße */
 }
 
 /* Zusätzliche Stile für den Abschnitt "Letzte Züge" */
-#result h3 {
-    text-align: center; /* Zentriert den Schriftzug "Letzte Züge" */
-    margin-top: 20px; /* Optional: Abstand nach oben hinzufügen */
-}
-
-/* Stile für die Anzeige der letzten Züge */
 .recent-moves {
-    font-size: 20px; /* Schriftgröße */
-    margin-bottom: 10px; /* Abstand nach unten */
-    display: flex; /* Flexbox-Layout */
-    justify-content: center; /* Zentriert die Kinder horizontal */
-    gap: 12px; /* Abstand zwischen den Elementen */
-    flex-wrap: wrap; /* Erlaubt Zeilenumbrüche bei den Kindern */
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 /* Stile für die Tabellen */
 table {
-    margin: 0 auto; /* Zentriert die Tabelle */
-    border-collapse: collapse; /* Entfernt die Zwischenräume zwischen den Zellen */
-    width: 100%; /* Volle Breite */
-    max-width: 500px; /* Maximale Breite */
-    margin-top: 20px; /* Abstand nach oben */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten der Tabelle */
-    table-layout: fixed; /* Stellt sicher, dass die Tabellenzellen gleichmäßig verteilt sind */
+    margin: 20px; /* Gleicher Abstand zu allen Rändern */
+    border-collapse: collapse;
+    width: calc(100% - 40px); /* Breite anpassen, um Platz für den Randabstand zu schaffen */
+    max-width: 500px;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    table-layout: fixed;
 }
 
 /* Stile für die Tabellenzellen */
 th, td {
-    border: none; /* Entfernt Rahmen */
-    padding: 12px; /* Innenabstand */
-    text-align: center; /* Text zentriert */
-    width: 25%; /* Stellt sicher, dass jede Zelle 25% der Tabellenbreite einnimmt */
+    border: none;
+    padding: 12px;
+    text-align: center;
+    width: 25%;
 }
 
 /* Stile für die Tabellenköpfe */
 th {
-    background-color: var(--table-header-color); /* Hintergrundfarbe aus den Variablen */
-    color: var(--button-text-color); /* Textfarbe aus den Variablen */
-    box-shadow: inset 0 2px 4px var(--shadow-dark); /* Schatten nach innen */
+    background-color: var(--table-header-color);
+    color: var(--button-text-color);
+    box-shadow: inset 0 2px 4px var(--shadow-dark);
 }
 
 /* Basisstile für Schaltflächen */
 button {
-    padding: 12px 24px; /* Innenabstand */
-    font-size: 16px; /* Schriftgröße */
-    margin: 8px; /* Außenabstand */
-    cursor: pointer; /* Zeiger-Cursor */
-    background-color: var(--button-background-color); /* Hintergrundfarbe aus den Variablen */
-    color: var(--button-text-color); /* Textfarbe aus den Variablen */
-    border: none; /* Entfernt Rahmen */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease; /* Übergangseffekte für Hintergrundfarbe und Transformation */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten der Schaltflächen */
+    padding: 12px 24px;
+    font-size: 16px;
+    margin: 8px;
+    cursor: pointer;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 /* Hover-Effekte für Schaltflächen */
 button:hover {
-    background-color: var(--button-hover-color); /* Ändert die Hintergrundfarbe bei Hover */
-    transform: translateY(-2px); /* Leichtes Anheben bei Hover */
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
 }
 
 /* Gruppe von Schaltflächen */
 .button-group {
-    display: flex; /* Flexbox-Layout */
-    flex-wrap: wrap; /* Erlaubt Zeilenumbrüche bei den Kindern */
-    justify-content: center; /* Zentriert die Schaltflächen */
+    display: flex;
+    justify-content: center;
 }
 
 /* Manuelle Steuerungselemente */
 .manual-controls {
-    margin-top: 20px; /* Abstand nach oben */
+    margin-top: 20px;
 }
 
 /* Stile für Overlay-Elemente */
 .overlay {
-    position: fixed; /* Fixierte Position auf dem Bildschirm */
-    top: 0; /* Startet oben */
-    left: 0; /* Startet links */
-    width: 100%; /* Volle Breite */
-    height: 100%; /* Volle Höhe */
-    background-color: var(--overlay-background-color); /* Halbtransparenter Hintergrund */
-    display: none; /* Standardmäßig ausgeblendet */
-    justify-content: center; /* Zentriert die Kinder horizontal */
-    align-items: center; /* Zentriert die Kinder vertikal */
-    z-index: 1000; /* Stellt sicher, dass das Overlay über allen anderen Elementen liegt */
-    transition: opacity var(--transition-duration) ease; /* Übergangseffekt für das Einblenden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-background-color);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity var(--transition-duration) ease;
 }
 
 /* Inhalt des Overlays */
 .overlay-content {
-    background-color: var(--background-color); /* Hintergrundfarbe aus den Variablen */
-    padding: 30px; /* Innenabstand */
-    max-width: 500px; /* Maximale Breite */
-    text-align: left; /* Text linksbündig */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Inhalts */
-    color: var(--text-color); /* Textfarbe aus den Variablen */
+    background-color: var(--background-color);
+    padding: 30px;
+    max-width: 500px;
+    text-align: left;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    color: var(--text-color);
+    font-size: 1.2em; /* Standard-Schriftgröße für Inhalte */
 }
 
 /* Stile für das Sieger-Overlay */
 #winner-overlay .overlay-content {
-    background-color: var(--background-color); /* Hintergrundfarbe aus den Variablen */
-    padding: 30px; /* Innenabstand */
-    max-width: 500px; /* Maximale Breite */
-    text-align: center; /* Text zentriert */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Inhalts */
-    color: var(--text-color); /* Textfarbe aus den Variablen */
+    background-color: var(--background-color);
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    color: var(--text-color);
+    font-size: 2em; /* Standard-Schriftgröße */
 }
 
 /* Stile für die Schaltfläche zum Schließen des Overlays */
 .close-button {
-    background-color: #a2b7ca; /* Hintergrundfarbe */
-    transition: background-color var(--transition-duration) ease; /* Übergangseffekt für die Hintergrundfarbe */
+    background-color: #a2b7ca;
+    transition: background-color var(--transition-duration) ease;
 }
 
 /* Hover-Effekte für die Schaltfläche zum Schließen des Overlays */
 .close-button:hover {
-    background-color: #a2b7caa1; /* Ändert die Hintergrundfarbe bei Hover */
+    background-color: #a2b7caa1;
 }
 
 /* Medienabfrage für das bevorzugte Farbschema des Benutzers (hell) */
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #faf9f6; /* Hintergrundfarbe für helles Schema */
-        --text-color: #333333; /* Textfarbe für helles Schema */
-        --button-background-color: #007bff; /* Schaltflächenfarbe für helles Schema */
-        --button-hover-color: #0056b3; /* Hover-Schaltflächenfarbe für helles Schema */
-        --button-text-color: #faf9f6; /* Schaltflächentextfarbe für helles Schema */
-        --table-header-color: #007bff; /* Tabellenkopf-Farbe für helles Schema */
-        --overlay-background-color: rgba(0, 0, 0, 0.6); /* Overlay-Hintergrundfarbe für helles Schema */
-        --border-radius: 12px; /* Eckenradius */
-        --transition-duration: 0.3s; /* Übergangsdauer */
-        --shadow-light: rgba(0, 0, 0, 0.1); /* Leichter Schatten */
-        --shadow-dark: rgba(0, 0, 0, 0.25); /* Dunkler Schatten */
+        --background-color: #faf9f6;
+        --text-color: #333333;
+        --button-background-color: #007bff;
+        --button-hover-color: #0056b3;
+        --button-text-color: #faf9f6;
+        --table-header-color: #007bff;
+        --overlay-background-color: rgba(0, 0, 0, 0.6);
+        --border-radius: 12px;
+        --transition-duration: 0.3s;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+        --shadow-dark: rgba(0, 0, 0, 0.25);
     }
 }
 
 /* Dunkelmodus-Stile */
 body.dark-mode {
-    --background-color: #181818; /* Hintergrundfarbe für Dunkelmodus */
-    --text-color: #ffffff; /* Textfarbe für Dunkelmodus */
-    --button-background-color: #2e2e2e; /* Schaltflächenfarbe für Dunkelmodus */
-    --button-hover-color: #373737; /* Hover-Schaltflächenfarbe für Dunkelmodus */
-    --button-text-color: #ffffff; /* Schaltflächentextfarbe für Dunkelmodus */
-    --table-header-color: #2e2e2e; /* Tabellenkopf-Farbe für Dunkelmodus */
+    --background-color: #181818;
+    --text-color: #ffffff;
+    --button-background-color: #2e2e2e;
+    --button-hover-color: #373737;
+    --button-text-color: #ffffff;
+    --table-header-color: #2e2e2e;
+}
+
+/* --- Responsive Anpassungen --- */
+
+/* Für Bildschirme bis zu 768px Breite (Tablets und kleinere Geräte) */
+@media screen and (max-width: 768px) {
+    header {
+        grid-template-columns: auto 1fr auto; /* Beibehalten der drei Spalten */
+    }
+
+    .header-buttons h1 {
+        font-size: 1.5em;
+        margin: 0 10px;
+    }
+
+    #result h3 {
+        font-size: 1.3em; /* Verkleinerung der Schriftgröße */
+    }
+
+    #winner-overlay .overlay-content,
+    .overlay-content {
+        font-size: 1.6em; /* Verkleinerung der Schriftgröße für Overlays */
+        padding: 20px; /* Anpassung des Innenabstands */
+        max-width: 90%; /* Breitere Overlays auf kleineren Bildschirmen */
+        margin: 20px; /* Abstand zum Rand des Bildschirms, alle Seiten */
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 5px;
+    }
+
+    .webcam-wrapper {
+        max-width: 100%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
+
+/* Für Bildschirme bis zu 480px Breite (Mobilgeräte im Hochformat) */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 10px;
+        grid-template-columns: auto 1fr auto; /* Beibehalten der drei Spalten */
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    .header-buttons h1 {
+        font-size: 1.2em;
+    }
+
+    #result h3 {
+        font-size: 1.1em; /* Weitere Verkleinerung der Schriftgröße */
+    }
+
+    #winner-overlay .overlay-content,
+    .overlay-content {
+        font-size: 1.3em; /* Weitere Verkleinerung der Schriftgröße für Overlays */
+        padding: 15px; /* Anpassung des Innenabstands */
+        max-width: 90%; /* Breitere Overlays auf kleineren Bildschirmen */
+        margin: 20px; /* Abstand zum Rand des Bildschirms, alle Seiten */
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 12px;
+        margin: 5px;
+    }
+
+    .webcam-wrapper {
+        margin-top: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    #countdown-overlay {
+        font-size: 2em;
+    }
 }
