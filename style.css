@@ -20,7 +20,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
-    padding: 0;
+    padding: 0 20px 0 0; /* Padding auf der rechten Seite hinzugefügt */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -33,7 +33,7 @@ header {
     align-items: center;
     background-color: var(--background-color);
     color: var(--text-color);
-    padding: 20px; /* Padding für den Header */
+    padding: 20px 40px 20px 20px; /* Rechtes Padding erhöht */
     box-shadow: 0 4px 8px var(--shadow-dark);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
@@ -145,6 +145,7 @@ header {
 /* Stile für den Bereich der Spielergebnisse und des Punktestands */
 #result {
     text-align: center;
+    margin-right: 20px; /* Etwas Platz auf der rechten Seite hinzugefügt */
 }
 
 #result h3 {
@@ -167,7 +168,7 @@ header {
 table {
     margin: 20px; /* Gleicher Abstand zu allen Rändern */
     border-collapse: collapse;
-    width: calc(100% - 40px); /* Breite anpassen, um Platz für den Randabstand zu schaffen */
+    width: calc(100% - 60px); /* Breite angepasst, um Platz für Randabstand rechts zu schaffen */
     max-width: 500px;
     box-shadow: 0 4px 8px var(--shadow-dark);
     table-layout: fixed;
@@ -238,7 +239,7 @@ button:hover {
 .overlay-content {
     background-color: var(--background-color);
     padding: 30px;
-    max-width: 500px;
+    max-width: calc(500px - 20px); /* Breite reduziert, um Platz für Randabstand zu schaffen */
     text-align: left;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px var(--shadow-dark);
@@ -250,7 +251,7 @@ button:hover {
 #winner-overlay .overlay-content {
     background-color: var(--background-color);
     padding: 30px;
-    max-width: 500px;
+    max-width: calc(500px - 20px); /* Breite reduziert, um Platz für Randabstand zu schaffen */
     text-align: center;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px var(--shadow-dark);
@@ -340,6 +341,7 @@ body.dark-mode {
 @media screen and (max-width: 480px) {
     header {
         padding: 10px;
+        padding-right: 20px; /* Rechtes Padding hinzugefügt */
         grid-template-columns: auto 1fr auto; /* Beibehalten der drei Spalten */
     }
 
