@@ -1,4 +1,4 @@
-# Willkommen zum Schere Stein Papier Spiel!
+# Willkommen bei Schere Stein Papier!
 
 - Du kannst mit der Kamera spielen oder manuell deine Wahl treffen, falls keine Kamera verfügbar ist.
 - Um zu beginnen, klicke auf **Spiel Starten**. Der Countdown zeigt die Zeit bis zur Wahl an.
@@ -28,6 +28,12 @@ Diese HTML-Datei erstellt eine Webseite für ein "Schere, Stein, Papier"-Spiel, 
 - **close-button**: Stile für die Schließen-Schaltfläche im Overlay.
 - **@media (prefers-color-scheme: light)**: Anpassungen für Nutzer, die ein helles Farbschema bevorzugen.
 - **choice-button**: Stile für spezielle Auswahlknöpfe, die standardmäßig versteckt sind.
+- **header-buttons**: Definiert die Stile für Header-Schaltflächen und deren Tooltip.
+- **canvas**: Standardmäßig verstecktes Canvas-Element.
+- **button-group**: Stile für Gruppen von Schaltflächen.
+- **manual-controls**: Stile für manuelle Steuerungselemente.
+- **dark-mode**: Stile für den Dunkelmodus der Seite.
+- **responsive Anpassungen**: Anpassungen für verschiedene Bildschirmgrößen (Tablets und Mobilgeräte).
 
 ## Script.js
 
@@ -58,3 +64,55 @@ Dieser JavaScript-Code implementiert ein Rock-Paper-Scissors-Spiel, bei dem der 
 - **Dunkel- und Lichtmodus**: Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, um die Benutzeroberfläche nach Vorliebe anzupassen.
 
 - **Anweisungen und Manuelle Steuerung**: Anweisungen zum Spielablauf werden angezeigt, wenn die Seite geladen wird. Falls die Handerkennung nicht funktioniert oder nicht genutzt werden soll, kann der Benutzer auch manuell eine Wahl treffen, indem er auf die entsprechenden Knöpfe für Stein, Papier oder Schere klickt.
+
+## Wichtige Funktionen und Variablen
+
+- **startCamera**: Diese Funktion aktiviert die Kamera des Benutzers und beginnt den Video-Stream, der dann von MediaPipe zur Handerkennung genutzt wird.
+  
+- **stopCamera**: Stoppt den Video-Stream und beendet das Spiel.
+
+- **getUserChoice**: Verwendet die erkannten Handlandmarks, um die Wahl des Benutzers (Stein, Papier, Schere) zu bestimmen.
+
+- **getComputerChoice**: Erzeugt zufällig die Wahl des Computers.
+
+- **determineWinner**: Vergleicht die Wahlen von Benutzer und Computer, um den Gewinner der Runde zu bestimmen.
+
+- **updateScore**: Aktualisiert den Punktestand des Spiels basierend auf dem Gewinner der Runde.
+
+- **updateRecentMoves**: Zeigt die letzten Spielzüge an.
+
+- **startRound**: Startet eine neue Runde des Spiels, inklusive eines Countdowns für den Benutzer.
+
+- **endGame**: Beendet das Spiel und zeigt den finalen Gewinner an.
+
+- **Dunkel- und Lichtmodus**: Über den Button `toggleModeButton` kann zwischen dem Dunkel- und Lichtmodus umgeschaltet werden.
+
+## Vorgehen
+
+Die Idee zur Entwicklung der Webanwendung begann mit dem Gedanken, eine simple API-basierte Anwendung zu erstellen. Dabei kam sofort das klassische Spiel "Schere, Stein, Papier" in den Sinn. Von dieser Grundidee aus entwickelten sich schnell weitere Umsetzungsideen, die die Anwendung erweitern und interessanter gestalten sollten.
+
+Zu Beginn der Entwicklung wurde ein Grundgerüst mit der Bibliothek Mediapipe erstellt. Dieses Grundgerüst ermöglichte die Erkennung von Handgesten, die essenziell für das Spiel „Schere, Stein, Papier“ sind. Im weiteren Verlauf der Entwicklung wurden der Spielalgorithmus implementiert und zusätzliche Features wie eine Anleitung sowie ein Dark- und White-Mode hinzugefügt.
+
+Gegen Ende des Projekts lag der Fokus auf dem Design und der Anpassung an verschiedene Bildschirmgrößen (Responsive Web Design). Diese Phase stellte sich als besonders herausfordernd heraus, da die Anwendung ursprünglich nur für die Desktop-Ansicht entwickelt wurde.
+
+## Herausforderungen
+
+### 1. Mediapipe Integration und Erkennung
+
+Ein zentrales Element der Anwendung war die präzise Erkennung der Handgesten „Schere“, „Stein“ und „Papier“ mithilfe von Mediapipe. Zu Beginn gab es hier einige Schwierigkeiten, da die Erkennungsrate nicht zufriedenstellend war. Durch Anpassungen und Feinjustierungen in der Konfiguration von Mediapipe konnte die Genauigkeit schließlich verbessert werden.
+
+### 2. Designfindung
+
+Die Gestaltung des User Interface (UI) war eine unerwartet langwierige Aufgabe. Es dauerte länger als erwartet, ein ansprechendes und funktionales Design zu entwickeln. Verschiedene Designkonzepte wurden ausprobiert und verfeinert, bis ein stimmiges Gesamtbild entstand.
+
+### 3. Responsive Web Design
+
+Die Anpassung der Webanwendung an verschiedene Bildschirmgrößen stellte eine der größten Herausforderungen dar. Da die Entwicklung zunächst für Desktop-Bildschirme optimiert wurde, war es schwierig, diese für Mobilgeräte zu adaptieren, ohne das bestehende Design zu beeinträchtigen. Dies erforderte eine umfassende Überarbeitung des Layouts und zahlreiche Tests.
+
+### 4. Kleine Fehler und Optimierungen
+
+Während der gesamten Entwicklungszeit traten immer wieder kleinere Fehler auf, wie z. B. Probleme mit Tabellengrößen, Schriftfarben oder anderen Designaspekten. Diese Fehler erforderten zusätzliche Zeit für Korrekturen und Optimierungen. Diese kleinen Probleme können sich bei zukünftigen Projekten als wertvolle Lektionen erweisen, um solche Fallstricke von Anfang an zu vermeiden.
+
+## Fazit
+
+Die Entwicklung der Webanwendung war ein iterativer Prozess, bei dem die ursprüngliche Idee stetig weiterentwickelt und verbessert wurde. Die größte Herausforderung stellte sich in der Anpassung des Designs und der Responsivität heraus, was zusätzliche Zeit und Aufwand erforderte. Trotz einiger Rückschläge und unerwarteter Probleme konnte das Projekt erfolgreich abgeschlossen werden, und die gewonnenen Erkenntnisse werden bei zukünftigen Projekten von großem Nutzen sein.

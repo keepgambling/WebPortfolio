@@ -2,19 +2,19 @@
 <html lang="de">
 <head>
     <!-- Meta-Informationen für das Dokument -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Schere Stein Papier</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!-- Zeichensatz auf UTF-8 setzen -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Für responsives Design -->
+    <title>Schere Stein Papier</title> <!-- Titel der Webseite -->
+    <link rel="stylesheet" href="style.css"> <!-- Verknüpfung mit der externen CSS-Datei -->
 </head>
 <body>
     <!-- Kopfbereich mit dem Haupttitel des Spiels -->
     <header>
         <!-- Container für Header-Titel und Buttons -->
         <div class="header-buttons">
-            <button id="showInstructions" class="action-button" title="Anleitung anzeigen">📚</button>
-            <h1>Schere ✌️ Stein ✊ Papier ✋</h1>
-            <button id="toggleMode" class="action-button">🌙</button>
+            <button id="showInstructions" class="action-button" title="Anleitung anzeigen">📚</button> <!-- Button zum Anzeigen der Spielanleitung -->
+            <h1>Schere ✌️ Stein ✊ Papier ✋</h1> <!-- Haupttitel des Spiels -->
+            <button id="toggleMode" class="action-button">🌙</button> <!-- Button zum Umschalten zwischen Licht- und Dunkelmodus -->
         </div>
     </header>
     <main>
@@ -22,12 +22,12 @@
         <div id="game" class="container">
             <!-- Container für den Webcam-Feed und das Countdown-Overlay -->
             <div id="webcam-container" class="webcam-wrapper">
-                <video id="webcam" autoplay></video>
-                <div id="countdown-overlay" class="countdown-overlay"></div>
+                <video id="webcam" autoplay></video> <!-- Webcam-Feed -->
+                <div id="countdown-overlay" class="countdown-overlay"></div> <!-- Overlay für den Countdown -->
             </div>
             
             <!-- Canvas zur Darstellung oder für zusätzliche grafische Elemente -->
-            <canvas id="canvas"></canvas>
+            <canvas id="canvas"></canvas> <!-- Canvas-Element für Grafiken oder Overlay -->
 
             <!-- Flexbox-Container für die beiden Tabellen -->
             <div class="table-container">
@@ -57,8 +57,8 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td id="userScore">0</td>
-                            <td id="computerScore">0</td>
+                            <td id="userScore">0</td> <!-- Punktestand des Benutzers -->
+                            <td id="computerScore">0</td> <!-- Punktestand des Computers -->
                         </tr>
                     </tbody>
                 </table>
@@ -66,30 +66,30 @@
             
             <!-- Bereich zur Anzeige der Spielergebnisse und des Punktestands -->
             <div id="result" class="result-section">
-                <h3>Letzte Züge</h3>
-                <div id="recentMoves" class="recent-moves"></div>
+                <h3>Letzte Züge</h3> <!-- Überschrift für die Anzeige der letzten Züge -->
+                <div id="recentMoves" class="recent-moves"></div> <!-- Bereich für die letzten Züge -->
                 
                 <h2>Sieger: <span id="winner"></span></h2> <!-- Zeigt den Gewinner der aktuellen Runde an -->
             </div>
             
             <!-- Bereich für manuelle Steuerung -->
             <div id="manual-controls" class="manual-controls">
-                <button id="chooseRock" class="manual-button">Stein</button>
-                <button id="choosePaper" class="manual-button">Papier</button>
-                <button id="chooseScissors" class="manual-button">Schere</button>
+                <button id="chooseRock" class="manual-button">Stein</button> <!-- Button für die Wahl "Stein" -->
+                <button id="choosePaper" class="manual-button">Papier</button> <!-- Button für die Wahl "Papier" -->
+                <button id="chooseScissors" class="manual-button">Schere</button> <!-- Button für die Wahl "Schere" -->
             </div>
             
             <!-- Schaltflächengruppe zum Starten, Beenden des Spiels, Umschalten des Dunkelmodus und Anzeigen der Anleitung -->
             <div class="button-group">
-                <button id="startGame" class="action-button">Spiel Starten</button>
-                <button id="stopGame" class="action-button">Spiel Beenden</button>
+                <button id="startGame" class="action-button">Spiel Starten</button> <!-- Button zum Starten des Spiels -->
+                <button id="stopGame" class="action-button">Spiel Beenden</button> <!-- Button zum Beenden des Spiels -->
             </div>
         </div>
         
         <!-- Overlay zur Anzeige der Spielanleitung -->
         <div id="instructions-overlay" class="overlay">
             <div class="overlay-content">
-                <h2>Spielanleitung</h2>
+                <h2>Spielanleitung</h2> <!-- Überschrift für die Spielanleitung -->
                 <p>Willkommen zum Schere Stein Papier Spiel!</p>
                 <ul>
                     <li>Du kannst mit der Kamera spielen oder manuell deine Wahl treffen, falls keine Kamera verfügbar ist.</li>
@@ -101,23 +101,23 @@
                     <li>Benutze den Button <strong>Wechseln zu Dunkelmodus</strong>, um zwischen Licht- und Dunkelmodus zu wechseln.</li>
                     <li>Um diese Anleitung erneut zu sehen, klicke auf <strong>Anleitung anzeigen</strong>.</li>
                 </ul>
-                <button id="closeInstructions" class="close-button">Schließen</button>
+                <button id="closeInstructions" class="close-button">Schließen</button> <!-- Button zum Schließen des Anleitungsoverlays -->
             </div>
         </div>
 
         <!-- Overlay zur Anzeige des Siegers am Ende des Spiels -->
         <div id="winner-overlay" class="overlay">
             <div class="overlay-content">
-                <h2>Spiel vorbei!</h2>
-                <p>Der Gewinner ist: <span id="finalWinner"></span></p>
-                <button id="closeWinnerOverlay" class="close-button">Schließen</button>
+                <h2>Spiel vorbei!</h2> <!-- Überschrift für das Spielende -->
+                <p>Der Gewinner ist: <span id="finalWinner"></span></p> <!-- Zeigt den endgültigen Gewinner an -->
+                <button id="closeWinnerOverlay" class="close-button">Schließen</button> <!-- Button zum Schließen des Gewinnersoverlays -->
             </div>
         </div>
     </main>
     
     <!-- Skripte zur Aktivierung der Funktionalität -->
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script> <!-- Mediapipe Hands Bibliothek -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script> <!-- Mediapipe Camera Utilities -->
+    <script src="script.js"></script> <!-- Externes JavaScript zur Steuerung des Spiels -->
 </body>
 </html>
