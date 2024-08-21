@@ -28,30 +28,25 @@
             
             <!-- Canvas zur Darstellung oder für zusätzliche grafische Elemente -->
             <canvas id="canvas"></canvas>
-            
-            <!-- Tabelle zur Darstellung der letzten Auswahl -->
-            <table id="choicesTable">
-                <thead>
-                    <tr>
-                        <th>Deine Wahl</th>
-                        <th>Computer Wahl</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td id="userChoice"></td> <!-- Zeigt die Wahl des Benutzers an -->
-                        <td id="computerChoice"></td> <!-- Zeigt die Wahl des Computers an -->
-                    </tr>
-                </tbody>
-            </table>      
-                      
-            <!-- Bereich zur Anzeige der Spielergebnisse und des Punktestands -->
-            <div id="result" class="result-section">
-                <h3>Letzte Züge</h3>
-                <div id="recentMoves" class="recent-moves"></div>
-                
-                <h2>Sieger: <span id="winner"></span></h2> <!-- Zeigt den Gewinner der aktuellen Runde an -->
-                
+
+            <!-- Flexbox-Container für die beiden Tabellen -->
+            <div class="table-container">
+                <!-- Tabelle zur Darstellung der letzten Auswahl -->
+                <table id="choicesTable">
+                    <thead>
+                        <tr>
+                            <th>Deine Wahl</th>
+                            <th>Computer Wahl</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="userChoice"></td> <!-- Zeigt die Wahl des Benutzers an -->
+                            <td id="computerChoice"></td> <!-- Zeigt die Wahl des Computers an -->
+                        </tr>
+                    </tbody>
+                </table>      
+
                 <!-- Tabelle zur Anzeige des Punktestands -->
                 <table id="scoreboard">
                     <thead>
@@ -67,6 +62,14 @@
                         </tr>
                     </tbody>
                 </table>
+            </div>
+            
+            <!-- Bereich zur Anzeige der Spielergebnisse und des Punktestands -->
+            <div id="result" class="result-section">
+                <h3>Letzte Züge</h3>
+                <div id="recentMoves" class="recent-moves"></div>
+                
+                <h2>Sieger: <span id="winner"></span></h2> <!-- Zeigt den Gewinner der aktuellen Runde an -->
             </div>
             
             <!-- Bereich für manuelle Steuerung -->

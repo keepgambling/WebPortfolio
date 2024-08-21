@@ -168,7 +168,7 @@ header {
 table {
     margin: 20px; /* Gleicher Abstand zu allen Rändern */
     border-collapse: collapse;
-    width: calc(100% - 60px); /* Breite angepasst, um Platz für Randabstand rechts zu schaffen */
+    width: 100%; /* Beide Tabellen haben jetzt eine feste, gleiche Breite */
     max-width: 500px;
     box-shadow: 0 4px 8px var(--shadow-dark);
     table-layout: fixed;
