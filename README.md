@@ -1,5 +1,7 @@
 # Willkommen bei Schere Stein Papier!
 
+Die Web App kann über folgenden Link aufgerufen werden: https://keepgambling.github.io/WebPortfolio/index.html
+
 - Du kannst mit der Kamera spielen oder manuell deine Wahl treffen, falls keine Kamera verfügbar ist.
 - Um zu beginnen, klicke auf **Spiel Starten**. Der Countdown zeigt die Zeit bis zur Wahl an.
 - Verwende die Handgesten vor der Kamera oder die Buttons, um deine Wahl zu treffen.
