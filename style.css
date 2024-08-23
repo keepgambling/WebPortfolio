@@ -246,6 +246,62 @@ button:hover {
     font-size: 1.2em; /* Standard-Schriftgröße für Inhalte */
 }
 
+/* Stile für die Spielanleitung */
+#instructions-overlay .overlay-content {
+    font-size: 1.2em;
+    padding: 30px;
+    max-width: 500px;
+    text-align: left;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    color: var(--text-color);
+}
+
+/* Responsive Anpassungen für die Spielanleitung */
+/* Für Tablets und kleinere Geräte bis 768px Breite */
+@media screen and (max-width: 768px) {
+    #instructions-overlay .overlay-content {
+        font-size: 1.1em;
+        padding: 20px;
+        max-width: 90%;
+        margin: 20px;
+    }
+}
+
+/* Für Mobilgeräte bis 480px Breite */
+@media screen and (max-width: 480px) {
+    #instructions-overlay .overlay-content {
+        font-size: 1em;
+        padding: 15px;
+        max-width: 90%;
+        margin: 10px;
+    }
+}
+
+/* Weitere Stile zur Anpassung der Listen in der Anleitung */
+#instructions-overlay .overlay-content ul {
+    padding-left: 20px;
+}
+
+#instructions-overlay .overlay-content ul li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+    font-size: inherit; /* Erbt die Schriftgröße */
+}
+
+/* Anpassungen für Überschriften innerhalb der Anleitung */
+#instructions-overlay .overlay-content h2 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+/* Button in der Anleitung auch responsive machen */
+#instructions-overlay .close-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 20px;
+}
+
 /* Stile für das Sieger-Overlay */
 #winner-overlay .overlay-content {
     background-color: var(--background-color);
