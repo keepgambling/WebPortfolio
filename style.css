@@ -1,50 +1,50 @@
 /* Globale CSS-Variablen für das Design und die UI-Komponenten */
 :root {
-    --background-color: #faf9f6; /* Hintergrundfarbe der Seite */
-    --text-color: #333333; /* Textfarbe */
-    --button-background-color: #a2b7ca; /* Hintergrundfarbe der Schaltflächen */
-    --button-hover-color: #a2b7caa1; /* Hintergrundfarbe der Schaltflächen im Hover-Zustand */
-    --button-text-color: #000000; /* Textfarbe der Schaltflächen */
-    --table-header-color: #a2b7ca; /* Hintergrundfarbe der Tabellenköpfe */
-    --overlay-background-color: rgba(0, 0, 0, 0.6); /* Hintergrundfarbe der Overlays */
-    --border-radius: 12px; /* Eckradius für abgerundete Ecken */
-    --transition-duration: 0.3s; /* Dauer der Übergangseffekte */
-    --shadow-light: rgba(0, 0, 0, 0.1); /* Leichter Schattenton */
-    --shadow-dark: rgba(0, 0, 0, 0.25); /* Dunkler Schattenton */
+    --background-color: #faf9f6;
+    --text-color: #333333;
+    --button-background-color: #a2b7ca;
+    --button-hover-color: #a2b7caa1;
+    --button-text-color: #000000;
+    --table-header-color: #a2b7ca;
+    --overlay-background-color: rgba(0, 0, 0, 0.6);
+    --border-radius: 12px;
+    --transition-duration: 0.3s;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.25);
 }
 
 /* Basisstile für den gesamten Body der Seite */
 body {
-    font-family: 'Poppins', sans-serif; /* Schriftart der Seite */
-    text-align: center; /* Zentrierter Text */
-    background-color: var(--background-color); /* Hintergrundfarbe der Seite */
-    color: var(--text-color); /* Textfarbe der Seite */
-    margin: 0; /* Kein äußerer Abstand */
-    padding: 0 20px 0 0; /* Padding auf der rechten Seite hinzugefügt */
-    display: flex; /* Flexbox-Layout */
-    flex-direction: column; /* Inhalte werden vertikal ausgerichtet */
-    min-height: 100vh; /* Minimale Höhe der Seite */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Stile für den Header der Seite */
 header {
-    display: grid; /* Grid-Layout für den Header */
+    display: grid;
     grid-template-columns: auto 1fr auto; /* Drei Spalten: links, Mitte, rechts */
-    align-items: center; /* Vertikale Ausrichtung der Inhalte */
-    background-color: var(--background-color); /* Hintergrundfarbe des Headers */
-    color: var(--text-color); /* Textfarbe des Headers */
-    padding: 20px 40px 20px 20px; /* Innenabstand des Headers */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Headers */
-    border-bottom-left-radius: var(--border-radius); /* Abgerundete Ecken unten links */
-    border-bottom-right-radius: var(--border-radius); /* Abgerundete Ecken unten rechts */
-    text-align: center; /* Zentrierter Text */
-    width: 100%; /* Header über die gesamte Breite */
+    align-items: center;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px; /* Padding für den Header */
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    text-align: center;
+    width: 100%;
 }
 
 /* Stile für den Titel in der Mitte */
 .header-buttons h1 {
-    margin: 0; /* Kein äußerer Abstand */
-    text-align: center; /* Zentrierter Text */
+    margin: 0;
+    text-align: center;
 }
 
 /* Stile für die Header-Schaltflächen */
@@ -53,198 +53,197 @@ header {
 }
 
 .header-buttons button {
-    font-size: 24px; /* Schriftgröße der Schaltflächen */
-    background: none; /* Kein Hintergrund */
-    border: none; /* Kein Rahmen */
-    cursor: pointer; /* Mauszeiger wird zur Hand bei Hover */
-    padding: 10px; /* Innenabstand der Schaltflächen */
-    box-sizing: border-box; /* Box-Sizing: Border und Padding werden berücksichtigt */
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 /* Entfernen von Margin für die Buttons */
 #showInstructions, #toggleMode {
-    margin: 0; /* Kein äußerer Abstand */
+    margin: 0;
 }
 
 /* Tooltip-Stile */
 #showInstructions::after {
-    content: "Anleitung anzeigen"; /* Tooltip-Text */
-    position: absolute; /* Absolute Positionierung des Tooltips */
-    bottom: 100%; /* Unterhalb des Buttons positioniert */
-    left: 50%; /* Horizontal zentriert */
-    transform: translateX(-50%); /* Korrektur für zentrierte Position */
-    background-color: #333; /* Hintergrundfarbe des Tooltips */
-    color: #fff; /* Textfarbe des Tooltips */
-    padding: 8px; /* Innenabstand des Tooltips */
-    border-radius: 4px; /* Abgerundete Ecken */
-    white-space: nowrap; /* Kein Umbruch im Tooltip */
-    opacity: 0; /* Tooltip ist unsichtbar */
-    visibility: hidden; /* Tooltip ist nicht sichtbar */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Übergangseffekt für Sichtbarkeit */
-    font-size: 14px; /* Schriftgröße des Tooltips */
+    content: "Anleitung anzeigen";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    font-size: 14px;
 }
 
 /* Tooltip sichtbar bei Hover */
 #showInstructions:hover::after {
-    opacity: 1; /* Tooltip wird sichtbar */
-    visibility: visible; /* Tooltip wird angezeigt */
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Container für den Hauptinhalt der Seite */
 .container {
-    flex: 1; /* Flex-Wachstum des Containers */
-    display: flex; /* Flexbox-Layout */
-    flex-direction: column; /* Inhalte werden vertikal ausgerichtet */
-    align-items: center; /* Zentrierte Ausrichtung der Inhalte */
-    padding: 20px; /* Innenabstand des Containers */
-    max-width: 1200px; /* Maximale Breite des Containers */
-    margin: auto; /* Zentrierter Container */
-    width: 100%; /* Container über die gesamte Breite */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
 /* Wrapper für die Webcam-Anzeige */
 .webcam-wrapper {
-    position: relative; /* Relative Positionierung des Wrappers */
-    margin-top: 20px; /* Oberer Abstand */
-    width: 100%; /* Breite des Wrappers */
-    max-width: 720px; /* Maximale Breite des Wrappers */
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 720px;
 }
 
 /* Stile für das Webcam-Video */
 #webcam {
-    width: 100%; /* Breite des Videos */
-    height: auto; /* Höhe passt sich dem Seitenverhältnis an */
-    border-radius: var(--border-radius); /* Abgerundete Ecken des Videos */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Videos */
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 /* Canvas-Element wird standardmäßig nicht angezeigt */
 #canvas {
-    display: none; /* Canvas ist unsichtbar */
+    display: none;
 }
 
 /* Overlay für Countdown, das über dem Webcam-Video liegt */
 #countdown-overlay {
-    position: absolute; /* Absolute Positionierung des Overlays */
-    top: 0; /* Oben ausgerichtet */
-    left: 0; /* Links ausgerichtet */
-    width: 100%; /* Breite des Overlays */
-    height: 100%; /* Höhe des Overlays */
-    background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
-    color: #faf9f6; /* Textfarbe des Overlays */
-    display: flex; /* Flexbox-Layout */
-    justify-content: center; /* Zentrierte horizontale Ausrichtung */
-    align-items: center; /* Zentrierte vertikale Ausrichtung */
-    font-size: 2.5em; /* Schriftgröße des Countdowns */
-    opacity: 0; /* Overlay ist unsichtbar */
-    pointer-events: none; /* Keine Interaktionen möglich */
-    transition: opacity var(--transition-duration) ease; /* Übergangseffekt für Sichtbarkeit */
-    border-radius: var(--border-radius); /* Abgerundete Ecken des Overlays */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #faf9f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-duration) ease;
+    border-radius: var(--border-radius);
 }
 
 /* Stile für den Bereich der Spielergebnisse und des Punktestands */
 #result {
-    text-align: center; /* Zentrierter Text */
-    margin-right: 20px; /* Rechter Außenabstand */
+    text-align: center;
 }
 
 #result h3 {
-    text-align: center; /* Zentrierter Text */
-    margin-top: 20px; /* Oberer Außenabstand */
-    font-size: 1.5em; /* Schriftgröße */
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5em; /* Standard-Schriftgröße */
 }
 
 /* Zusätzliche Stile für den Abschnitt "Letzte Züge" */
 .recent-moves {
-    font-size: 20px; /* Schriftgröße */
-    margin-bottom: 10px; /* Unterer Außenabstand */
-    display: flex; /* Flexbox-Layout */
-    justify-content: center; /* Zentrierte horizontale Ausrichtung */
-    gap: 12px; /* Abstand zwischen Elementen */
-    flex-wrap: wrap; /* Inhalte umbrechen, wenn nötig */
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 /* Stile für die Tabellen */
 table {
-    margin: 20px; /* Gleicher Abstand zu allen Rändern */
-    border-collapse: collapse; /* Keine Abstände zwischen Tabellenzellen */
-    width: 100%; /* Tabellenbreite */
-    max-width: 500px; /* Maximale Tabellenbreite */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Tabellenschatten */
-    table-layout: fixed; /* Feste Breite der Zellen */
+    margin: 20px auto; /* Gleicher Abstand zu allen Rändern, zentriert */
+    border-collapse: collapse;
+    width: calc(100% - 40px); /* Breite anpassen, um Platz für den Randabstand zu schaffen */
+    max-width: 500px;
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    table-layout: fixed;
 }
 
 /* Stile für die Tabellenzellen */
 th, td {
-    border: none; /* Kein Rahmen */
-    padding: 12px; /* Innenabstand der Zellen */
-    text-align: center; /* Zentrierter Text */
-    width: 25%; /* Breite der Zellen */
+    border: none;
+    padding: 12px;
+    text-align: center;
+    width: 25%;
 }
 
 /* Stile für die Tabellenköpfe */
 th {
-    background-color: var(--table-header-color); /* Hintergrundfarbe der Tabellenköpfe */
-    color: var(--button-text-color); /* Textfarbe der Tabellenköpfe */
-    box-shadow: inset 0 2px 4px var(--shadow-dark); /* Innerer Schatten der Tabellenköpfe */
+    background-color: var(--table-header-color);
+    color: var(--button-text-color);
+    box-shadow: inset 0 2px 4px var(--shadow-dark);
 }
 
 /* Basisstile für Schaltflächen */
 button {
-    padding: 12px 24px; /* Innenabstand der Schaltflächen */
-    font-size: 16px; /* Schriftgröße */
-    margin: 8px; /* Außenabstand der Schaltflächen */
-    cursor: pointer; /* Mauszeiger wird zur Hand bei Hover */
-    background-color: var(--button-background-color); /* Hintergrundfarbe */
-    color: var(--button-text-color); /* Textfarbe */
-    border: none; /* Kein Rahmen */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease; /* Übergangseffekte für Hover */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten der Schaltflächen */
+    padding: 12px 24px;
+    font-size: 16px;
+    margin: 8px;
+    cursor: pointer;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+    box-shadow: 0 4px 8px var(--shadow-dark);
 }
 
 /* Hover-Effekte für Schaltflächen */
 button:hover {
-    background-color: var(--button-hover-color); /* Geänderte Hintergrundfarbe bei Hover */
-    transform: translateY(-2px); /* Leichte Verschiebung nach oben bei Hover */
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
 }
 
 /* Gruppe von Schaltflächen */
 .button-group {
-    display: flex; /* Flexbox-Layout */
-    justify-content: center; /* Zentrierte horizontale Ausrichtung */
+    display: flex;
+    justify-content: center;
 }
 
 /* Manuelle Steuerungselemente */
 .manual-controls {
-    margin-top: 20px; /* Oberer Außenabstand */
+    margin-top: 20px;
 }
 
 /* Stile für Overlay-Elemente */
 .overlay {
-    position: fixed; /* Feste Positionierung */
-    top: 0; /* Oben ausgerichtet */
-    left: 0; /* Links ausgerichtet */
-    width: 100%; /* Breite des Overlays */
-    height: 100%; /* Höhe des Overlays */
-    background-color: var(--overlay-background-color); /* Hintergrundfarbe des Overlays */
-    display: none; /* Overlay ist standardmäßig unsichtbar */
-    justify-content: center; /* Zentrierte horizontale Ausrichtung */
-    align-items: center; /* Zentrierte vertikale Ausrichtung */
-    z-index: 1000; /* Höchste Stapelreihenfolge */
-    transition: opacity var(--transition-duration) ease; /* Übergangseffekt für Sichtbarkeit */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--overlay-background-color);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity var(--transition-duration) ease;
 }
 
 /* Inhalt des Overlays */
 .overlay-content {
-    background-color: var(--background-color); /* Hintergrundfarbe des Inhalts */
-    padding: 30px; /* Innenabstand */
-    max-width: calc(500px - 20px); /* Maximale Breite mit Platz für Rand */
-    text-align: left; /* Linksbündiger Text */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten des Inhalts */
-    color: var(--text-color); /* Textfarbe */
-    font-size: 1.2em; /* Schriftgröße */
+    background-color: var(--background-color);
+    padding: 30px;
+    max-width: 500px;
+    text-align: left;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    color: var(--text-color);
+    font-size: 1.2em; /* Standard-Schriftgröße für Inhalte */
 }
 
 /* Stile für die Spielanleitung */
@@ -305,52 +304,52 @@ button:hover {
 
 /* Stile für das Sieger-Overlay */
 #winner-overlay .overlay-content {
-    background-color: var(--background-color); /* Hintergrundfarbe */
-    padding: 30px; /* Innenabstand */
-    max-width: calc(500px - 20px); /* Maximale Breite mit Platz für Rand */
-    text-align: center; /* Zentrierter Text */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schatten */
-    color: var(--text-color); /* Textfarbe */
-    font-size: 2em; /* Schriftgröße */
+    background-color: var(--background-color);
+    padding: 30px;
+    max-width: 500px;
+    text-align: center;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    color: var(--text-color);
+    font-size: 2em; /* Standard-Schriftgröße */
 }
 
 /* Stile für die Schaltfläche zum Schließen des Overlays */
 .close-button {
-    background-color: #a2b7ca; /* Hintergrundfarbe */
-    transition: background-color var(--transition-duration) ease; /* Übergangseffekt */
+    background-color: #a2b7ca;
+    transition: background-color var(--transition-duration) ease;
 }
 
 /* Hover-Effekte für die Schaltfläche zum Schließen des Overlays */
 .close-button:hover {
-    background-color: #a2b7caa1; /* Geänderte Hintergrundfarbe bei Hover */
+    background-color: #a2b7caa1;
 }
 
 /* Medienabfrage für das bevorzugte Farbschema des Benutzers (hell) */
 @media (prefers-color-scheme: light) {
     :root {
-        --background-color: #faf9f6; /* Hintergrundfarbe für den hellen Modus */
-        --text-color: #333333; /* Textfarbe für den hellen Modus */
-        --button-background-color: #007bff; /* Hintergrundfarbe der Schaltflächen im hellen Modus */
-        --button-hover-color: #0056b3; /* Hover-Farbe der Schaltflächen im hellen Modus */
-        --button-text-color: #faf9f6; /* Textfarbe der Schaltflächen im hellen Modus */
-        --table-header-color: #007bff; /* Hintergrundfarbe der Tabellenköpfe im hellen Modus */
-        --overlay-background-color: rgba(0, 0, 0, 0.6); /* Hintergrundfarbe der Overlays im hellen Modus */
-        --border-radius: 12px; /* Eckradius für abgerundete Ecken */
-        --transition-duration: 0.3s; /* Dauer der Übergangseffekte */
-        --shadow-light: rgba(0, 0, 0, 0.1); /* Leichter Schattenton */
-        --shadow-dark: rgba(0, 0, 0, 0.25); /* Dunkler Schattenton */
+        --background-color: #faf9f6;
+        --text-color: #333333;
+        --button-background-color: #007bff;
+        --button-hover-color: #0056b3;
+        --button-text-color: #faf9f6;
+        --table-header-color: #007bff;
+        --overlay-background-color: rgba(0, 0, 0, 0.6);
+        --border-radius: 12px;
+        --transition-duration: 0.3s;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+        --shadow-dark: rgba(0, 0, 0, 0.25);
     }
 }
 
 /* Dunkelmodus-Stile */
 body.dark-mode {
-    --background-color: #181818; /* Hintergrundfarbe im Dunkelmodus */
-    --text-color: #ffffff; /* Textfarbe im Dunkelmodus */
-    --button-background-color: #2e2e2e; /* Hintergrundfarbe der Schaltflächen im Dunkelmodus */
-    --button-hover-color: #373737; /* Hover-Farbe der Schaltflächen im Dunkelmodus */
-    --button-text-color: #ffffff; /* Textfarbe der Schaltflächen im Dunkelmodus */
-    --table-header-color: #2e2e2e; /* Hintergrundfarbe der Tabellenköpfe im Dunkelmodus */
+    --background-color: #181818;
+    --text-color: #ffffff;
+    --button-background-color: #2e2e2e;
+    --button-hover-color: #373737;
+    --button-text-color: #ffffff;
+    --table-header-color: #2e2e2e;
 }
 
 /* --- Responsive Anpassungen --- */
@@ -362,8 +361,8 @@ body.dark-mode {
     }
 
     .header-buttons h1 {
-        font-size: 1.5em; /* Verkleinerung der Schriftgröße */
-        margin: 0 10px; /* Anpassung des Außenabstands */
+        font-size: 1.5em;
+        margin: 0 10px;
     }
 
     #result h3 {
@@ -379,34 +378,33 @@ body.dark-mode {
     }
 
     button {
-        padding: 10px 20px; /* Anpassung des Innenabstands */
-        font-size: 14px; /* Verkleinerung der Schriftgröße */
-        margin: 5px; /* Anpassung des Außenabstands */
+        padding: 10px 20px;
+        font-size: 14px;
+        margin: 5px;
     }
 
     .webcam-wrapper {
-        max-width: 100%; /* Breitere Webcam-Anzeige auf kleineren Bildschirmen */
+        max-width: 100%;
     }
 
     table {
-        font-size: 14px; /* Verkleinerung der Schriftgröße in Tabellen */
+        font-size: 14px;
     }
 }
 
 /* Für Bildschirme bis zu 480px Breite (Mobilgeräte im Hochformat) */
 @media screen and (max-width: 480px) {
     header {
-        padding: 10px; /* Anpassung des Innenabstands */
-        padding-right: 20px; /* Rechtes Padding hinzugefügt */
+        padding: 10px;
         grid-template-columns: auto 1fr auto; /* Beibehalten der drei Spalten */
     }
 
     .container {
-        padding: 10px; /* Anpassung des Innenabstands */
+        padding: 10px;
     }
 
     .header-buttons h1 {
-        font-size: 1.2em; /* Verkleinerung der Schriftgröße */
+        font-size: 1.2em;
     }
 
     #result h3 {
@@ -422,24 +420,26 @@ body.dark-mode {
     }
 
     button {
-        padding: 10px 15px; /* Anpassung des Innenabstands */
-        font-size: 12px; /* Weitere Verkleinerung der Schriftgröße */
-        margin: 5px; /* Anpassung des Außenabstands */
+        padding: 10px 15px;
+        font-size: 12px;
+        margin: 5px;
     }
 
     .webcam-wrapper {
-        margin-top: 10px; /* Anpassung des oberen Außenabstands */
+        margin-top: 10px;
     }
 
     table {
-        font-size: 12px; /* Weitere Verkleinerung der Schriftgröße in Tabellen */
+        margin: 10px 20px; /* Abstand von 20px links und rechts */
+        width: calc(100% - 40px); /* Gleiche Breite, damit es Platz für den Randabstand gibt */
+        font-size: 12px;
     }
 
     th, td {
-        padding: 8px; /* Anpassung des Innenabstands der Zellen */
+        padding: 8px;
     }
 
     #countdown-overlay {
-        font-size: 2em; /* Verkleinerung der Schriftgröße im Countdown */
+        font-size: 2em;
     }
 }
