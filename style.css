@@ -49,10 +49,7 @@ header {
 
 /* Stile für die Header-Schaltflächen */
 .header-buttons {
-    display: grid;
-    grid-template-columns: auto 1fr auto; /* Links, Mitte, Rechts */
-    justify-content: space-between; /* Verteilt die Buttons gleichmäßig */
-    padding: 0 20px; /* Verschiebt die Buttons weiter nach innen */
+    display: contents; /* Buttons werden direkt im Grid-Container angezeigt */
 }
 
 .header-buttons button {
