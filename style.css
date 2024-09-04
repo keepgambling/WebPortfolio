@@ -49,7 +49,10 @@ header {
 
 /* Stile für die Header-Schaltflächen */
 .header-buttons {
-    display: contents; /* Buttons werden direkt im Grid-Container angezeigt */
+    display: grid;
+    grid-template-columns: auto 1fr auto; /* Links, Mitte, Rechts */
+    justify-content: space-between; /* Verteilt die Buttons gleichmäßig */
+    padding: 0 20px; /* Verschiebt die Buttons weiter nach innen */
 }
 
 .header-buttons button {
@@ -92,14 +95,10 @@ header {
 
 /* Container für den Hauptinhalt der Seite */
 .container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 /* Wrapper für die Webcam-Anzeige */
