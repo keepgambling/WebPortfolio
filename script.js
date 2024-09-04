@@ -134,19 +134,19 @@ function getUserChoice(landmarks) {
   const isScissors = isIndexExtended && isMiddleExtended && !isRingExtended && !isPinkyExtended; // Zwei Finger
 
   if (isRock) {
-    return 'Stein'; // Rückgabe der Wahl "Stein"
+    return '✊'; // Rückgabe der Wahl "Stein" als Emoji
   } else if (isPaper) {
-    return 'Papier'; // Rückgabe der Wahl "Papier"
+    return '✋'; // Rückgabe der Wahl "Papier" als Emoji
   } else if (isScissors) {
-    return 'Schere'; // Rückgabe der Wahl "Schere"
+    return '✌️'; // Rückgabe der Wahl "Schere" als Emoji
   } else {
-    return 'Keine Wahl'; // Fallback, falls keine Geste erkannt wird
+    return '❓'; // Fallback, falls keine Geste erkannt wird
   }
 }
 
 // Bestimmt die Wahl des Computers
 function getComputerChoice() {
-  const choices = ['Stein', 'Papier', 'Schere']; // Mögliche Wahlen
+  const choices = ['✊', '✋', '✌️']; // Mögliche Wahlen als Emojis
   return choices[Math.floor(Math.random() * choices.length)]; // Zufällige Wahl
 }
 
@@ -156,9 +156,9 @@ function determineWinner(userChoice, computerChoice) {
     return 'Unentschieden'; // Rückgabe bei Gleichstand
   }
   if (
-    (userChoice === 'Stein' && computerChoice === 'Schere') ||
-    (userChoice === 'Schere' && computerChoice === 'Papier') ||
-    (userChoice === 'Papier' && computerChoice === 'Stein')
+    (userChoice === '✊' && computerChoice === '✌️') ||
+    (userChoice === '✌️' && computerChoice === '✋') ||
+    (userChoice === '✋' && computerChoice === '✊')
   ) {
     return 'Benutzer'; // Rückgabe bei Sieg des Benutzers
   }
@@ -179,9 +179,9 @@ function updateScore(winner) {
 // Aktualisiert die Anzeige der letzten Spielzüge
 function updateRecentMoves(userChoice, computerChoice) {
   const emojis = {
-    'Stein': '✊',
-    'Papier': '✋',
-    'Schere': '✌️'
+    '✊': '✊',
+    '✋': '✋',
+    '✌️': '✌️'
   };
 
   recentMoves.push(`${emojis[userChoice]} vs ${emojis[computerChoice]}`); // Fügt die aktuellen Züge hinzu
@@ -206,7 +206,7 @@ function startRound() {
       countdownOverlay.style.opacity = 0; // Versteckt das Overlay nach dem Countdown
 
       const computerChoice = getComputerChoice(); // Holt die Wahl des Computers
-      const userChoice = userChoiceElement.textContent || 'Keine Wahl'; // Holt die Wahl des Benutzers oder setzt eine Standardwahl
+      const userChoice = userChoiceElement.textContent || '❓'; // Holt die Wahl des Benutzers oder setzt eine Standardwahl
 
       computerChoiceElement.textContent = computerChoice; // Zeigt die Wahl des Computers an
       const winner = determineWinner(userChoice, computerChoice); // Bestimmt den Gewinner
@@ -281,15 +281,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Ereignislistener für manuelle Steuerungsknöpfe
 chooseRockButton.addEventListener('click', () => {
-  userChoiceElement.textContent = 'Stein'; // Setzt die Wahl auf "Stein"
+  userChoiceElement.textContent = '✊'; // Setzt die Wahl auf "Stein" als Emoji
 });
 
 choosePaperButton.addEventListener('click', () => {
-  userChoiceElement.textContent = 'Papier'; // Setzt die Wahl auf "Papier"
+  userChoiceElement.textContent = '✋'; // Setzt die Wahl auf "Papier" als Emoji
 });
 
 chooseScissorsButton.addEventListener('click', () => {
-  userChoiceElement.textContent = 'Schere'; // Setzt die Wahl auf "Schere"
+  userChoiceElement.textContent = '✌️'; // Setzt die Wahl auf "Schere" als Emoji
 });
 
 // Funktion, um das Sieger-Overlay anzuzeigen
