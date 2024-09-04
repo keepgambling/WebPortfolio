@@ -4,7 +4,6 @@
     --text-color: #333333;
     --button-background-color: #a2b7ca;
     --button-hover-color: #a2b7caa1;
-    --button-text-color: #000000;
     --table-header-color: #a2b7ca;
     --overlay-background-color: rgba(0, 0, 0, 0.6);
     --border-radius: 12px;
@@ -92,10 +91,14 @@ header {
 
 /* Container für den Hauptinhalt der Seite */
 .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-    box-sizing: border-box;
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
 }
 
 /* Wrapper für die Webcam-Anzeige */
