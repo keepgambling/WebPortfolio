@@ -271,12 +271,25 @@ button:hover {
 /* Für Mobilgeräte bis 480px Breite */
 @media screen and (max-width: 480px) {
     #instructions-overlay .overlay-content {
-        font-size: 1em;
-        padding: 15px;
-        max-width: 90%;
-        margin: 10px;
+        font-size: 0.9em; /* Verkleinert die Schriftgröße für die Anleitung */
+        padding: 15px;    /* Reduziert den Innenabstand */
+        max-width: 90%;   /* Stellt sicher, dass die Anleitung auf kleineren Bildschirmen gut passt */
+        margin: 10px;     /* Fügt etwas Rand hinzu */
+    }
+    
+    #instructions-overlay .overlay-content h2 {
+        font-size: 1.1em; /* Verkleinert die Überschrift für mobile Geräte */
+    }
+
+    #instructions-overlay .overlay-content ul li {
+        font-size: 0.9em; /* Verkleinert die Listenelemente für mobile Geräte */
+    }
+
+    #instructions-overlay .close-button {
+        font-size: 1em;   /* Anpassung der Schließen-Schaltfläche */
     }
 }
+
 
 /* Weitere Stile zur Anpassung der Listen in der Anleitung */
 #instructions-overlay .overlay-content ul {
