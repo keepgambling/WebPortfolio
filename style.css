@@ -20,26 +20,27 @@ body {
     color: var(--text-color);
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     min-height: 100vh;
 }
 
+/* Header-Stile */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--background-color);
     color: var(--text-color);
-    padding: 0 20px; /* Gleicher Innenabstand wie beim Webcam-Wrapper */
+    padding: 0 20px;
     box-shadow: 0 4px 8px var(--shadow-dark);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
     width: 100%;
     max-width: 720px; /* Gleiche maximale Breite wie der Webcam-Wrapper */
-    margin: 0 auto 20px auto; /* Zentrierung und Abstand nach unten */
-    box-sizing: border-box; /* Sorgt dafür, dass Padding berücksichtigt wird */
+    box-sizing: border-box;
+    margin-bottom: 20px; /* Nur Abstand nach unten */
 }
-
-
 
 /* Stile für die Header-Schaltflächen */
 .header-buttons {
@@ -56,29 +57,29 @@ header {
 
 /* Container für den Hauptinhalt der Seite */
 .container {
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1200px;
-    margin: auto;
+    max-width: 100%;
     width: 100%;
 }
 
+/* Webcam-Wrapper */
 .webcam-wrapper {
     position: relative;
-    margin-top: 0; /* Kein unnötiger Abstand oben */
     width: 100%;
     max-width: 720px; /* Gleiche maximale Breite wie der Header */
-    margin: 0 auto; /* Zentriert das Webcam-Element */
-    padding: 0 20px; /* Gleicher Innenabstand wie der Header */
-    box-sizing: border-box; /* Padding wird zur Gesamtbreite hinzugerechnet */
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    margin-bottom: 20px; /* Verhindert doppeltes margin */
 }
 
-
-/* Stile für das Webcam-Video */
+/* Webcam-Video */
 #webcam {
     width: 100%;
+    max-width: 720px;
     height: auto;
     border-radius: var(--border-radius);
     box-shadow: 0 4px 8px var(--shadow-dark);
