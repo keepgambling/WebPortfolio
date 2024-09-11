@@ -130,13 +130,13 @@ header {
 /* Stile für die Tabellen */
 table {
     margin: 20px auto;
-    border-collapse: separate; /* Ermöglicht abgerundete Ecken */
-    border-spacing: 0; /* Vermeidet Lücken zwischen den Zellen */
+    border-collapse: separate;
+    border-spacing: 0;
     width: calc(100% - 40px);
     max-width: 500px;
-    box-shadow: 0 4px 8px var(--shadow-dark); /* Schattierung hinzufügen */
-    border-radius: var(--border-radius); /* Abgerundete Ecken */
-    overflow: hidden; /* Damit abgerundete Ecken auch in den Zellen sichtbar sind */
+    box-shadow: 0 4px 8px var(--shadow-dark);
+    border-radius: var(--border-radius);
+    overflow: hidden;
     table-layout: fixed;
 }
 
@@ -199,6 +199,7 @@ button {
     border-radius: var(--border-radius);
     transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
     box-shadow: 0 4px 8px var(--shadow-dark);
+    font-weight: bold;
 }
 
 /* Hover-Effekte für Schaltflächen */
@@ -211,6 +212,7 @@ button:hover {
 .manual-controls {
     margin-top: 20px;
 }
+
 
 /* Stile für Overlay-Elemente */
 .overlay {
