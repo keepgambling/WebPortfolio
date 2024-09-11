@@ -40,12 +40,6 @@ header {
     width: 100%;
 }
 
-/* Stile für den Titel in der Mitte */
-.header-buttons h1 {
-    margin: 0;
-    text-align: center;
-}
-
 /* Stile für die Header-Schaltflächen */
 .header-buttons {
     display: contents; /* Buttons werden direkt im Grid-Container angezeigt */
@@ -58,11 +52,6 @@ header {
     cursor: pointer;
     padding: 10px;
     box-sizing: border-box;
-}
-
-/* Entfernen von Margin für die Buttons */
-#showInstructions, #toggleMode {
-    margin: 0;
 }
 
 /* Container für den Hauptinhalt der Seite */
@@ -181,12 +170,6 @@ button {
 button:hover {
     background-color: var(--button-hover-color);
     transform: translateY(-2px);
-}
-
-/* Gruppe von Schaltflächen */
-.button-group {
-    display: flex;
-    justify-content: center;
 }
 
 /* Manuelle Steuerungselemente */
