@@ -313,6 +313,16 @@ button:hover {
     margin-top: 20px;
 }
 
+/* Button in der Anleitung im Dark Mode */
+body.dark-mode .close-button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+}
+
+body.dark-mode .close-button:hover {
+    background-color: var(--button-hover-color);
+}
+
 /* Stile für das Sieger-Overlay */
 #winner-overlay .overlay-content {
     background-color: var(--background-color);
@@ -353,7 +363,6 @@ button:hover {
     }
 }
 
-/* Dunkelmodus-Stile */
 body.dark-mode {
     --background-color: #181818;
     --text-color: #ffffff;
