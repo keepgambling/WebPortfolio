@@ -129,11 +129,14 @@ header {
 
 /* Stile für die Tabellen */
 table {
-    margin: 20px auto; /* Gleicher Abstand zu allen Rändern, zentriert */
-    border-collapse: collapse;
-    width: calc(100% - 40px); /* Breite anpassen, um Platz für den Randabstand zu schaffen */
+    margin: 20px auto;
+    border-collapse: separate; /* Ermöglicht abgerundete Ecken */
+    border-spacing: 0; /* Vermeidet Lücken zwischen den Zellen */
+    width: calc(100% - 40px);
     max-width: 500px;
-    box-shadow: 0 4px 8px var(--shadow-dark);
+    box-shadow: 0 4px 8px var(--shadow-dark); /* Schattierung hinzufügen */
+    border-radius: var(--border-radius); /* Abgerundete Ecken */
+    overflow: hidden; /* Damit abgerundete Ecken auch in den Zellen sichtbar sind */
     table-layout: fixed;
 }
 
@@ -143,6 +146,7 @@ th, td {
     padding: 12px;
     text-align: center;
     width: 25%;
+    background-color: var(--background-color);
 }
 
 /* Stile für die Tabellenköpfe */
@@ -150,7 +154,38 @@ th {
     background-color: var(--table-header-color);
     color: var(--button-text-color);
     box-shadow: inset 0 2px 4px var(--shadow-dark);
+    font-weight: bold;
 }
+
+/* Abgerundete Ecken für den gesamten Tabellencontainer */
+table tr:first-child th:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+
+table tr:first-child th:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+
+table tr:last-child td:first-child {
+    border-bottom-left-radius: var(--border-radius);
+}
+
+table tr:last-child td:last-child {
+    border-bottom-right-radius: var(--border-radius);
+}
+
+/* Schatten und Hover-Effekte für Zellen */
+td {
+    box-shadow: 0 2px 4px var(--shadow-light);
+    transition: background-color var(--transition-duration) ease;
+}
+
+/* Hover-Effekt für Tabellenzellen */
+td:hover {
+    background-color: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
 
 /* Basisstile für Schaltflächen */
 button {
