@@ -25,7 +25,6 @@ body {
     min-height: 100vh;
 }
 
-/* Stile für den Header der Seite */
 header {
     display: grid;
     grid-template-columns: auto 1fr auto; /* Drei Spalten: links, Mitte, rechts */
@@ -38,7 +37,10 @@ header {
     border-bottom-right-radius: var(--border-radius);
     text-align: center;
     width: 100%;
+    max-width: 720px; /* Maximale Breite auf die gleiche wie die Webcam setzen */
+    margin: auto; /* Zentriert den Header */
 }
+
 
 /* Stile für die Header-Schaltflächen */
 .header-buttons {
@@ -66,13 +68,14 @@ header {
     width: 100%;
 }
 
-/* Wrapper für die Webcam-Anzeige */
 .webcam-wrapper {
     position: relative;
     margin-top: 20px;
     width: 100%;
     max-width: 720px;
+    margin: auto; 
 }
+
 
 /* Stile für das Webcam-Video */
 #webcam {
