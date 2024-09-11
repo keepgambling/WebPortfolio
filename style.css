@@ -18,28 +18,27 @@ body {
     text-align: center;
     background-color: var(--background-color);
     color: var(--text-color);
-    margin: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
 header {
-    display: grid;
-    grid-template-columns: auto 1fr auto; /* Drei Spalten: links, Mitte, rechts */
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: var(--background-color);
     color: var(--text-color);
-    padding: 20px; /* Padding für den Header */
+    padding: 0 20px; /* Gleicher Innenabstand wie beim Webcam-Wrapper */
     box-shadow: 0 4px 8px var(--shadow-dark);
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);
-    text-align: center;
     width: 100%;
-    max-width: 720px; /* Maximale Breite auf die gleiche wie die Webcam setzen */
-    margin: auto; /* Zentriert den Header */
+    max-width: 720px; /* Gleiche maximale Breite wie der Webcam-Wrapper */
+    margin: 0 auto 20px auto; /* Zentrierung und Abstand nach unten */
+    box-sizing: border-box; /* Sorgt dafür, dass Padding berücksichtigt wird */
 }
+
 
 
 /* Stile für die Header-Schaltflächen */
@@ -52,7 +51,6 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -62,7 +60,6 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
     max-width: 1200px;
     margin: auto;
     width: 100%;
@@ -70,10 +67,12 @@ header {
 
 .webcam-wrapper {
     position: relative;
-    margin-top: 20px;
+    margin-top: 0; /* Kein unnötiger Abstand oben */
     width: 100%;
-    max-width: 720px;
-    margin: auto; 
+    max-width: 720px; /* Gleiche maximale Breite wie der Header */
+    margin: 0 auto; /* Zentriert das Webcam-Element */
+    padding: 0 20px; /* Gleicher Innenabstand wie der Header */
+    box-sizing: border-box; /* Padding wird zur Gesamtbreite hinzugerechnet */
 }
 
 
