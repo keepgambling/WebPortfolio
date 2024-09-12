@@ -23,6 +23,8 @@ body {
     align-items: center;
     justify-content: flex-start;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header-Stile */
@@ -39,7 +41,6 @@ header {
     width: 100%;
     max-width: 720px; /* Gleiche maximale Breite wie der Webcam-Wrapper */
     box-sizing: border-box;
-    margin-bottom: 20px; /* Nur Abstand nach unten */
 }
 
 /* Stile für die Header-Schaltflächen */
@@ -73,6 +74,7 @@ header {
     box-sizing: border-box;
     display: flex;
     justify-content: center; /* Zentriert den Inhalt horizontal */
+    margin-top: 20px; /* Abstand zwischen Header und Kamera-Element */
     margin-bottom: 20px; /* Verhindert doppeltes margin */
 }
 
