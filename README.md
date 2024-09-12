@@ -2,6 +2,8 @@
 
 Die Web App kann über folgenden Link aufgerufen werden: https://keepgambling.github.io/WebPortfolio/index.html
 
+![Lokales Bild]("C:\Users\Kaiar\Pictures\b917b438-5265-47ed-a458-e3f90d9613f3.jpg")
+
 - Um zu beginnen, klicke auf **Spiel Starten**. Der Countdown zeigt die Zeit bis zur Wahl an.
 - Verwende die Handgesten vor der Kamera oder die Buttons, falls keine Kamera verfügbar ist um deine Wahl zu treffen.
 - **Stein✊** schlägt Schere✌️, **Papier✋** schlägt Stein✊, **Schere✌️** schlägt Papier✋.
