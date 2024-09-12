@@ -26,6 +26,7 @@ const closeWinnerOverlayButton = document.getElementById('closeWinnerOverlay'); 
 let userScore = 0; // Punktestand des Benutzers
 let computerScore = 0; // Punktestand des Computers
 let isDarkMode = false; // Flag für den Dunkelmodus
+let isGameRunning = false; // Flag für den Spielstatus
 const winningScore = 3; // Punktestand, um das Spiel zu gewinnen
 const recentMoves = []; // Speichert die letzten Spielzüge
 let countdownInterval; // Speichert das Intervall für den Countdown
@@ -46,7 +47,6 @@ hands.setOptions({
   minTrackingConfidence: 0.5 // Mindestvertrauen für das Tracking
 });
 
-// Legt fest, was passiert, wenn Ergebnisse verfügbar sind
 hands.onResults(onResults);
 
 // Startet den Kamerastream
@@ -59,7 +59,8 @@ function startCamera() {
                 manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen
                 startCameraStream(); // Startet die Verarbeitung des Kamerastreams
             })
-            .catch(() => {
+            .catch((error) => {
+                console.error('Kamera konnte nicht gestartet werden:', error);
                 manualControls.style.display = 'block'; // Zeigt manuelle Steuerungen bei Fehlern an
             });
     }
@@ -69,7 +70,11 @@ function startCamera() {
 function startCameraStream() {
   const camera = new Camera(webcamElement, {
     onFrame: async () => {
-      await hands.send({ image: webcamElement }); // Sendet das Bild an MediaPipe Hands zur Verarbeitung
+      try {
+        await hands.send({ image: webcamElement }); // Sendet das Bild an MediaPipe Hands zur Verarbeitung
+      } catch (error) {
+        console.error('Fehler bei der Handerkennung:', error);
+      }
     },
     width: 640, // Breite des Videostreams
     height: 480 // Höhe des Videostreams
@@ -100,6 +105,8 @@ function onResults(results) {
     const landmarks = results.multiHandLandmarks[0]; // Holt die Handlandmarks der ersten Hand
     const choice = getUserChoice(landmarks); // Bestimmt die Wahl des Benutzers basierend auf den Handlandmarks
     userChoiceElement.textContent = choice; // Zeigt die Wahl des Benutzers im UI an
+  } else {
+    userChoiceElement.textContent = '❓'; // Setzt Standardwahl, wenn keine Geste erkannt wird
   }
 
   canvasCtx.restore(); // Stellt den zuvor gespeicherten Zustand des Canvas wieder her
@@ -107,118 +114,110 @@ function onResults(results) {
 
 // Bestimmt die Wahl des Benutzers basierend auf Handlandmarks
 function getUserChoice(landmarks) {
-  // Extrahiert die Spitzen und Basen der Finger
   const thumbTip = landmarks[4];
   const indexTip = landmarks[8];
   const middleTip = landmarks[12];
   const ringTip = landmarks[16];
   const pinkyTip = landmarks[20];
 
-  const thumbBase = landmarks[2];
   const indexBase = landmarks[5];
   const middleBase = landmarks[9];
   const ringBase = landmarks[13];
   const pinkyBase = landmarks[17];
 
-  // Überprüft, ob die Finger ausgestreckt sind
-  const isIndexExtended = indexTip.y < indexBase.y; // Überprüft, ob der Zeigefinger ausgestreckt ist
-  const isMiddleExtended = middleTip.y < middleBase.y; // Überprüft, ob der Mittelfinger ausgestreckt ist
-  const isRingExtended = ringTip.y < ringBase.y; // Überprüft, ob der Ringfinger ausgestreckt ist
-  const isPinkyExtended = pinkyTip.y < pinkyBase.y; // Überprüft, ob der kleine Finger ausgestreckt ist
-  const isThumbExtended = thumbTip.x > indexBase.x; // Überprüft, ob der Daumen seitlich zeigt
+  const isIndexExtended = indexTip.y < indexBase.y;
+  const isMiddleExtended = middleTip.y < middleBase.y;
+  const isRingExtended = ringTip.y < ringBase.y;
+  const isPinkyExtended = pinkyTip.y < pinkyBase.y;
+  const isThumbExtended = thumbTip.x > indexBase.x;
 
-  // Überprüft die Gesten Rock, Paper und Scissors
-  const isRock = !isIndexExtended && !isMiddleExtended && !isRingExtended && !isPinkyExtended; // Faust
-  const isPaper = isIndexExtended && isMiddleExtended && isRingExtended && isPinkyExtended && isThumbExtended; // Handfläche
-  const isScissors = isIndexExtended && isMiddleExtended && !isRingExtended && !isPinkyExtended; // Zwei Finger
+  const isRock = !isIndexExtended && !isMiddleExtended && !isRingExtended && !isPinkyExtended;
+  const isPaper = isIndexExtended && isMiddleExtended && isRingExtended && isPinkyExtended && isThumbExtended;
+  const isScissors = isIndexExtended && isMiddleExtended && !isRingExtended && !isPinkyExtended;
 
   if (isRock) {
-    return '✊'; // Rückgabe der Wahl "Stein" als Emoji
+    return '✊'; 
   } else if (isPaper) {
-    return '✋'; // Rückgabe der Wahl "Papier" als Emoji
+    return '✋';
   } else if (isScissors) {
-    return '✌️'; // Rückgabe der Wahl "Schere" als Emoji
+    return '✌️'; 
   } else {
-    return '❓'; // Fallback, falls keine Geste erkannt wird
+    return '❓'; 
   }
 }
 
 // Bestimmt die Wahl des Computers
 function getComputerChoice() {
-  const choices = ['✊', '✋', '✌️']; // Mögliche Wahlen als Emojis
-  return choices[Math.floor(Math.random() * choices.length)]; // Zufällige Wahl
+  const choices = ['✊', '✋', '✌️']; 
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
 // Bestimmt den Gewinner basierend auf den Spielregeln
 function determineWinner(userChoice, computerChoice) {
   if (userChoice === computerChoice) {
-    return 'Unentschieden'; // Rückgabe bei Gleichstand
+    return 'Unentschieden'; 
   }
   if (
     (userChoice === '✊' && computerChoice === '✌️') ||
     (userChoice === '✌️' && computerChoice === '✋') ||
     (userChoice === '✋' && computerChoice === '✊')
   ) {
-    return 'Benutzer'; // Rückgabe bei Sieg des Benutzers
+    return 'Benutzer'; 
   }
-  return 'Computer'; // Rückgabe bei Sieg des Computers
+  return 'Computer'; 
 }
 
 // Aktualisiert den Punktestand basierend auf dem Gewinner
 function updateScore(winner) {
   if (winner === 'Benutzer') {
-    userScore++; // Erhöht den Punktestand des Benutzers
-    userScoreElement.textContent = userScore; // Zeigt den neuen Punktestand des Benutzers an
+    userScore++;
+    userScoreElement.textContent = userScore; 
   } else if (winner === 'Computer') {
-    computerScore++; // Erhöht den Punktestand des Computers
-    computerScoreElement.textContent = computerScore; // Zeigt den neuen Punktestand des Computers an
+    computerScore++;
+    computerScoreElement.textContent = computerScore; 
   }
 }
 
 // Aktualisiert die Anzeige der letzten Spielzüge
 function updateRecentMoves(userChoice, computerChoice) {
-  const emojis = {
-    '✊': '✊',
-    '✋': '✋',
-    '✌️': '✌️'
-  };
-
-  recentMoves.push(`${emojis[userChoice]} vs ${emojis[computerChoice]}`); // Fügt die aktuellen Züge hinzu
+  const emojis = { '✊': '✊', '✋': '✋', '✌️': '✌️' };
+  recentMoves.push(`${emojis[userChoice]} vs ${emojis[computerChoice]}`);
   if (recentMoves.length > 5) {
-    recentMoves.shift(); // Entfernt ältere Züge, wenn mehr als 5
+    recentMoves.shift(); 
   }
-
-  recentMovesElement.innerHTML = recentMoves.map(move => `<span>${move}</span>`).join(''); // Aktualisiert die Anzeige der letzten Züge
+  recentMovesElement.innerHTML = recentMoves.map(move => `<span>${move}</span>`).join('');
 }
 
 // Startet eine neue Spielrunde
 function startRound() {
-  let countdown = isFirstRound ? 7 : 3; // 7 Sekunden für die erste Runde, dann 3 Sekunden
-  isFirstRound = false; // Setzt die Flag für die erste Runde zurück
-  countdownOverlay.style.opacity = 1; // Zeigt das Overlay an
+  if (!isGameRunning) return;  // Exit if the game is not running
+
+  let countdown = isFirstRound ? 7 : 3;
+  isFirstRound = false; 
+  countdownOverlay.style.opacity = 1; 
   countdownInterval = setInterval(() => {
-    countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`; // Zeigt den Countdown an
+    countdownOverlay.textContent = `Zeit bis zur Wahl: ${countdown}`;
     countdown--;
 
     if (countdown < 0) {
-      clearInterval(countdownInterval); // Stoppt den Countdown
-      countdownOverlay.style.opacity = 0; // Versteckt das Overlay nach dem Countdown
+      clearInterval(countdownInterval);
+      countdownOverlay.style.opacity = 0; 
 
-      const computerChoice = getComputerChoice(); // Holt die Wahl des Computers
-      const userChoice = userChoiceElement.textContent || '❓'; // Holt die Wahl des Benutzers oder setzt eine Standardwahl
+      const computerChoice = getComputerChoice(); 
+      const userChoice = userChoiceElement.textContent || '❓';
 
-      computerChoiceElement.textContent = computerChoice; // Zeigt die Wahl des Computers an
-      const winner = determineWinner(userChoice, computerChoice); // Bestimmt den Gewinner
-      winnerElement.textContent = winner; // Zeigt den Gewinner an
+      computerChoiceElement.textContent = computerChoice; 
+      const winner = determineWinner(userChoice, computerChoice); 
+      winnerElement.textContent = winner; 
 
-      updateScore(winner); // Aktualisiert den Punktestand
-      updateRecentMoves(userChoice, computerChoice); // Aktualisiert die Anzeige der letzten Züge
+      updateScore(winner);
+      updateRecentMoves(userChoice, computerChoice); 
 
       if (userScore >= winningScore || computerScore >= winningScore) {
-        const finalWinner = userScore > computerScore ? 'der Benutzer' : 'der Computer'; // Bestimmt den endgültigen Gewinner
-        endGame(finalWinner); // Spiel endet, zeige Sieger-Overlay
-      } else {
-        setTimeout(startRound, 3000); // Wartet 3 Sekunden vor der nächsten Runde
+        const finalWinner = userScore > computerScore ? 'der Benutzer' : 'der Computer'; 
+        endGame(finalWinner); 
+      } else if (isGameRunning) { // Only schedule the next round if the game is still running
+        setTimeout(startRound, 3000); 
       }
     }
   }, 1000);
@@ -226,81 +225,99 @@ function startRound() {
 
 // Ereignislistener für Spielsteuerungen
 startGameButton.addEventListener('click', () => {
-  userScore = 0; // Setzt den Punktestand des Benutzers zurück
-  computerScore = 0; // Setzt den Punktestand des Computers zurück
-  userScoreElement.textContent = userScore; // Zeigt den Punktestand des Benutzers an
-  computerScoreElement.textContent = computerScore; // Zeigt den Punktestand des Computers an
-  recentMoves.length = 0; // Löscht die Liste der letzten Züge
-  recentMovesElement.innerHTML = ''; // Löscht die Anzeige der letzten Züge
+  isGameRunning = true;  // Set the game running flag
+  userScore = 0; 
+  computerScore = 0; 
+  userScoreElement.textContent = userScore;
+  computerScoreElement.textContent = computerScore; 
+  recentMoves.length = 0; 
+  recentMovesElement.innerHTML = ''; 
 
-  isFirstRound = true; // Setzt die Flag für die erste Runde zurück
+  isFirstRound = true;
 
-  startCamera(); // Startet die Kamera
-  startRound(); // Startet die erste Runde
+  startCamera(); 
+  startRound(); 
 });
 
 // Stoppt das Spiel und den Kamerastream
 stopGameButton.addEventListener('click', () => {
-  stopCamera(); // Stoppt den Kamerastream
-  clearInterval(countdownInterval); // Stoppt den Countdown
-  countdownOverlay.style.opacity = 0; // Versteckt das Countdown-Overlay
-  countdownOverlay.textContent = ''; // Löscht den Countdown-Text
-  winnerElement.textContent = 'Spiel beendet'; // Zeigt an, dass das Spiel beendet ist
+  isGameRunning = false;  // Stop the game immediately
+  stopCamera(); 
+  clearInterval(countdownInterval);  // Stop the countdown
+  countdownOverlay.style.opacity = 0;
+  countdownOverlay.textContent = ''; 
+  winnerElement.textContent = 'Spiel beendet'; 
 });
 
 // Schaltet zwischen Dunkel- und Lichtmodus um
 toggleModeButton.addEventListener('click', () => {
-  isDarkMode = !isDarkMode; // Schaltet den Dunkelmodus um
+  isDarkMode = !isDarkMode; 
   if (isDarkMode) {
-      document.body.classList.add('dark-mode'); // Aktiviert den Dunkelmodus
-      toggleModeButton.textContent = '☀️'; // Sonne-Symbol für Lichtmodus
+      document.body.classList.add('dark-mode'); 
+      toggleModeButton.textContent = '☀️'; 
   } else {
-      document.body.classList.remove('dark-mode'); // Deaktiviert den Dunkelmodus
-      toggleModeButton.textContent = '🌙'; // Mond-Symbol für Dunkelmodus
+      document.body.classList.remove('dark-mode');
+      toggleModeButton.textContent = '🌙'; 
+  }
+  // Save the preference in localStorage
+  localStorage.setItem('darkMode', isDarkMode);
+});
+
+// On page load, check for saved dark mode preference
+document.addEventListener('DOMContentLoaded', () => {
+  const savedMode = localStorage.getItem('darkMode');
+  if (savedMode === 'true') {
+      document.body.classList.add('dark-mode');
+      isDarkMode = true;
+      toggleModeButton.textContent = '☀️';
+  } else {
+      document.body.classList.remove('dark-mode');
+      isDarkMode = false;
+      toggleModeButton.textContent = '🌙';
   }
 });
 
 // Logik für das Anzeigen und Verstecken der Anweisungen
 function showInstructions() {
-  instructionsOverlay.style.display = 'flex'; // Zeigt das Anweisungs-Overlay an
+  instructionsOverlay.style.display = 'flex'; 
 }
 
 function hideInstructions() {
-  instructionsOverlay.style.display = 'none'; // Versteckt das Anweisungs-Overlay
+  instructionsOverlay.style.display = 'none'; 
 }
 
-showInstructionsButton.addEventListener('click', showInstructions); // Ereignislistener zum Anzeigen der Anweisungen
-closeInstructionsButton.addEventListener('click', hideInstructions); // Ereignislistener zum Schließen der Anweisungen
+showInstructionsButton.addEventListener('click', showInstructions); 
+closeInstructionsButton.addEventListener('click', hideInstructions); 
 
 // Zeigt die Anweisungen beim Laden der Seite an
 document.addEventListener('DOMContentLoaded', () => {
-  showInstructions(); // Zeigt das Anweisungs-Overlay beim Laden der Seite
-  manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen beim Laden der Seite
+  showInstructions(); 
+  manualControls.style.display = 'none'; 
 });
 
 // Ereignislistener für manuelle Steuerungsknöpfe
 chooseRockButton.addEventListener('click', () => {
-  userChoiceElement.textContent = '✊'; // Setzt die Wahl auf "Stein" als Emoji
+  userChoiceElement.textContent = '✊'; 
 });
 
 choosePaperButton.addEventListener('click', () => {
-  userChoiceElement.textContent = '✋'; // Setzt die Wahl auf "Papier" als Emoji
+  userChoiceElement.textContent = '✋'; 
 });
 
 chooseScissorsButton.addEventListener('click', () => {
-  userChoiceElement.textContent = '✌️'; // Setzt die Wahl auf "Schere" als Emoji
+  userChoiceElement.textContent = '✌️'; 
 });
 
 // Funktion, um das Sieger-Overlay anzuzeigen
 function showWinnerOverlay(finalWinner) {
-    finalWinnerElement.textContent = finalWinner; // Zeigt den endgültigen Gewinner an
-    winnerOverlay.style.display = 'flex'; // Zeigt das Gewinner-Overlay an
+    finalWinnerElement.textContent = finalWinner; 
+    winnerOverlay.style.display = 'flex'; 
 }
 
 // Funktion, um das Sieger-Overlay zu schließen
 function closeWinnerOverlay() {
-    winnerOverlay.style.display = 'none'; // Versteckt das Gewinner-Overlay
-    stopCamera(); // Stoppt die Kamera, wenn das Overlay geschlossen wird
+    winnerOverlay.style.display = 'none'; 
+    stopCamera(); 
 }
 
 // Ereignislistener für den Schließen-Button des Sieger-Overlays
@@ -308,5 +325,5 @@ closeWinnerOverlayButton.addEventListener('click', closeWinnerOverlay);
 
 // Den Spielabschluss ändern, um das Sieger-Overlay anzuzeigen
 function endGame(finalWinner) {
-    showWinnerOverlay(finalWinner); // Zeigt das Gewinner-Overlay an
+    showWinnerOverlay(finalWinner); 
 }
