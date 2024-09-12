@@ -283,6 +283,7 @@ button:hover {
    -------------------------------------------
    Anpassungen für das Overlay der Spielanleitung.
    =========================================== */
+/* Stile für die Spielanleitung */
 #instructions-overlay .overlay-content {
     font-size: 1.2em;
     padding: 30px;
@@ -307,36 +308,37 @@ button:hover {
 /* Für Mobilgeräte bis 480px Breite */
 @media screen and (max-width: 480px) {
     #instructions-overlay .overlay-content {
-        font-size: 1em;
-        padding: 15px;
-        max-width: 90%;
-        margin: 10px;
+        font-size: 0.9em; /* Kleinere Schriftgröße */
+        padding: 10px; /* Weniger Innenabstand */
+        max-width: 85%; /* Kleinere Breite */
+        margin: 8px; /* Weniger Außenabstand */
     }
 }
 
 /* Weitere Stile zur Anpassung der Listen in der Anleitung */
 #instructions-overlay .overlay-content ul {
-    padding-left: 20px;
+    padding-left: 15px; /* Weniger Abstand links */
 }
 
 #instructions-overlay .overlay-content ul li {
-    margin-bottom: 10px;
-    line-height: 1.5;
+    margin-bottom: 8px; /* Weniger Abstand zwischen Listenelementen */
+    line-height: 1.4; /* Geringerer Zeilenabstand */
     font-size: inherit; /* Erbt die Schriftgröße */
 }
 
 /* Anpassungen für Überschriften innerhalb der Anleitung */
 #instructions-overlay .overlay-content h2 {
-    font-size: 1.4em;
-    margin-bottom: 15px;
+    font-size: 1.2em; /* Kleinere Überschrift */
+    margin-bottom: 10px; /* Weniger Abstand unten */
 }
 
 /* Button in der Anleitung auch responsive machen */
 #instructions-overlay .close-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    margin-top: 20px;
+    padding: 8px 15px; /* Kleinere Buttons */
+    font-size: 0.9em; /* Kleinere Schrift */
+    margin-top: 15px; /* Weniger Abstand oben */
 }
+
 
 /* ===========================================
    Dark Mode
