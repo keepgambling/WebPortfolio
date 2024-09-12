@@ -2,8 +2,11 @@
 
 Die Web App kann über folgenden Link aufgerufen werden: https://keepgambling.github.io/WebPortfolio/index.html
 
-![Screenshot 1](![4b68b0b4-d05c-402f-89ba-c1079235234e](https://github.com/user-attachments/assets/aa56928a-eb2b-45a1-98e8-735599d27e53))  
-![Screenshot 2](![4d55a92d-6cd5-44bd-93d2-4c45f68c4a78](https://github.com/user-attachments/assets/4dce58d6-4678-4fea-99f9-3ca0753b6c79))  
+<div align="center">
+  <img src="https://github.com/keepgambling/WebPortfolio/blob/main/Anleitung.jpg" alt="Screenshot 1" width="300"/> <img src="https://github.com/keepgambling/WebPortfolio/blob/main/Preview.jpg" alt="Screenshot 2" width="300"/>
+</div>
+
+  
 
 - Um zu beginnen, klicke auf **Spiel Starten**. Der Countdown zeigt die Zeit bis zur Wahl an.
 - Verwende die Handgesten vor der Kamera oder die Buttons, falls keine Kamera verfügbar ist um deine Wahl zu treffen.
