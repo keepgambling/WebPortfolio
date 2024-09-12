@@ -34,7 +34,6 @@ Diese HTML-Datei erstellt eine Webseite für ein "Schere, Stein, Papier"-Spiel, 
 
 Dieser JavaScript-Code implementiert das klassische Spiel Schere Stein Parpier, bei dem der Benutzer gegen den Computer spielt. Die Besonderheit dieses Spiels besteht darin, dass die Wahl des Benutzers durch Handgestenerkennung über die Webcam erfolgt. Das Spiel läuft, bis entweder der Benutzer oder der Computer eine bestimmte Anzahl an Punkten erreicht hat. Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, und es bietet sowohl automatisierte als auch manuelle Steuerungen.
 
-# Rock-Paper-Scissors Spiel mit Handerkennung
 
 ## Wichtige HTML-Elemente
 
