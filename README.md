@@ -15,78 +15,73 @@ Diese HTML-Datei erstellt eine Webseite für ein "Schere, Stein, Papier"-Spiel, 
 
 ## Style.css
 
-- **Globale Variablen**: Enthält globale Variablen für Farben, Schatten, Übergangsdauer und mehr, die in der gesamten Seite verwendet werden.
-- **body**: Stellt grundlegende Stile für den Body der Seite ein, einschließlich Layout und Farben.
-- **header**: Definiert das Erscheinungsbild des Headers, einschließlich Hintergrundfarbe, Textfarbe und Schatten.
-- **container**: Ein zentraler Bereich für den Hauptinhalt, der den Inhalt zentriert und einen maximalen Breitenbereich festlegt.
-- **webcam-wrapper und #webcam**: Definiert die Positionierung und das Aussehen des Webcam-Elements auf der Seite.
-- **#countdown-overlay**: Ein Overlay, das für einen Countdown genutzt wird, um über der Webcam angezeigt zu werden.
-- **result-section**: Bereich für die Anzeige von Ergebnissen, inklusive Schatten und Innenabstand.
-- **recent-moves**: Stile für die Anzeige der letzten Bewegungen, mit flexibler Layoutstruktur.
-- **table, th, td**: Stile für Tabellen und ihre Zellen, einschließlich Hintergrundfarbe und Schatten für Tabellenköpfe.
-- **button**: Stile für Schaltflächen, einschließlich Hintergrundfarbe, Übergängen und Hover-Effekten.
-- **overlay und overlay-content**: Stile für Overlays, die den Inhalt der Seite überlagern, einschließlich zentrierter Anordnung und Schatten.
-- **close-button**: Stile für die Schließen-Schaltfläche im Overlay.
-- **@media (prefers-color-scheme: light)**: Anpassungen für Nutzer, die ein helles Farbschema bevorzugen.
-- **choice-button**: Stile für spezielle Auswahlknöpfe, die standardmäßig versteckt sind.
-- **header-buttons**: Definiert die Stile für Header-Schaltflächen und deren Tooltip.
-- **canvas**: Standardmäßig verstecktes Canvas-Element.
-- **button-group**: Stile für Gruppen von Schaltflächen.
-- **manual-controls**: Stile für manuelle Steuerungselemente.
-- **dark-mode**: Stile für den Dunkelmodus der Seite.
-- **responsive Anpassungen**: Anpassungen für verschiedene Bildschirmgrößen (Tablets und Mobilgeräte).
+- **Globale Variablen**: Enthält globale Variablen für Farben, Abstände, Schatten und Übergangsdauer, die auf der gesamten Seite verwendet werden.
+- **body**: Setzt die grundlegenden Stile für das Layout der Seite, einschließlich Schriftart, Ausrichtung des Inhalts, Hintergrundfarbe und Textfarbe. Das Flexbox-Layout sorgt dafür, dass der Inhalt vertikal zentriert wird.
+- **header**: Definiert das Erscheinungsbild des Kopfbereichs der Seite, inklusive Flexbox-Ausrichtung, Schatten und abgerundeten Ecken. Der Header hat eine maximale Breite und ist vollständig responsive.
+- **container**: Ein zentraler Bereich für den Hauptinhalt der Seite, der die Flexbox verwendet, um den Inhalt horizontal zu zentrieren und eine maximale Breite von 100 % festzulegen.
+- **webcam-wrapper und #webcam**: Diese Stile bestimmen die Anordnung und das Aussehen des Webcam-Elements, inklusive eines Schatteneffekts und abgerundeter Ecken. Der Wrapper sorgt dafür, dass die Webcam zentriert angezeigt wird.
+- **#countdown-overlay**: Ein über der Webcam positioniertes Overlay für den Countdown. Es wird mit einem halbtransparenten Hintergrund, zentraler Textausrichtung und weichen Übergängen definiert.
+- **result-section**: Ein Bereich für die Anzeige von Ergebnissen, der eine zentrierte Textausrichtung und angepasste Schriftgrößen für Titel und Untertitel enthält.
+- **recent-moves**: Definiert die Stile für die Anzeige der letzten Bewegungen in einem flexiblen Layout, mit Abständen zwischen den Elementen und einer Anpassung an kleine Bildschirmgrößen.
+- **table, th, td**: Stile für Tabellen, mit besonderem Fokus auf abgerundete Ecken, Schatten und Innenabstände. Der Tabellenkopf erhält eine eigene Hintergrundfarbe und einen Schatteneffekt.
+- **button**: Schaltflächenstile mit Hintergrundfarbe, Textfarbe, abgerundeten Ecken und weichen Übergängen beim Hover. Schaltflächen reagieren auf Hover-Effekte mit Farbänderungen und einer leichten Bewegung nach oben.
+- **overlay und overlay-content**: Stile für Overlays, die über den Inhalten der Seite schweben. Sie sind fixiert, zentriert und enthalten abgerundete Ecken sowie Schatten für ein auffälliges Erscheinungsbild.
+- **close-button**: Stile für die Schließen-Schaltfläche in Overlays, mit Hintergrundfarbe, abgerundeten Ecken und Hover-Effekten.
+- **dark-mode**: Spezielle Stile für den Dunkelmodus, bei dem die Hintergrund- und Textfarben geändert werden, um eine bessere Lesbarkeit bei dunklen Bildschirmen zu gewährleisten. Schaltflächen und Tabellen erhalten ebenfalls angepasste Farben für den Dark Mode.
+- **responsive Anpassungen**: Enthält verschiedene Medienabfragen, die das Layout der Seite an kleinere Bildschirmgrößen anpassen. Für Tablets und Mobilgeräte werden Schriftgrößen, Abstände und die Flexbox-Struktur angepasst.
 
 ## Script.js
 
-Dieser JavaScript-Code implementiert ein Rock-Paper-Scissors-Spiel, bei dem der Benutzer gegen den Computer spielt. Die Besonderheit dieses Spiels besteht darin, dass die Wahl des Benutzers durch Handgestenerkennung über die Webcam erfolgt. Das Spiel läuft, bis entweder der Benutzer oder der Computer eine bestimmte Anzahl an Punkten erreicht hat. Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, und es bietet sowohl automatisierte als auch manuelle Steuerungen.
+Dieser JavaScript-Code implementiert das klassische Spiel Schere Stein Parpier, bei dem der Benutzer gegen den Computer spielt. Die Besonderheit dieses Spiels besteht darin, dass die Wahl des Benutzers durch Handgestenerkennung über die Webcam erfolgt. Das Spiel läuft, bis entweder der Benutzer oder der Computer eine bestimmte Anzahl an Punkten erreicht hat. Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, und es bietet sowohl automatisierte als auch manuelle Steuerungen.
 
-## Hauptkomponenten
+# Rock-Paper-Scissors Spiel mit Handerkennung
 
-1. **DOM-Elemente**: Der Code verwendet mehrere DOM-Element-Referenzen, um die Benutzeroberfläche (UI) zu steuern und zu aktualisieren. Dazu gehören Elemente für die Anzeige des Kamerastreams, der Punkte, der Spielzüge und der Gewinneranzeige, sowie Knöpfe zur Steuerung des Spiels.
+## Wichtige HTML-Elemente
 
-2. **Spielzustandsvariablen**: Variablen wie `userScore`, `computerScore`, `isDarkMode` und andere werden verwendet, um den aktuellen Zustand des Spiels zu verfolgen.
+- **webcamElement**: Video-Element für die Webcam.
+- **canvasElement**: Canvas für Zeichnungen und Handerkennung.
+- **computerChoiceElement**: Anzeige der Computerwahl.
+- **userChoiceElement**: Anzeige der Benutzerwahl.
+- **winnerElement**: Anzeige des Runden-Gewinners.
+- **userScoreElement**: Punktestand des Benutzers.
+- **computerScoreElement**: Punktestand des Computers.
+- **startGameButton**: Startet das Spiel.
+- **stopGameButton**: Stoppt das Spiel.
+- **toggleModeButton**: Umschalten zwischen Dunkel- und Lichtmodus.
 
-3. **MediaPipe Hands Integration**: Die MediaPipe Hands-Bibliothek wird verwendet, um die Handgesten des Benutzers in Echtzeit zu erkennen. Die Handgesten werden dann in eine der drei Spielmöglichkeiten (Stein, Papier, Schere) umgewandelt.
+## Wichtige Variablen
 
-4. **Spielsteuerung**: Funktionen wie `startCamera`, `stopCamera`, `getUserChoice`, `getComputerChoice`, `determineWinner`, `updateScore`, `updateRecentMoves`, und `startRound` steuern den Spielablauf, von der Kameraaktivierung über die Handerkennung bis hin zur Auswertung der Ergebnisse und dem Spielende.
+- **userScore**: Punktestand des Benutzers.
+- **computerScore**: Punktestand des Computers.
+- **isDarkMode**: Flag für den Dunkelmodus.
+- **isGameRunning**: Zeigt an, ob das Spiel läuft.
+- **winningScore**: Punktestand, um das Spiel zu gewinnen.
+- **recentMoves**: Speichert die letzten Spielzüge.
+- **cameraStream**: Speichert den Kamerastream.
 
-5. **Ereignislistener**: Der Code nutzt Ereignislistener, um auf Benutzeraktionen wie das Starten oder Stoppen des Spiels, das Umschalten des Modus, oder die Auswahl einer Handgeste über die manuelle Steuerung zu reagieren.
+## Hauptfunktionen
 
-## Funktionalität im Detail
+- **startCamera()**: Startet den Kamerastream.
+- **stopCamera()**: Stoppt den Kamerastream.
+- **onResults(results)**: Verarbeitet die Handerkennungsergebnisse.
+- **getUserChoice(landmarks)**: Bestimmt die Benutzerwahl (Stein, Papier, Schere).
+- **getComputerChoice()**: Ermittelt zufällig die Computerwahl.
+- **determineWinner(userChoice, computerChoice)**: Bestimmt den Gewinner der Runde.
+- **updateScore(winner)**: Aktualisiert den Punktestand basierend auf dem Gewinner.
+- **startRound()**: Startet eine neue Spielrunde.
 
-- **Starten der Kamera**: Wenn das Spiel startet, wird die Kamera aktiviert, und das Bild wird zur Echtzeitverarbeitung an MediaPipe Hands gesendet. Die Kamera läuft so lange, bis das Spiel beendet oder manuell gestoppt wird.
+## Ereignislistener
 
-- **Handerkennung und Wahlbestimmung**: Die MediaPipe Hands-Bibliothek erkennt die Hand des Benutzers und gibt die Positionen der Fingerknochen zurück. Basierend auf diesen Positionen wird die Handgeste des Benutzers als Stein, Papier oder Schere interpretiert.
+- **startGameButton**: Startet das Spiel und die Kamera.
+- **stopGameButton**: Stoppt das Spiel und die Kamera.
+- **toggleModeButton**: Schaltet den Dunkel-/Lichtmodus um.
+- **chooseRockButton, choosePaperButton, chooseScissorsButton**: Setzen die manuelle Wahl des Benutzers.
 
-- **Computergeste**: Der Computer wählt zufällig zwischen Stein, Papier und Schere. Die Wahl des Computers und die des Benutzers werden dann verglichen, um den Gewinner der Runde zu bestimmen.
+## Weitere Features
 
-- **Punktestand und Spielverlauf**: Der Punktestand wird nach jeder Runde aktualisiert. Wenn entweder der Benutzer oder der Computer den festgelegten Siegpunktestand erreicht, endet das Spiel und der Gewinner wird angezeigt.
+- **Dunkel-/Lichtmodus**: Umschaltung und Speicherung der Präferenz im Browser.
+- **Gewinner-Overlay**: Zeigt den endgültigen Gewinner des Spiels an.
 
-- **Dunkel- und Lichtmodus**: Das Spiel kann zwischen einem Dunkel- und einem Lichtmodus umgeschaltet werden, um die Benutzeroberfläche nach Vorliebe anzupassen.
-
-- **Anweisungen und Manuelle Steuerung**: Anweisungen zum Spielablauf werden angezeigt, wenn die Seite geladen wird. Falls die Handerkennung nicht funktioniert oder nicht genutzt werden soll, kann der Benutzer auch manuell eine Wahl treffen, indem er auf die entsprechenden Knöpfe für Stein, Papier oder Schere klickt.
-
-## Wichtige Funktionen und Variablen
-
-- **startCamera**: Diese Funktion aktiviert die Kamera des Benutzers und beginnt den Video-Stream, der dann von MediaPipe zur Handerkennung genutzt wird.
-  
-- **stopCamera**: Stoppt den Video-Stream und beendet das Spiel.
-
-- **getUserChoice**: Verwendet die erkannten Handlandmarks, um die Wahl des Benutzers (Stein, Papier, Schere) zu bestimmen.
-
-- **getComputerChoice**: Erzeugt zufällig die Wahl des Computers.
-
-- **determineWinner**: Vergleicht die Wahlen von Benutzer und Computer, um den Gewinner der Runde zu bestimmen.
-
-- **updateScore**: Aktualisiert den Punktestand des Spiels basierend auf dem Gewinner der Runde.
-
-- **updateRecentMoves**: Zeigt die letzten Spielzüge an.
-
-- **startRound**: Startet eine neue Runde des Spiels, inklusive eines Countdowns für den Benutzer.
-
-- **endGame**: Beendet das Spiel und zeigt den finalen Gewinner an.
-
-- **Dunkel- und Lichtmodus**: Über den Button `toggleModeButton` kann zwischen dem Dunkel- und Lichtmodus umgeschaltet werden.
 
 ## Vorgehen
 
