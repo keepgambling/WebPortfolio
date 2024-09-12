@@ -84,7 +84,6 @@ function stopCamera() {
     tracks.forEach(track => track.stop()); // Stoppt alle Tracks im Stream
     cameraStream = null; // Setzt den Kamerastream auf null
     webcamElement.srcObject = null; // Entfernt die Videoquelle
-    manualControls.style.display = 'none'; // Versteckt manuelle Steuerungen, wenn das Spiel beendet wird
   }
 }
 
